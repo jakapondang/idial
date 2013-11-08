@@ -21,8 +21,7 @@
         public function __construct() {
             parent::__construct();
             $this->load->library(array('cor3'));
-			//$this->load->library(array('parser'));
-           
+
         }
         
         public function index() {
