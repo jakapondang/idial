@@ -38,10 +38,10 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "homeroot";
 $route['404_override'] = '';
 
-$route['homeroot'] = 'homeroot';
+//$route['homeroot'] = 'homeroot';
 
 
 /* End of file routes.php */

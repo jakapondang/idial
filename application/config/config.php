@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'idialcorner.jp';
+$config['base_url']	= 'http://www.idialcorner.com';
 
 /*
 |--------------------------------------------------------------------------
