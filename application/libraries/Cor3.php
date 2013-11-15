@@ -11,35 +11,39 @@ class Cor3 {
 			//$this->CI->load->model(array('general_model'));
 			
 	}
+	
     public function html($themes="html", $structure = array("head"),$data_inject="")
     {
-		$content = "";
+        $content = "";
+        $themes_css = explode("/", $themes);
 
-		$data = array(
-				'base_url'=>base_url()."assets/".$themes."/",
-			);
-		if(!empty($data_inject)||($data_inject!="")):
-			$data = $result = array_merge($data, $data_inject);
-		endif;
-      if(!empty($structure)||($structure!="")):
-          $row = count($structure);
-          for($i=0;$i<$row;$i++):
 
-              $content .=  $this->CI->parser->parse($themes.'/'.$structure[$i], $data, TRUE);
-          endfor;
+        $data = array(
+            'base_url'=>base_url()."assets/".$themes_css[0]."/",
+        );
+        if(!empty($data_inject)||($data_inject!="")):
+            $data = $result = array_merge($data, $data_inject);
+        endif;
+        if(!empty($structure)||($structure!="")):
+            $row = count($structure);
+            for($i=0;$i<$row;$i++):
+
+                $content .=  $this->CI->parser->parse($themes.'/'.$structure[$i], $data, TRUE);
+            endfor;
         else:
 
         endif;
 
 
-		
-		return $content;
-		//$content  =  $this->CI->parser->parse('html/html', $data, TRUE);
-		//return $base_url;
-		//$head = '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="id" lang="id"><head>#headcontent</head>';
+
+        return $content;
+        //$content  =  $this->CI->parser->parse('html/html', $data, TRUE);
+        //return $base_url;
+        //$head = '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="id" lang="id"><head>#headcontent</head>';
     }
-	
-	public function get_random_string($valid_chars, $length) {
+
+
+    public function get_random_string($valid_chars, $length) {
 			// start with an empty random string
 			$random_string = "";
 		

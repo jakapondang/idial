@@ -83,7 +83,8 @@
 							$array['valid'] = 1;
 							$array['message'] = '<div class="terimakasih" align="center">Terima kasih , Simpan Kode Voucher dibawah ini :<br>
 							<div class="code_tr"><b>'.$code.'</b></div>
-							<br>Hubungi / kunjungi toko kami untuk mendapatkan <b>BONUS</b> yang tersedia.</div>';
+							<br>Hubungi / kunjungi toko kami untuk mendapatkan <b>BONUS</b> yang tersedia.<br/>
+							ITC Kuningan, Jembatan 1, Lantai 3, No.07 Jakarta, Indonesia 12940 | Tel: 021 - 91799788 | BBM: 2A9B4867</div>';
 							echo json_encode($array);
 							
 							// Send email
@@ -134,7 +135,9 @@
 							$array['valid'] = 1;
 							$array['message'] = '<div class="terimakasih" align="center">Terima kasih , Simpan Kode Voucher Dibawah ini :<br>
 							<div class="code_tr"><b>'.$code.'</b></div>
-							<br>Hubungi / kunjungi toko kami untuk mendapatkan <b>BONUS</b> yang tersedia.</div>';
+							<br>Hubungi / kunjungi toko kami untuk mendapatkan <b>BONUS</b> yang tersedia.<br/>
+							ITC Kuningan, Jembatan 1, Lantai 3, No.07 Jakarta, Indonesia 12940 | Tel: 021 - 91799788 | BBM: 2A9B4867
+							</div>';
 							echo json_encode($array);
 					
 							// Send email

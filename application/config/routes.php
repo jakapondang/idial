@@ -41,7 +41,16 @@
 $route['default_controller'] = "homeroot";
 $route['404_override'] = '';
 
-//$route['homeroot'] = 'homeroot';
+//Admin
+$route['jp'] = 'admin/adminroot';
+$route['jp/action/login'] = 'admin/adminroot/action_login';
+$route['jp/dashboard'] = 'admin/dashboard';
+$route['jp/dashboard/data_subscriber'] = 'admin/dashboard/data_subscriber';
+
+// Web
+$route['home'] = 'idial/homeroot';
+
+
 
 
 /* End of file routes.php */
