@@ -1,5 +1,43 @@
-<div class="page-footer container_grey">
-	<div class="footer container">
+
+<html>
+<head>
+
+        
+        
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="{base_url}css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="{base_url}css/bootstrap-responsive.css">
+		<link rel="stylesheet" type="text/css" href="{base_url}css/style.css">
+		<!--[if lt IE 9]>
+			<link rel="stylesheet" type="text/css" href="http://idialcorner.jp/assets/idial/css/ie.css">
+		<![endif]-->
+		<!-- script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script -->	
+
+</head>
+
+
+
+<body>
+       
+<!-- End of Splash Screen -->
+
+
+	<div class="page-container" >
+    <div class="container header" style="border:2px solid #F5F5F5;margin:0 auto;padding:0">
+			<div class="row">
+                <div class="span7">
+                    <div class="logo">
+                        <a href="index-2.html"> iDial</a> "We Serve Better"
+                    </div>
+                </div>
+             </div>
+           
+		</div>
+
+    <div class="container menu">
+		<p></p>
+	</div>		
+	<div class="footer container" style="border:2px solid #F5F5F5;margin:0 auto;padding:0">
 		    <div class="row">
 		        <div class="span2 offset1">
 					<div>
@@ -60,7 +98,7 @@
 			
 		</div>
 		
-	<div class="powered container">
+	<div class="powered container" style="border:2px solid #F5F5F5;margin:0 auto;padding:0">
 		    <div class="row">
 			    <div class="span12">
 		            <p class="powered-text">Copyright <a href="#"> Nicole Fashion HTML</a> 2012 designed by <a href="http://www.nicolette.ro/">nicole_89</a></p>
@@ -76,44 +114,10 @@
 		</div>
 		
 	</div>
-</div>
+
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:200,300,400,600,700' rel='stylesheet' type='text/css'/>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,600,700' rel='stylesheet' type='text/css'/>
-<script language="javascript" type="text/javascript" src="../../ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script>window.jQuery || document.write("<script src='{base_url}js/jquery-1.8.3.min.js'><\/script>")</script>
-<script language="javascript" type="text/javascript" src="{base_url}js/bootstrap.min.js"></script>
-<script language="javascript" type="text/javascript" src="{base_url}js/jquery.easing.1.3.js"></script>
-<script language="javascript" type="text/javascript" src="{base_url}js/jquery.eislideshow.js"></script>
-<link href='{base_url}css/ei-slider.css' rel='stylesheet' type='text/css'/>
-<link href='{base_url}css/slideshow.css' rel='stylesheet' type='text/css'/>
-<script language="javascript" type="text/javascript" src="{base_url}js/jquery.jcarousel.min.js"></script>
-<link href='{base_url}css/carousel.css' rel='stylesheet' type='text/css'/>
 
-<script>
-jQuery(document).ready(function() 
-{
-	$('.dropdown-toggle').dropdown();
-	$('.carousel').carousel();
-	
-	$('.jcarousel').jcarousel({
-	vertical: false,
-	wrap: 'circular',
-	visible: 5,
-	scroll: 3});
-
-
-	$('.ei-slider').eislideshow({
-	animation:"sides",
-	autoplay:true,
-	slideshow_interval:3000,
-	speed:800,
-	easing:"",
-	titleFactor:0.60,
-	titlespeed:800,
-	titleeasing:"",
-	thumbMaxWidth:150 		});
-
-});
-</script>		
 
 </body>
+</html>

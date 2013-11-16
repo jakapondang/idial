@@ -67,8 +67,8 @@ class Cor3 {
 			// return our finished random string
 			return $random_string;
 		}
-	public function sent_email($subject,$message,$mailfrom,$mailto,$mailbcc="",$mailfname=""){
-		
+	public function sent_email($subject,$message,$mailfrom,$mailto,$mailbcc="",$mailfname="",$plain_message=""){
+			$this->CI->email->clear();
 			$config['charset'] = 'utf-8';
 			$config['wordwrap'] = TRUE;
 			$config['mailtype'] = 'html';
@@ -77,7 +77,8 @@ class Cor3 {
 			$this->CI->email->bcc($mailbcc); 
 			$this->CI->email->to($mailto); 
 			$this->CI->email->subject($subject);
-			$this->CI->email->message($message);	
+			$this->CI->email->message($message);
+			$this->CI->email->set_alt_message($plain_message);	
 			$this->CI->email->send();
 		}
 		

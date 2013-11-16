@@ -24,11 +24,16 @@
 		}
 	});</script>
 
-	<div class="page-container container">
+
+
+	<div class="page-black container_black">
+        <!--header-->
+
     <div class="container header">
 		<div class="row">
 		    <div class="span7">
 			    <div class="logo">
+                    <!--<img src="{base_url}img/iDial.jpg" width="100px">-->
 				    <a href="{site_url}">iDial</a>
 				</div>
 			</div>
@@ -81,7 +86,10 @@
 				</div>
 			</div>
 		</div>
+        </div>
 
+
+        <!--menu-->
     <div class="container menu">
 		<div class="row">
 		    <div class="span12">

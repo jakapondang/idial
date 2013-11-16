@@ -49,6 +49,7 @@ $route['jp/dashboard/data_subscriber'] = 'admin/dashboard/data_subscriber';
 
 // Web
 $route['home'] = 'idial/homeroot';
+$route['home/email'] = 'idial/homeroot/email';
 
 
 
