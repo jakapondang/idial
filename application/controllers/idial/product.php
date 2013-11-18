@@ -27,28 +27,13 @@
         
         public function index() {
 			$themes ="idial";
-            $structure = array("head","body","home/home","footer","home/fhome");
+            $structure = array("head","body","home","footer");
             $data = array("site_url"=>base_url());
 
 			print $this->cor3->html($themes,$structure,$data);
         }
 		
-		public function contact() {
-			/**/
-            $themes ="idial";
-            $structure = array("head","body","contact/contact","footer","contact/fcontact");
-            $data = array("site_url"=>base_url());
 
-            print $this->cor3->html($themes,$structure,$data);
-		}
-        public function service() {
-            /**/
-
-        }
-        public function aboutus() {
-            /**/
-
-        }
 		public function email() {
 			/**/
 			$themes ="idial/email";

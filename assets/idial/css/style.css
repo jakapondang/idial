@@ -5,7 +5,7 @@ body
 
 .container1
 {
-	background:#fff;
+	background:transparent;
 	padding:0px 30px 30px;
 	
 }
@@ -19,6 +19,7 @@ a
 {
    font-size:12px;
    color:#777;
+    text-decoration: none !important;
 }
 ul, ol
 {
@@ -32,10 +33,10 @@ ul, ol
 
 }
 
-.page-black
+.page-header
 {
     margin:0px auto;
-    box-shadow:0 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 50px 10px rgba(255, 255, 255, 0.5);
+   /* box-shadow:0 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 50px 10px rgba(255, 255, 255, 0.5);*/
     padding:0px;
     background: #00000;
 
@@ -55,8 +56,8 @@ img
 
 .header
 {
-	padding-top:60px;
-	padding-bottom:45px;
+	/*padding-top:60px;
+	padding-bottom:45px;*/
 }
 
 
@@ -207,7 +208,8 @@ img
 
 	.navbar .nav > li:hover
 	{
-		background:none repeat scroll 0 0 rgba(42, 127, 211, 0.4);
+		/*background:none repeat scroll 0 0 rgba(42, 127, 211, 0.4);*/
+        background: #bababa;
 		text-shadow:none;
 		color:#fff;
 	}
@@ -260,6 +262,8 @@ ul,ol
     display:inline-block;
 	color:#80766F;
 	font-family:'Open Sans Condensed', sans-serif;
+    /*padding-top:40px;
+    padding-bottom: 54px;*/
 	
 }
 .logo a
@@ -292,8 +296,14 @@ ul,ol
 {
     display:inline-block;
 	float:right;
-	margin-top:10px;
+	/*margin-top:10px;*/
 	margin-right:20px;
+    border-right: 1px #bababa solid;
+    padding-top:60px;
+    padding-bottom:45px;
+    padding-right:20px ;
+
+
 }
 .cart img
 {
@@ -325,6 +335,8 @@ ul,ol
 #search
 {
 	float:right;
+    padding-top:60px;
+    padding-bottom:35px;
 }
 #search input
 {
@@ -479,12 +491,25 @@ h2
     padding:0px 30px 30px;
 
 }
+.container_grey2
+{
+    background:#e3e3e3;
+    padding:0px;
+
+}
 .footer
 {
-    background: #F2F2F2;
+    background: transparent;
 	border-top:1px solid #eee;
     padding-top:30px;
     padding-bottom:30px;
+}
+.footer2
+{
+    background: transparent;
+    border-top:1px solid #eee;
+    padding-top:5px;
+    padding-bottom:5px;
 }
 
 
@@ -524,7 +549,7 @@ h2
     color:#999999;
     font-size:11px;
     text-align:right;
-    padding-top:30px;
+    padding-top:0px;
     padding-bottom:30px;
 }
 
@@ -1736,4 +1761,29 @@ a.comment-reply-link
 		max-width:100%;
 	}
 	
+}
+
+/*==================================
+=   JP EDITED
+===================================*/
+h1.logoiDial{
+    font-weight: normal;color: black;
+    font-size: 50px;
+
+}
+.roundedlogo{
+    margin-top: 13px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: ;
+    border-radius: 50%; /* future proofing */
+    -khtml-border-radius: 50%; /* for old Konqueror browsers */
+    height:82px;width:100px;
+    background: #bababa;
+    text-align: center;
+    padding-top:18px;
+}
+.span4.faddress{
+    font-size: 12px;
+    color: #777;
+
 }

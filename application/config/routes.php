@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "homeroot";
+$route['default_controller'] = "idial/homeroot";
 $route['404_override'] = '';
 
 //Admin
@@ -50,7 +50,7 @@ $route['jp/dashboard/data_subscriber'] = 'admin/dashboard/data_subscriber';
 // Web
 $route['home'] = 'idial/homeroot';
 $route['home/email'] = 'idial/homeroot/email';
-
+$route['contact'] = 'idial/homeroot/contact';
 
 
 
