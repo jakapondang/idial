@@ -1,3 +1,4 @@
+</head>
 <body>
         <!-- Header -->
         <noscript>
@@ -5,13 +6,13 @@
    		<div style="font-family: Tahoma; font-size: 14px; background-color:#5AC6FF; padding: 10pt;">To see this page as it is meant to appear, we ask that you please enable your Javascript!</div></div>
   		</noscript>
         
-        <!-- This section is for Splash Screen -->
+        <!-- This section is for Splash Screen
 <div class="ole">
 <section id="jSplash">
 	<div id="circle"></div>
 </section>
 </div>
-<!-- End of Splash Screen -->
+
 <script>
 // Preload the page with jPreLoader
 	$('body').jpreLoader({
@@ -22,7 +23,7 @@
 		splashFunction: function() {
 			$('#circle').delay(250).animate({'opacity' : 1}, 1000, 'linear');
 		}
-	});</script>
+	});</script>-->
 
 
 
@@ -34,10 +35,9 @@
 		    <div class="span7">
 			    <div class="logo">
                     <!--<img src="{base_url}img/iDial.jpg" width="100px">-->
-                    <div class="roundedlogo"><a><h1 class="logoiDial">iDial</h1></a
-                    </div>
+                    <div class="roundedlogo"><a><h1 class="logoiDial">iDial</h1></a></div>
 				</div>
-			</div>
+			
             </div>
 			<div class="span5">
 			    <div id="search">

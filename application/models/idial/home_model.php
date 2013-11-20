@@ -7,7 +7,7 @@ class Home_model extends CI_Model {
         $this->load->database();
     }
     
-    function cekSubscribe($value,$column) {
+   /* function cekSubscribe($value,$column) {
         $qry = "SELECT * FROM `subscriber_cs` WHERE `$column`='$value'";
          $query =  $this->db->query($qry);
 		 return $query->num_rows();
@@ -22,7 +22,7 @@ class Home_model extends CI_Model {
 
     function insert_data_cs($data) {
         $this->db->insert("subscriber_cs", $data);
-    }
+    }*/
     
    
 }
