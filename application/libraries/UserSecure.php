@@ -46,6 +46,12 @@ class UserSecure
 	 * @param	bool
 	 * @return	bool
 	 */
+    function UserSecure(){
+
+        $this->CI =& get_instance();
+        $this->CI->load->library('session');
+
+    }
 	function create($user_email = '', $user_pass = '', $auto_login = true) 
 	{
 		$this->CI =& get_instance();

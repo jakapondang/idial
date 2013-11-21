@@ -19,15 +19,16 @@
 		</div>
 		
 		<div class="row">
-		   
+            {error_message}
 			
 			<div class="span6">
-            	  
-			  	
+
+
 			    <div class="row">
+
 				    <div class="span9">
-                    	 {error_message}
-				            <form class="form-horizontal" id="registerForm" method="post" action="{site_url}/idial/account_action/register">
+
+				            <form class="form-horizontal" id="registerForm" method="post" action="{site_url}idial/account_action/register">
                            
                             
 				            <div class="control-group" >
@@ -46,7 +47,7 @@
 				            <div class="control-group">
 					            <label class="control-label" for="inputPassword">Password<span class="required">*</span></label>
 					            <div class="controls">
-					                <input type="password" name="password" id="password"  class="validate[required] text-input">
+					                <input type="password" name="password" id="password"  class="validate[required,minSize[6]] text-input">
 					            </div>
 				            </div>
 				        
@@ -55,7 +56,7 @@
 							<div class="control-group">
 								<label class="control-label" for="inputPassword">Re-enter password<span class="required">*</span></label>
 								<div class="controls">
-									<input type="password" id="inputPassword" name="cpassword" id="cpassword" class="validate[required,equals[password]] text-input">
+									<input type="password" id="inputPassword" name="cpassword" id="cpassword" class="validate[required,equals[password],minSize[6]] text-input">
 								</div>
 							</div>
 				        

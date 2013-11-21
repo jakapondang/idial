@@ -20,16 +20,67 @@
         
         public function __construct() {
             parent::__construct();
-            $this->load->library(array('cor3'));
+            $this->load->library(array('cor3','usersecure'));
 			$this->load->model('idial/account_model','account_model');
 
         }
         
         public function register() {
+           /* $themes     ="idial";
+            $structure  = array("email/register");
+            $data       = array("site_url"=>base_url());
+            $message    =  $this->cor3->html($themes,$structure,$data);
+            $plain_message="";
+            print $message;*/
 
-            print"YES";
-			
+            $subject    = "Welcome to iDialCorner.com";
+            $mailfrom   = "hello@idialcorner.com";
+            $mailto     = "jaka.pondang@gmail.com";
+            $mailfname  = "iDial Corner";
 
+            $themes     ="idial";
+            $structure  = array("email/register");
+            $data       = array("site_url"=>base_url());
+            $message    =  $this->cor3->html($themes,$structure,$data);
+            $plain_message="";
+           // print $message;
+            $this->cor3->sentEmail($subject,$message,$plain_message,$mailfrom,$mailfname,$mailto);
+
+           /* $email = $this->input->post('email');
+            $phone = $this->input->post('phone');
+            $pass  = $this->input->post('cpassword');
+
+            $rowCount  = $this->account_model->cekRowTable("jp_users","user_email",$email);
+
+            if($rowCount > 0){
+                // EMail Already exist
+                print '<script>window.location="'.base_url().'register/?err=1";</script>';
+
+            }else{
+
+                $this->usersecure->create($email,$pass);
+                $subject    = "Welcome to iDialCorner.com";
+                $mailfrom   = "hello@idialcorner.com";
+                $mailto     = $email;
+                $mailfname  = "iDial Corner";
+
+                $themes     ="idial";
+                $structure  = array("email/register");
+                $data       = array("site_url"=>base_url());
+                $message    =  $this->cor3->html($themes,$structure,$data);
+                $plain_message="";
+
+               // $this->cor3->sentEmail($subject,$message,$plain_message,$mailfrom,$mailfname,$mailto);
+                //print '<script>window.location="'.base_url().'account/";</script>';
+
+            }*/
+
+        }
+
+        public function logout(){
+
+            $this->usersecure->logout();
+            print '<script>window.location="'.base_url().'";</script>';
         }
 		
 

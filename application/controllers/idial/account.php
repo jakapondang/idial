@@ -36,16 +36,17 @@
 		public function register() {
 				$themes ="idial";
 					$structure = array("head","account/hregister","body","account/register","footer","account/fregister");
-					$error_message = '<div style="top:0px; left:0px;width:100%; background-color:#FFFFFF;margin-bottom:20px">
-   							<div style="font-family: Tahoma; font-size: 14px; background-color:#f2f2f2;color:red; padding: 10pt;">
-							ERROR MESSAGE
+
+					$error_message = "";
+                    $err_val = $this->input->get('err');
+					if($err_val == 1 ){
+                        $error_message = '
+                            <div style="top:0px; left:0px;width:100%;background-color:#f2f2f2;margin-bottom:20px">
+   							<div style=" font-size: 14px; color:red; padding: 10pt;">
+							Sorry , Email address is already exist. Please try again.
 							</div></div>';
-					/*if(!empty()){
-						$error_message = '<div style="top:0px; left:0px;width:100%; background-color:#FFFFFF;margin-bottom:20px">
-   							<div style="font-family: Tahoma; font-size: 14px; background-color:#f2f2f2;color:red; padding: 10pt;">
-							'..'
-							</div></div>';
-						}*/
+                    }
+                        /**/
 					$data = array(
 							"site_url"=>base_url(),
 							"error_message"=>$error_message,
@@ -55,10 +56,17 @@
 			
 			
         }
-		
-		
-		 
 
+
+
+        public function login() {
+
+            $themes ="idial";
+            $structure = array("head","body","account/login","footer","account/flogin");
+            $data = array("site_url"=>base_url());
+
+            print $this->cor3->html($themes,$structure,$data);
+        }
         
     }
     

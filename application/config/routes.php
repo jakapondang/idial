@@ -51,8 +51,9 @@ $route['jp/dashboard/data_subscriber'] = 'admin/dashboard/data_subscriber';
 $route['home'] = 'idial/homeroot';
 $route['home/email'] = 'idial/homeroot/email';
 $route['contact'] = 'idial/homeroot/contact';
-$route['account'] = 'idial/account';
+$route['login'] = 'idial/account/login';
 $route['register'] = 'idial/account/register';
+$route['account'] = 'idial/account';
 
 
 

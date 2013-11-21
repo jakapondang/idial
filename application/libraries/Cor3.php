@@ -81,6 +81,24 @@ class Cor3 {
 			$this->CI->email->set_alt_message($plain_message);	
 			$this->CI->email->send();
 		}
-		
+
+    public function sentEmail($subject,$message,$plain_message="",$mailfrom,$mailfname="",$mailto){
+        $mailbcc="";
+
+        $this->CI->email->clear();
+
+        $config['charset'] = 'utf-8';
+        $config['wordwrap'] = TRUE;
+        $config['mailtype'] = 'html';
+        $this->CI->email->initialize($config);
+        $this->CI->email->from($mailfrom, $mailfname);
+        $this->CI->email->bcc($mailbcc);
+        $this->CI->email->to($mailto);
+        $this->CI->email->subject($subject);
+        $this->CI->email->message($message);
+        $this->CI->email->set_alt_message($plain_message);
+        $this->CI->email->send();
+
+        }
 }
 ?>

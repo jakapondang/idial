@@ -34,20 +34,20 @@
 		<div class="row">
 		    <div class="span7">
 			    <div class="logo">
-                    <!--<img src="{base_url}img/iDial.jpg" width="100px">-->
-                    <div class="roundedlogo"><a><h1 class="logoiDial">iDial</h1></a></div>
-				</div>
-			
-            </div>
-			<div class="span5">
-			    <div id="search">
-                    <input type="text" placeholder="Search" name="filter_name">
-                    <div class="button-search"></div>
-                </div>
+                   <img src="{base_url}img/iDial-Logo.png" width="100px">
+                    <!--<div class="roundedlogo"><a><h1 class="logoiDial">iDial</h1></a></div>-->
+               </div>
 
-			    <div class="cart dropdown">
-					<img alt="cart empty" src="{base_url}image/shopping_basket.png">
-					<!--<a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">2 items(s) - $360.00</a>-->
+           </div>
+           <div class="span5">
+               <div id="search">
+                   <input type="text" placeholder="Search" name="filter_name">
+                   <div class="button-search"></div>
+               </div>
+
+               <div class="cart dropdown">
+                   <img alt="cart empty" src="{base_url}image/shopping_basket.png">
+                   <!--<a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">2 items(s) - $360.00</a>-->
                     <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">iCart</a>
 						<div class="cart-info dropdown-menu">
 							<table class="table">

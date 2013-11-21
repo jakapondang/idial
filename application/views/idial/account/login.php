@@ -4,8 +4,8 @@
 		    <div class="span12">
 			    <div class="breadcrumbs">
 				    <ul class="breadcrumb">
-                        <li><a href="index-2.html">Home</a> <span class="divider">/</span></li>
-                        <li class="active">My Account</li>
+                        <li><a href="{site_url}">Home</a> <span class="divider">/</span></li>
+                        <li class="active">Login</li>
                     </ul>
 				</div>
 			</div>
