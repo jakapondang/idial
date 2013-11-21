@@ -11,7 +11,7 @@ body
 }
 .container_black
 {
-    background:#000;
+    background:#000 url(../img/iDial_bgh.png) 45% 0%;
     padding:0px 30px 30px;
 
 }
@@ -298,11 +298,7 @@ ul,ol
 	float:right;
 	/*margin-top:10px;*/
 	margin-right:20px;
-    border-right: 1px #bababa solid;
-    padding-top:40px;
-    padding-bottom:40px ;
-   /* padding-bottom:45px;*/
-    padding-right:20px ;
+
 
 
 }
@@ -336,8 +332,8 @@ ul,ol
 #search
 {
 	float:right;
-    padding-top:40px;
-   /*
+
+   /*padding-top:40px;
     padding-bottom:35px;*/
 }
 #search input
@@ -1788,6 +1784,48 @@ h1.logoiDial{
 .faddress{
     font-size: 12px;
     color: #777;
-   text-align: center;
+  /* text-align: center;*/
+
+}
+
+.icon_account{
+
+    height:40px;width: 40px;
+    background:url('../img/ios_allicon.png') 70.5% 15%;
+    display:inline-block;
+    float:right;
+}
+.icon_account:hover{
+    background:url('../img/ios_allicon.png') 70.5% 71.1%;
+}
+.icon_cart{
+
+    height:40px;width: 40px;
+    background:url('../img/ios_allicon.png') 8% 28%;
+    display:inline-block;
+    float:right;
+}
+.icon_cart:hover{
+    background:url('../img/ios_allicon.png') 8% 84.3%;
+}
+.icon_search{
+
+    height:40px;width: 40px;
+    background:url('../img/ios_allicon.png') 91.3% 15%;
+    display:inline-block;
+    float:right;
+
+}
+.icon_search:hover{
+    background:url('../img/ios_allicon.png') 91.3% 71.3%;
+}
+.font_menuheader{
+    margin-top: 9px;
+    display:inline-block;
+    float:right;
+    display: none;
+}
+.span2.headerMenu{
+    padding-right: 10px !important;
 
 }
