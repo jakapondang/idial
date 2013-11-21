@@ -32,61 +32,81 @@
 
     <div class="container header">
 		<div class="row">
-		    <div class="span7">
+		    <div class="span9">
 			    <div class="logo">
                    <img src="{base_url}img/iDial-Logo.png" width="100px">
                     <!--<div class="roundedlogo"><a><h1 class="logoiDial">iDial</h1></a></div>-->
                </div>
 
            </div>
-           <div class="span5">
+
+           <div class="span3">
+               <div class="span2 headerMenu">
+                  <a href="{site_url}idial/account_action/logout">Logout</a><a href="{site_url}login"> <div class="font_menuheader">iAccount</div><div class="icon_account"></div></a>
+               </div>
+               <div class="span2 headerMenu">
+                   <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">
+                    <div class="font_menuheader"> iCart</div> <div class="icon_cart"></div>
+                   </a>
+               </div>
+               <div class="span2 headerMenu">
+                   <a href="cart.html">
+                       <div class="font_menuheader"> iSearch</div> <div class="icon_search"></div>
+                   </a>
+               </div>
+                   <div class="cart dropdown">
+
+                       <!--<img alt="cart empty" src="{base_url}image/shopping_basket.png"><a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">2 items(s) - $360.00</a>-->
+
+                       <div class="cart-info dropdown-menu">
+                           <table class="table">
+                               <thead>
+                               </thead>
+                               <tbody>
+                               <tr>
+                                   <td class="image"><img alt="IMAGE" src="{base_url}products/dress33.jpg"></td>
+                                   <td class="name"><a href="{base_url}product.html">iPhone 5s</a></td>
+                                   <td class="quantity">x&nbsp;3</td>
+                                   <td class="total">Rp.8000.000</td>
+                                   <td class="remove"><img src="{base_url}image/remove-small.png" alt="Remove" title="Remove"></td>
+                               </tr>
+                               <!--<tr>
+                                   <td class="image"><img alt="IMAGE" src="{base_url}products/dress11.jpg"></td>
+                                   <td class="name"><a href="{base_url}product.html">Blue Dress</a></td>
+                                   <td class="quantity">x&nbsp;3</td>
+                                   <td class="total">$230.00</td>
+                                   <td class="remove"><img src="{base_url}image/remove-small.png" alt="Remove" title="Remove"></td>
+                               </tr>-->
+                               </tbody>
+                           </table>
+                           <div class="cart-total">
+                               <table>
+                                   <tbody>
+                                   <tr>
+                                       <td><b>Sub-Total:</b></td>
+                                       <td>$400.00</td>
+                                   </tr>
+                                   <tr>
+                                       <td><b>Total:</b></td>
+                                       <td>$400.00</td>
+                                   </tr>
+                                   </tbody>
+                               </table>
+                               <div class="checkout"><a href="cart.html">View Cart</a> | <a href="checkout.html">Checkout</a></div>
+                           </div>
+                       </div>
+                  </div>
+
+
+<!--
                <div id="search">
                    <input type="text" placeholder="Search" name="filter_name">
                    <div class="button-search"></div>
-               </div>
+               </div>-->
 
-               <div class="cart dropdown">
-                   <img alt="cart empty" src="{base_url}image/shopping_basket.png">
-                   <!--<a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">2 items(s) - $360.00</a>-->
-                    <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">iCart</a>
-						<div class="cart-info dropdown-menu">
-							<table class="table">
-								<thead>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="image"><img alt="IMAGE" src="{base_url}products/dress33.jpg"></td>
-										<td class="name"><a href="{base_url}product.html">iPhone 5s</a></td>
-										<td class="quantity">x&nbsp;3</td>
-										<td class="total">Rp.8000.000</td>
-										<td class="remove"><img src="{base_url}image/remove-small.png" alt="Remove" title="Remove"></td>
-									</tr>
-									<!--<tr>
-										<td class="image"><img alt="IMAGE" src="{base_url}products/dress11.jpg"></td>
-										<td class="name"><a href="{base_url}product.html">Blue Dress</a></td>
-										<td class="quantity">x&nbsp;3</td>
-										<td class="total">$230.00</td>
-										<td class="remove"><img src="{base_url}image/remove-small.png" alt="Remove" title="Remove"></td>
-									</tr>-->
-								</tbody>									
-							</table>
-							<div class="cart-total">
-							  <table>
-								 <tbody>
-									<tr>
-									  <td><b>Sub-Total:</b></td>
-									  <td>$400.00</td>
-									</tr>
-									<tr>
-									  <td><b>Total:</b></td>
-									  <td>$400.00</td>
-									</tr>
-								</tbody>
-							  </table>
-							  <div class="checkout"><a href="cart.html">View Cart</a> | <a href="checkout.html">Checkout</a></div>
-							</div>
-						</div> 									
-					</div>
+
+
+
 				</div>
 			</div>
 		</div>

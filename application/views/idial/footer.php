@@ -1,7 +1,7 @@
 <div class="page-footer container_grey2">
     <div class="footer2 container">
         <div class="row">
-            <div class="span11 faddress">
+            <div class="span12 faddress" style="text-align: center">
            LIKE US <img src="{base_url}img/facebook-iDial.png" width="50px">
             <img src="{base_url}img/bestprice1.png" width="70px">
             <img src="{base_url}img/twitter-iDial.png" width="50px"> FOLLOW US

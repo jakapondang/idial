@@ -18,14 +18,14 @@
             <h2>Dear {username},</h2>
 
         <p>
-    Welcome to <a href="{site_url}">iDialCorner.com</a> To log in when visiting our site just click Login or My Account at the top of every page, and then enter your e-mail address and password.
-        </p>
+            There was recently a request to change the password for your account.<br/>
+
+            If you requested this password change, please click on the following link to reset your password:</p>
 
 
         <div class="span9" style="border: 1px solid #bababa;background:#f2f2f2;padding: 20px;margin-bottom:20px;margin-left:40px">
-        <p>Use the following values when prompted to log in:</p>
-        <p>E-mail: {email_user}</p>
-        <p>Password: {pass_user}</p>
+        <p><a href="{reset_link}">{reset_link}</a></p>
+
         </div>
 
            <br clear="all"/>
@@ -38,8 +38,9 @@
         – Make changes to your account information
         – Change your password
         – Store alternative addresses (for shipping to multiple family members and friends!)-->
-      <p> If you have any questions about your account or any other matter,
-          please feel free to contact us at hello@idialcorner.com or by phone at +62 21 91799788</p>
+      <p> If clicking the link does not work, please copy and paste the URL into your browser instead.
+           <br/>
+          If you did not make this request, you can ignore this message and your password will remain the same.</p>
       </div>
      </div>
 </div>

@@ -54,6 +54,7 @@ $route['contact'] = 'idial/homeroot/contact';
 $route['login'] = 'idial/account/login';
 $route['register'] = 'idial/account/register';
 $route['account'] = 'idial/account';
+$route['lostpassword'] = 'idial/account/lostpassword';
 
 
 

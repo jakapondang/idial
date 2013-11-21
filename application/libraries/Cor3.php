@@ -82,8 +82,8 @@ class Cor3 {
 			$this->CI->email->send();
 		}
 
-    public function sentEmail($subject,$message,$plain_message="",$mailfrom,$mailfname="",$mailto){
-        $mailbcc="";
+    public function sentEmail($subject,$message,$plain_message="",$mailfrom,$mailfname="",$mailto, $mailbcc=""){
+
 
         $this->CI->email->clear();
 

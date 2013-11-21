@@ -24,29 +24,27 @@
 			$this->load->model('idial/account_model','account_model');
 
         }
-        
+        public function login() {
+            $email   = $this->input->post('email');
+            $pass   = $this->input->post('password');
+            if(!empty($email)||!empty($pass)){
+                $returnValue = $this->usersecure->login($email,$pass);
+                if($returnValue==false){
+                    print '<script>window.location="'.base_url().'login/?err=1";</script>';
+
+                }else{
+                    print '<script>window.location="'.base_url().'account";</script>';
+
+                }
+            }else{
+                print 1212;
+            }
+
+        }
         public function register() {
-           /* $themes     ="idial";
-            $structure  = array("email/register");
-            $data       = array("site_url"=>base_url());
-            $message    =  $this->cor3->html($themes,$structure,$data);
-            $plain_message="";
-            print $message;*/
 
-            $subject    = "Welcome to iDialCorner.com";
-            $mailfrom   = "hello@idialcorner.com";
-            $mailto     = "jaka.pondang@gmail.com";
-            $mailfname  = "iDial Corner";
 
-            $themes     ="idial";
-            $structure  = array("email/register");
-            $data       = array("site_url"=>base_url());
-            $message    =  $this->cor3->html($themes,$structure,$data);
-            $plain_message="";
-           // print $message;
-            $this->cor3->sentEmail($subject,$message,$plain_message,$mailfrom,$mailfname,$mailto);
-
-           /* $email = $this->input->post('email');
+          $email = $this->input->post('email');
             $phone = $this->input->post('phone');
             $pass  = $this->input->post('cpassword');
 
@@ -57,32 +55,164 @@
                 print '<script>window.location="'.base_url().'register/?err=1";</script>';
 
             }else{
-
-                $this->usersecure->create($email,$pass);
+                //var email
+                $username = explode("@",$email);
                 $subject    = "Welcome to iDialCorner.com";
                 $mailfrom   = "hello@idialcorner.com";
                 $mailto     = $email;
+                $mailbcc    = "jaka.pondang@gmail.com";
                 $mailfname  = "iDial Corner";
 
                 $themes     ="idial";
-                $structure  = array("email/register");
-                $data       = array("site_url"=>base_url());
-                $message    =  $this->cor3->html($themes,$structure,$data);
+                $structure  = array("email/head","email/register","email/footer");
+                $data       = array(
+                    "site_url"=>base_url(),
+                    "username"=>ucfirst($username[0]),
+                    "email_user"=>$email,
+                    "pass_user"=> $pass
+                );
                 $plain_message="";
+                $message    =  $this->cor3->html($themes,$structure,$data);
 
-               // $this->cor3->sentEmail($subject,$message,$plain_message,$mailfrom,$mailfname,$mailto);
-                //print '<script>window.location="'.base_url().'account/";</script>';
+                //insert & email
+               $Userid =  $this->usersecure->create($email,$pass,$username[0]);
+               // print "<script>alert('$Userid');</script>";
+                if($Userid > 0 ){
+                    $datameta = array(
+                        "user_id"=>$Userid,
+                        "meta_key"=>"phone",
+                        "meta_value"=>$phone
+                    );
+                    $CreateUserMeta = $this->account_model->insertValue("jp_usermeta",$datameta);
 
-            }*/
+
+                   if($CreateUserMeta != false){
+
+                        $this->cor3->sentEmail($subject,$message,$plain_message,$mailfrom,$mailfname,$mailto,$mailbcc);
+                        print '<script>window.location="'.base_url().'account";</script>';
+                   }
+                   else{
+
+                       print '<script>window.location="'.base_url().'serverERROR2";</script>';
+                   }
+                }else{
+                    print '<script>window.location="'.base_url().'serverERROR";</script>';
+
+                }
+
+            }
 
         }
 
         public function logout(){
 
             $this->usersecure->logout();
-            print '<script>window.location="'.base_url().'";</script>';
+            $themes ="idial";
+            $structure = array("head","body","account/logout","footer","account/faccount");
+            $data = array("site_url"=>base_url());
+
+            print $this->cor3->html($themes,$structure,$data);
+            print "<script>setInterval(function(){window.location='".base_url()."';},5000);</script>";
         }
-		
+
+        public function sentLostpassword() {
+            $table = "jp_users";
+            $email =  $this->input->post('email');
+            $get   = "user_id";
+            $data = array("user_email"=>$email);
+            $userid = $this->account_model->cekGetValue($table,$data,$get);
+
+            if($userid > 0){
+               // var cek
+               $table2 = "jp_usermeta_tmp";
+               $get2   = "umeta_id";
+               $data2  = array(
+                    "user_id"=>$userid,
+                    "meta_key"=>"lostpassword"
+                );
+
+
+               //create code
+               $idsama = true;
+               while ($idsama) {
+                    $code = "iD";
+                    $rand_string = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                    $lenght = 11;
+                    $code .= $this->cor3->get_random_string($rand_string, $lenght);
+
+
+                    $cekCode =  $this->account_model->cekRowTable($table2,"meta_value",$code);
+                    if ($cekCode == 0) {
+                        $idsama = false;
+                    }
+                }
+
+               $rowId = $this->account_model->cekGetValue($table2,$data2,$get2);
+
+                // var Email
+                $data3  = array(
+                    "user_id"=>$userid,
+                    "meta_key"=>"firstname"
+                );
+                $fname = $this->account_model->cekGetValue("jp_usermeta",$data3,"meta_value");
+
+                $subject    = "Reset Password - iDialCorner.com";
+                $mailfrom   = "hello@idialcorner.com";
+                $mailto     = $email;
+                $mailbcc    = "jaka.pondang@gmail.com";
+                $mailfname  = "iDial Corner";
+
+                $themes     ="idial";
+                $structure  = array("email/head","email/register","email/footer");
+                $data       = array(
+                    "site_url"=>base_url(),
+                    "username"=>ucfirst($fname),
+                    "reset_link"=>base_url()."?token=".$cekCode."&iD=".$userid,
+
+                );
+                $plain_message="";
+                $message    =  $this->cor3->html($themes,$structure,$data);
+                $this->cor3->sentEmail($subject,$message,$plain_message,$mailfrom,$mailfname,$mailto,$mailbcc);
+
+               if($rowId>0){
+
+                   $dataUpdate = array(
+                       "meta_value"=> $code ,
+                   );
+
+                   $dataWhere = array(
+                     "umeta_id"=> $rowId ,
+                   );
+                   $cekUpdate = $this->account_model->updateValue($table2, $dataUpdate, $dataWhere);
+                   if($cekUpdate == false){
+                       print '<script>window.location="'.base_url().'login/?err=3";</script>';
+                   }else{
+
+                       print '<script>window.location="'.base_url().'login/?err=2";</script>';
+
+                   }
+
+               }else{
+                   $dataInsert = array(
+                       "user_id"=>$userid,
+                       "meta_key"=>"lostpassword",
+                       "meta_value"=> $code ,
+
+                   );
+                   $cekInsert = $this->account_model->insertValue($table2 ,$dataInsert);
+                   if($cekInsert == false){
+                       print '<script>alert("INSERT DB ERROR");window.location="'.base_url().'login";</script>';
+                   }else{
+                       print '<script>window.location="'.base_url().'login/?err=2";</script>';
+                   }
+               }
+            }else{
+                print '<script>window.location="'.base_url().'lostpassword/?err=1";</script>';
+            }
+
+            //print "test";
+
+        }
 
 		
 		

@@ -16,7 +16,7 @@ jQuery(document).ready(function()
   <script type="text/javascript" src="{base_url}js/validation_engine/languages/jquery.validationEngine-en.js"></script>
     <script type="text/javascript">
 	
-    	$("#loginForm").validationEngine();
+    	$("#registerForm").validationEngine();
 	
 </script>		
 </body>

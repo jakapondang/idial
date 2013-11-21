@@ -11,12 +11,5 @@ jQuery(document).ready(function()
 {
 	$('.dropdown-toggle').dropdown();	
 });
-</script>
-<script type="text/javascript" src="{base_url}js/validation_engine/jquery.validationEngine.js"></script>
-  <script type="text/javascript" src="{base_url}js/validation_engine/languages/jquery.validationEngine-en.js"></script>
-    <script type="text/javascript">
-	
-    	$("#loginForm").validationEngine();
-	
-</script>		
+</script>	
 </body>

@@ -14,41 +14,14 @@
 		
 		<div class="row">
 		    <div class="span12">
-				<h2>LOGIN OR CREATE AN ACCOUNT</h2>
+				<h2>My Account</h2>
 			</div>
 		</div>
 		
 		<div class="row">
-            {error_message}
-		    <div class="span6">
+		    <div class="span4">
+				
 
-				<div class="row">
-              
-				    <div class="span6">
-                     	
-			        <form class="form-horizontal loginbox" id="loginForm" method="post" action="{site_url}idial/account_action/login">
-						<div class="control-group">
-                       		 <p>Registered Customers</p>
-                        
-							<label class="control-label" for="inputEmail">Username or email<span class="required">*</span></label>
-							<div class="controls">
-								<input type="text" class="validate[required,custom[email]] text-input" name="email" id="email">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="inputPassword">Password<span class="required">*</span></label>
-							<div class="controls">
-								<input type="password" name="password" id="password"  class="validate[required,minSize[6]]">
-							</div>
-						</div>
-						<div class="control-group">
-							<div class="controls">
-								<input class="btn" type="submit" value="LOGIN"/>
-								<a href="{site_url}lostpassword">Lost Password?</a>
-							</div>
-						</div>
-			        </form>
-				    </div>
 				</div>
 			</div>
 			
@@ -74,7 +47,7 @@
                        </div>
                       	<div class="control-group">
 					        <div class="controls">
-					                <button class="btn" type="button" onclick="javascript:window.location='{site_url}register'">REGISTER</button>
+					                <button class="btn" type="button" onclick="javascript:window.location='{site_url}register'">Register</button>
 					         </div>
 				       </div>
                      </div>
