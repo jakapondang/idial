@@ -55,6 +55,9 @@ $route['login'] = 'idial/account/login';
 $route['register'] = 'idial/account/register';
 $route['account'] = 'idial/account';
 $route['lostpassword'] = 'idial/account/lostpassword';
+$route['resetpassword'] = 'idial/account/resetpassword';
+$route['reset_password'] = 'idial/account_action/getLinkResetpassword/';
+
 
 
 

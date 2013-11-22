@@ -29,13 +29,15 @@
 			    <div class="row">
 
 				    <div class="span9">
+							<p>Please type on your new password below :</p>
+				            <form class="form-horizontal" id="registerForm" method="post" action="{site_url}idial/account_action/NewResetPassword">
 
-				            <form class="form-horizontal" id="registerForm" method="post" action="{site_url}idial/account_action/resetpassword">
-
-                            
+                            <input type="hidden" name="token" id="token"  value="{token}">
+                             <input type="hidden" name="userid" id="userid"  value="{userid}">
 				            <div class="control-group">
 					            <label class="control-label" for="inputPassword">Password<span class="required">*</span></label>
 					            <div class="controls">
+                                
 					                <input type="password" name="password" id="password"  class="validate[required,minSize[6]] text-input">
 					            </div>
 				            </div>

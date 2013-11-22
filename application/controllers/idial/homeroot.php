@@ -28,7 +28,12 @@
         public function index() {
 			$themes ="idial";
             $structure = array("head","body","home/home","footer","home/fhome");
-            $data = array("site_url"=>base_url());
+
+            $preload = $this->cor3->html($themes,array("preload"));
+            $data = array(
+                    "site_url"=>base_url(),
+                    "preload"=>$preload,
+            );
 
 			print $this->cor3->html($themes,$structure,$data);
         }

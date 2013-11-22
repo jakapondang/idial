@@ -457,13 +457,13 @@
       padding-bottom:15px ;
   }
 .cart{
-    padding-bottom:15px !important;
-    padding-top:30px !important;
+    /*padding-bottom:15px !important;
+    padding-top:30px !important;*/
 }
     #search
     {
-        padding-bottom:15px !important;
-        padding-top:30px !important;
+       /* padding-bottom:15px !important;
+        padding-top:30px !important;*/
     }
   .navbar-fixed-top,
   .navbar-fixed-bottom,

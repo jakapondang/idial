@@ -37,7 +37,7 @@
 
                 }
             }else{
-                print 1212;
+                  print '<script>alert("Cannot Be Empty");window.location="'.base_url().'login";</script>';
             }
 
         }
@@ -76,7 +76,7 @@
 
                 //insert & email
                $Userid =  $this->usersecure->create($email,$pass,$username[0]);
-               // print "<script>alert('$Userid');</script>";
+               /* print "<script>alert('$Userid');</script>";*/
                 if($Userid > 0 ){
                     $datameta = array(
                         "user_id"=>$Userid,
@@ -147,9 +147,7 @@
                     }
                 }
 
-               $rowId = $this->account_model->cekGetValue($table2,$data2,$get2);
-
-                // var Email
+              	// var Email
                 $data3  = array(
                     "user_id"=>$userid,
                     "meta_key"=>"firstname"
@@ -163,17 +161,18 @@
                 $mailfname  = "iDial Corner";
 
                 $themes     ="idial";
-                $structure  = array("email/head","email/register","email/footer");
+                $structure  = array("email/head","email/resetpassword","email/footer");
                 $data       = array(
                     "site_url"=>base_url(),
                     "username"=>ucfirst($fname),
-                    "reset_link"=>base_url()."?token=".$cekCode."&iD=".$userid,
+                    "reset_link"=>base_url()."reset_password/?token=".$code."&iD=".$userid,
 
                 );
                 $plain_message="";
                 $message    =  $this->cor3->html($themes,$structure,$data);
                 $this->cor3->sentEmail($subject,$message,$plain_message,$mailfrom,$mailfname,$mailto,$mailbcc);
-
+				
+				$rowId = $this->account_model->cekGetValue($table2,$data2,$get2);
                if($rowId>0){
 
                    $dataUpdate = array(
@@ -213,6 +212,44 @@
             //print "test";
 
         }
+		
+		 public function getLinkResetpassword() {
+			 $userid = $this->input->get('iD');
+			 $token = $this->input->get('token');
+			 $table = "jp_usermeta_tmp";
+             $get   = "umeta_id";
+             $data  = array(
+                    "user_id"=>$userid,
+                    "meta_key"=>"lostpassword",
+					"meta_value"=>$token
+                );
+				
+			 $rowId = $this->account_model->cekGetValue($table,$data,$get);
+               if($rowId>0){
+				   print '<script>window.location="'.base_url().'resetpassword/?token='.$token.'&iD='.$userid.'";</script>';
+			   }else{
+				   print '<script>window.location="'.base_url().'login/?err=3";</script>';
+				   }
+		 }
+		 
+		 public function NewResetPassword() {
+			$userid = $this->input->post('userid');
+            $pass  = $this->input->post('cpassword');
+			$token  = $this->input->post('token');
+			
+			$table = "jp_usermeta_tmp";
+			$dataWhere  = array(
+                    "user_id"=>$userid,
+                    "meta_key"=>"lostpassword",
+					"meta_value"=>$token
+                );
+            $returnValue = $this->usersecure->reset_password($userid,$pass);
+			if($returnValue==true){
+				$this->account_model->deleteValue($table,$dataWhere);
+				
+				print '<script>window.location="'.base_url().'login/?err=4";</script>';
+			}
+		 }
 
 		
 		

@@ -15,7 +15,7 @@
 |
 */
 $config['base_url']	= 'http://idialcorner.jp';
-
+//$config['base_url']	= 'http://dev.idialcorner.com';
 /*
 |--------------------------------------------------------------------------
 | Index File

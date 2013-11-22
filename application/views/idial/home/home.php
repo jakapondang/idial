@@ -11,7 +11,7 @@
                             <div class="ei-title">
                                <h2>SUBSCRIBE at iDial </h2>
                                <!-- <h3>Email </h3>-->
-                                <p>Dapatkan ribuan Applikasi & Game Premium ,<br/>Hanya dengan mensubcribe EMAIL / No Telepon Anda. </p <!---->
+                                <p>Dapatkan ribuan Applikasi & Game Premium ,<br/>Hanya dengan mensubcribe EMAIL / No Telepon Anda. </p ><!---->
                             </div>
                         </li>
                         <li>
@@ -109,12 +109,12 @@
             <div class="span12">
 
                 <ul class="jcarousel">
-                    <li><a href="#"><img src="{base_url}img/ios-logo.jpg" width="100px" alt="Apple" title="Apple" /></a></li> <!---->
-                    <li><a href="#"><img src="{base_url}img/Android.png" width="145px" alt="Android" title="Android" /></a></li>
-                    <li><a href="#"><img src="{base_url}img/Blackberry.png" width="130px" alt="Blackberry" title="Blackberry" /></a></li>
+                    <li><a href="#"><img src="{base_url}img/ios-logo.jpg" width="95px" alt="Apple" title="Apple" /></a></li> <!--width="100px"-->
+                    <li><a href="#"><img src="{base_url}img/Android.jpg" width="105px" alt="Android" title="Android" /></a></li><!-- width="145px" -->
+                    <li><a href="#"><img src="{base_url}img/Blackberry.jpg"  width="130px" alt="Blackberry" title="Blackberry" /></a></li><!--width="130px"-->
 
-                    <li><a href="#"><img src="{base_url}img/windows-8-logo.png" width="120px"  alt="Windows 8" title="Windows 8" /></a></li>
-                    <li><a href="#"><img src="{base_url}img/mac_os.png" width="68px" alt="Missoni" title="Missoni" /></a></li>
+                    <li><a href="#"><img src="{base_url}img/windows-8-logo.png"  width="125px"  alt="Windows 8" title="Windows 8" /></a></li><!--width="120px" -->
+                    <li><a href="#"><img src="{base_url}img/Mac_os.jpg"  width="70px" alt="Macintosh" title="Macintosh" /></a></li><!--width="68px"-->
                     <!-- <li><a href="#"><img src="{base_url}image/zara.jpg" alt="Zara" title="Zara" /></a></li>-->
                 </ul>
 
@@ -133,7 +133,7 @@
 		    <div class="span3">
 			    <div class="product">
 					<div class="product_sale">Sale</div>
-				    <a href="product.html"><img alt="dress1" src="{base_url}products/iphone 5.png"></a>
+				    <a href="product.html"><img alt="iphone 5" src="{base_url}products/iphone 5.png"></a>
 					<div class="name">
 				    <a href="#">iPhone 5</a>
 				    </div>

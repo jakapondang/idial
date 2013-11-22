@@ -19,11 +19,18 @@ class Account_model extends CI_Model {
         $this->db->insert($table, $data);
         return ($this->db->affected_rows() != 1) ? false : true;
     }
-    function updateValue($table, $data, $dataWhere){
+    
+	function updateValue($table, $data, $dataWhere){
 
         $this->db->update($table, $data, $dataWhere);
        return ($this->db->affected_rows() != 1) ? false : true;
     }
+	
+	function deleteValue($table, $dataWhere){
+		
+		$this->db->delete($table, $dataWhere); 
+		return ($this->db->affected_rows() != 1) ? false : true;
+	}
     function cekGetValue ($table,$data,$get){
 
         $query = $this->db->get_where($table,$data);

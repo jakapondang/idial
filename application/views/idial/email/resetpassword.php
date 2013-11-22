@@ -23,7 +23,7 @@
             If you requested this password change, please click on the following link to reset your password:</p>
 
 
-        <div class="span9" style="border: 1px solid #bababa;background:#f2f2f2;padding: 20px;margin-bottom:20px;margin-left:40px">
+        <div class="span9" style="border: 1px solid #bababa;background:#f2f2f2;padding: 20px;margin-bottom:20px;margin-left:40px;text-align:center">
         <p><a href="{reset_link}">{reset_link}</a></p>
 
         </div>

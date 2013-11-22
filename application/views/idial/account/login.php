@@ -28,17 +28,16 @@
                      	
 			        <form class="form-horizontal loginbox" id="loginForm" method="post" action="{site_url}idial/account_action/login">
 						<div class="control-group">
-                       		 <p>Registered Customers</p>
-                        
-							<label class="control-label" for="inputEmail">Username or email<span class="required">*</span></label>
+                       		 <p>Please type on your Email & Password :</p>
+                            <span class="required">*</span><!--<label class="control-label" for="inputEmail"></label>-->
 							<div class="controls">
-								<input type="text" class="validate[required,custom[email]] text-input" name="email" id="email">
+								<input type="text" placeholder="Username or email" class="validate[required,custom[email]] text-input" name="email" id="email">
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="inputPassword">Password<span class="required">*</span></label>
+                            <span class="required">*</span><!--<label class="control-label" for="inputEmail"></label>-->
 							<div class="controls">
-								<input type="password" name="password" id="password"  class="validate[required,minSize[6]]">
+								<input type="password" placeholder="Password" name="password" id="password"  class="validate[required,minSize[6]]">
 							</div>
 						</div>
 						<div class="control-group">

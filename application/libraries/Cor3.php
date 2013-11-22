@@ -17,9 +17,10 @@ class Cor3 {
         $content = "";
         $themes_css = explode("/", $themes);
 
-
+        $preload = "";
         $data = array(
             'base_url'=>base_url()."assets/".$themes_css[0]."/",
+            "preload"=>$preload,
         );
         if(!empty($data_inject)||($data_inject!="")):
             $data = $result = array_merge($data, $data_inject);

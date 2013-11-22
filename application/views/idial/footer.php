@@ -45,7 +45,7 @@
                            <li><a href="account.html">My Account</a></li>
                            <li><a href="#">Order History</a></li>
                            <li><a href="#">Wish List</a></li>
-                           <li><a href="forgot-password.html">Lost Password</a></li>
+                           <li><a href="{site_url}lostpassword">Lost Password</a></li>
                        </ul>
                      </div>
                </div>
@@ -85,11 +85,11 @@
                    <p class="powered-text">Copyright <a href="#"> iDial Corner</a> 2013 <!--designed by <a href="http://www.nicolette.ro/">nicole_89</a>--></p>
 		            <ul class="payment-icons">
                         <li><img alt="CITIBANK" src="{base_url}img/Citibank.png"></li>
-                        <li><img alt="BCA" src="{base_url}img/bca.jpg"></li>
-						<li><img alt="MANDIRI" src="{base_url}img/mandiri.jpg"></li>
+                        <li><img alt="BCA" src="{base_url}img/bca.png"></li>
+						<li><img alt="MANDIRI" src="{base_url}img/mandiri.png"></li>
 
-						<li><img alt="american" src="{base_url}image/paypal.png"></li>
-						<li><img alt="american" src="{base_url}image/visa.png"></li>
+						<!--<li><img alt="american" src="{base_url}image/paypal.png"></li>
+						<li><img alt="american" src="{base_url}image/visa.png"></li>-->
 		            </ul>
 		        </div>				
 		    </div>

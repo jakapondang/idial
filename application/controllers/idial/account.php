@@ -51,7 +51,7 @@
 							"site_url"=>base_url(),
 							"error_message"=>$error_message,
 					);
-		
+
 					print $this->cor3->html($themes,$structure,$data);
 			
 			
@@ -69,14 +69,25 @@
                 $error_message  = ' <div style="top:0px; left:0px;width:100%;background-color:#f2f2f2;margin-bottom:20px">';
                 if($err_val == 1 ){
                     $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
-                                Invalid login or password.
+                                Sorry , Invalid login or password.
                                 </div>';
                 }
-                 elseif($err_val == 2 ){
+               	elseif($err_val == 2 ){
                      $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
                                 If there is an account associated . you will receive an email with a link to reset your password.
                                 </div>';
-              }
+              	}
+			  	elseif($err_val == 3 ){
+                     $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
+                                Sorry , Your session link is expired . Please try again.
+                                </div>';
+              	}
+				elseif($err_val == 4 ){
+                     $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
+                                Thank you . Your password has been renew. Please try to login.
+                                </div>';
+              	}
+
 
                $error_message .= '</div>';
             }
@@ -112,15 +123,23 @@
             print $this->cor3->html($themes,$structure,$data);
         }
         public function resetpassword() {
-            $themes ="idial";
-            $structure = array("head","body","account/hlogin_regis","account/resetpassword","footer","account/fresetpass");
-            $error_message = "";
-            $data = array(
-                "site_url"=>base_url(),
-                "error_message"=>$error_message,
-            );
-
-            print $this->cor3->html($themes,$structure,$data);
+			$token = $this->input->get('token');
+			$userid = $this->input->get('iD');
+			if(!empty($token)){
+				$themes ="idial";
+				$structure = array("head","body","account/hlogin_regis","account/resetpassword","footer","account/fresetpass");
+				$error_message = "";
+				$data = array(
+					"site_url"=>base_url(),
+					"error_message"=>$error_message,
+					"token"=>$token,
+					"userid"=>$userid
+				);
+	
+				print $this->cor3->html($themes,$structure,$data);
+			}else{
+				   print '<script>window.location="'.base_url().'login/?err=3";</script>';
+				}
         }
         
     }

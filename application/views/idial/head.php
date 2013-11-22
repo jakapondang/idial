@@ -62,8 +62,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 		<!--[if lt IE 9]>
 			<link rel="stylesheet" type="text/css" href="{base_url}css/ie.css">
 		<![endif]-->
-		<!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script -->	
-
+		<!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script -->
 
 
 

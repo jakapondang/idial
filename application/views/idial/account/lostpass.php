@@ -33,15 +33,20 @@
                            
                             
 				            <div class="control-group" >
-                               <p>Please enter your email address below. You will receive a link to reset your password.</p>
-                                <label class="control-label" for="inputEmail" >Email<span class="required">*</span></label>
-					            <div class="controls">
-					                <input type="text"  class="validate[required,custom[email]] text-input" name="email" id="email">
-					            </div>
-                                <div class="controls">
-                                    <input class="btn" value ="SUBMIT" type="submit"/>
+
+                                   <p>Please enter your email address below. You will receive a link to reset your password.</p>
+                                    <label class="control-label" for="inputEmail" >Email<span class="required">*</span></label>
+
+                                <div class="span4" style="margin-left:-5px">
+                                    <div class="controls">
+                                        <input type="text"  class="validate[required,custom[email]] text-input" name="email" id="email">
+                                    </div>
+                                    <div class="controls">
+                                        <input class="btn" value ="SUBMIT" type="submit"/>
+                                    </div>
                                 </div>
-				             </div>
+
+                            </div>
 
 				        
 			           
