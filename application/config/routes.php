@@ -51,12 +51,14 @@ $route['jp/dashboard/data_subscriber'] = 'admin/dashboard/data_subscriber';
 $route['home'] = 'idial/homeroot';
 $route['home/email'] = 'idial/homeroot/email';
 $route['contact'] = 'idial/homeroot/contact';
-$route['login'] = 'idial/account/login';
-$route['register'] = 'idial/account/register';
+$route['login'] = 'idial/login';
+$route['register'] = 'idial/login/register';
 $route['account'] = 'idial/account';
-$route['lostpassword'] = 'idial/account/lostpassword';
-$route['resetpassword'] = 'idial/account/resetpassword';
+$route['lostpassword'] = 'idial/login/lostpassword';
+$route['resetpassword'] = 'idial/login/resetpassword';
 $route['reset_password'] = 'idial/account_action/getLinkResetpassword/';
+$route['logout'] = 'idial/account_action/logout/';
+
 
 
 

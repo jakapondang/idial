@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="id" lang="id">
 <head>
 <script type="text/javascript">
 var _gaq = _gaq || [];
@@ -35,7 +35,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         
         <meta name="apple-touch-fullscreen" content="YES" />
         
-        <link rel="shortcut icon" href="http://idialcorner.jp/assets/idial/img/iDial-D-Logo.png">
+        <link rel="shortcut icon" href="http://dev.idialcorner.com/assets/idial/img/iDial-D-Logo.png">
 
         
         <!-- //META FOR IOS & HANDHELD -->
@@ -48,7 +48,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         <meta name="robots" content="INDEX,FOLLOW" />
 		<!--facebook-->
         <meta property="og:title" content="iDial Corner | Jual iPhone 5s , iPhone 5c, iPad mini | Toko iPhone , iPad , Android & Blackberry"/>
-        <meta property="og:image" content="http://idialcorner.jp/assets/idial/img/iDial-og.png"/>
+        <meta property="og:image" content="http://dev.idialcorner.com/assets/idial/img/iDial-og.png"/>
         <meta property="og:site_name" content="iDialCorner.com"/>
         <meta property="og:description" content="iDial Corner Toko Handphone online di ITC Kuningan Jakarta.Jual iPad mini,Jual iPhone 5s,Jual iPhone 5c,Promo iPhone,Promo iPad,Promo Android.Dapatkan PROMO setiap pembelian iPhone , iPad , Android dan Blackberry ."/>
 		<meta property="og:type" content="website"/>
@@ -56,11 +56,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         
         
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="http://idialcorner.jp/assets/idial/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="http://idialcorner.jp/assets/idial/css/bootstrap-responsive.css">
-		<link rel="stylesheet" type="text/css" href="http://idialcorner.jp/assets/idial/css/style.css">
+        <link rel="stylesheet" type="text/css" href="http://dev.idialcorner.com/assets/idial/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="http://dev.idialcorner.com/assets/idial/css/bootstrap-responsive.css">
+		<link rel="stylesheet" type="text/css" href="http://dev.idialcorner.com/assets/idial/css/style.css">
 		<!--[if lt IE 9]>
-			<link rel="stylesheet" type="text/css" href="http://idialcorner.jp/assets/idial/css/ie.css">
+			<link rel="stylesheet" type="text/css" href="http://dev.idialcorner.com/assets/idial/css/ie.css">
 		<![endif]-->
 		<!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script -->
 
@@ -80,25 +80,74 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
     <div class="container header">
 		<div class="row">
-		    <div class="span7">
-			    <div class="logo">
-                   <img src="http://idialcorner.jp/assets/idial/img/iDial-Logo.png" width="100px">
-               </div>
+		    <div class="span9">
+                <div class="logo" style="float:left">
+                    <img src="http://dev.idialcorner.com/assets/idial/img/iDial-Logo.png" width="100px">
+                </div>
+
+                <div class="span7" style="float:left">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </a>
+                            <div class="nav-collapse collapse navbar-responsive-collapse">
+                                <ul class="nav">
+                                    <li><a href="http://dev.idialcorner.com/">HOME</a></li>
+                                    <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">SMARTPHONE</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Apple</a></li>
+                                            <li><a href="#">Blackberry</a></li>
+                                            <li><a href="#">Samsung</a></li>
+                                            <li><a href="#">Lenovo</a></li>
+                                            <li><a href="#">Nokia</a></li>
+                                        </ul>
+                                    </li>
+                                 <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">TABLET</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Apple</a></li>
+                                            <li><a href="#">Blackberry</a></li>
+                                            <li><a href="#">Samsung</a></li>
+                                            <li><a href="#">Lenovo</a></li>
+                                            <li><a href="#">Nokia</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li><a href="http://dev.idialcorner.com/">MAC</a></li>
+
+                                    <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">ACCESSORIES</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="cart.html">iPhone</a></li>
+                                            <li><a href="site-map.html">iPad</a></li>
+                                            <li><a href="404.html">Samsung</a></li>
+                                            <li><a href="forgot-password.html">Lenovo</a></li>
+
+                                        </ul>
+                                    </li>
+
+                                    <li><a href="checkout.html">SECOND</a></li>
+                                    <!--<li><a href="about.html">LAYANAN</a></li>
+
+                                    <li><a href="about.html">TENTANG KAMI</a></li>
+                                    <li><a href="http://dev.idialcorner.com/contact">HUBUNGI</a></li>-->
+                                    <li><a href="blog.html">BLOG</a></li>
+
+
+                                </ul>
+                            </div><!-- /collapse -->
+                        </div><!-- /navbar-inner -->
+                    </div><!-- /navbar -->
+
+
+                </div><!--span-->
+
             </div>
 
-
-               <div class="headerMenu">
-
-                   <a href="cart.html">
-                       <div class="font_menuheader"> iSearch</div> <div class="icon_search"></div>
-                   </a>
-
-               </div>
-
-
-               <div class="cart dropdown">
+                    <div class="cart dropdown">
                        <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">
-                           <div class="font_menuheader"> iCart</div> <div class="icon_cart"></div>
+                           <div class="icon_cart"></div>
                        </a>
                       <div class="cart-info dropdown-menu">
                            <table class="table">
@@ -106,18 +155,18 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                                </thead>
                                <tbody>
                                <tr>
-                                   <td class="image"><img alt="IMAGE" src="http://idialcorner.jp/assets/idial/products/dress33.jpg"></td>
-                                   <td class="name"><a href="http://idialcorner.jp/assets/idial/product.html">iPhone 5s</a></td>
+                                   <td class="image"><img alt="IMAGE" src="http://dev.idialcorner.com/assets/idial/products/dress33.jpg"></td>
+                                   <td class="name"><a href="http://dev.idialcorner.com/assets/idial/product.html">iPhone 5s</a></td>
                                    <td class="quantity">x&nbsp;3</td>
                                    <td class="total">Rp.8000.000</td>
-                                   <td class="remove"><img src="http://idialcorner.jp/assets/idial/image/remove-small.png" alt="Remove" title="Remove"></td>
+                                   <td class="remove"><img src="http://dev.idialcorner.com/assets/idial/image/remove-small.png" alt="Remove" title="Remove"></td>
                                </tr>
                                <!--<tr>
-                                   <td class="image"><img alt="IMAGE" src="http://idialcorner.jp/assets/idial/products/dress11.jpg"></td>
-                                   <td class="name"><a href="http://idialcorner.jp/assets/idial/product.html">Blue Dress</a></td>
+                                   <td class="image"><img alt="IMAGE" src="http://dev.idialcorner.com/assets/idial/products/dress11.jpg"></td>
+                                   <td class="name"><a href="http://dev.idialcorner.com/assets/idial/product.html">Blue Dress</a></td>
                                    <td class="quantity">x&nbsp;3</td>
                                    <td class="total">$230.00</td>
-                                   <td class="remove"><img src="http://idialcorner.jp/assets/idial/image/remove-small.png" alt="Remove" title="Remove"></td>
+                                   <td class="remove"><img src="http://dev.idialcorner.com/assets/idial/image/remove-small.png" alt="Remove" title="Remove"></td>
                                </tr>-->
                                </tbody>
                            </table>
@@ -138,82 +187,26 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                            </div>
                        </div>
                   </div>
-
+                <!--<div class="headerMenu">
+                </div>-->
                 <div class="headerMenu">
-                    <a href="http://idialcorner.jp/login">
-                        <div class="font_menuheader">iAccount</div><div class="icon_account"></div>
+                    <a href="http://dev.idialcorner.com/login">
+                     <div class="icon_account"></div>
                     </a>
                  </div>
+                
 
-                <div class="headerSearch"><input type="text" id="search" placeholder="Search" style=""/></div>
+                <div class="headerSearch">
+                    <div class="icon_search"></div>
+                    <input type="text" id="search" placeholder="Search" style=""/>
+                </div>
+
 
                 </div>
 
 		    </div>
         </div>
-
-
-        <!--menu-->
-    <div class="container menu">
-		<div class="row">
-		    <div class="span12">
-                <div class="navbar">
-                    <div class="navbar-inner">
-						<a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</a>
-					<div class="nav-collapse collapse navbar-responsive-collapse">
-                    <ul class="nav">							
-                       <li><a href="http://idialcorner.jp/">HOME</a></li>
-						<li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">SMARTPHONE</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Apple</a></li>
-                                <li><a href="#">Blackberry</a></li>
-                                <li><a href="#">Samsung</a></li>
-                                <li><a href="#">Lenovo</a></li>
-                                <li><a href="#">Nokia</a></li>
-							</ul>
-						</li>
-                        <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">TABLET</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Apple</a></li>
-                                <li><a href="#">Blackberry</a></li>
-                                <li><a href="#">Samsung</a></li>
-                                <li><a href="#">Lenovo</a></li>
-                                <li><a href="#">Nokia</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="http://idialcorner.jp/">MAC</a></li>
-
-                        <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">ACCESSORIES</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="cart.html">iPhone</a></li>
-                                <li><a href="site-map.html">iPad</a></li>
-                                <li><a href="404.html">Samsung</a></li>
-                                <li><a href="forgot-password.html">Lenovo</a></li>
-
-                            </ul>
-                        </li>
-
-						<li><a href="checkout.html">SECOND</a></li>
-                        <!--<li><a href="about.html">LAYANAN</a></li>
-
-						<li><a href="about.html">TENTANG KAMI</a></li>
-						<li><a href="http://idialcorner.jp/contact">HUBUNGI</a></li>-->
-                        <li><a href="blog.html">BLOG</a></li>
-
-
-					</ul>
-					</div><!-- /collapse -->
-                    </div><!-- /navbar-inner -->
-					</div><!-- /navbar -->
-                </div><!-- /span -->
-		</div><!-- /row -->
-    </div>
-
+<br/>
     <div class="container">
 
 		<div class="row">
@@ -242,7 +235,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<h1 class="page">Page can not be found.</h1>
 				<h6 class="e404">We are sorry, but the page you are looking for might have been removed, had its name changed or is temporarily unavailable.</h6>
 				<p>
-				<a class="btn btn-primary" href="http://idialcorner.jp/">
+				<a class="btn btn-primary" href="http://dev.idialcorner.com/">
 					Get me back to homepage!
 				</a>
 				</p>
@@ -254,9 +247,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
     <div class="footer2 container">
         <div class="row">
             <div class="span12 faddress" style="text-align: center">
-           LIKE US <img src="http://idialcorner.jp/assets/idial/img/facebook-iDial.png" width="50px">
-            <img src="http://idialcorner.jp/assets/idial/img/bestprice1.png" width="70px">
-            <img src="http://idialcorner.jp/assets/idial/img/twitter-iDial.png" width="50px"> FOLLOW US
+           LIKE US <img src="http://dev.idialcorner.com/assets/idial/img/facebook-iDial.png" width="50px">
+            <img src="http://dev.idialcorner.com/assets/idial/img/bestprice1.png" width="70px">
+            <img src="http://dev.idialcorner.com/assets/idial/img/twitter-iDial.png" width="50px"> FOLLOW US
             </div>
         </div>
    </div>
@@ -297,7 +290,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                            <li><a href="account.html">My Account</a></li>
                            <li><a href="#">Order History</a></li>
                            <li><a href="#">Wish List</a></li>
-                           <li><a href="http://idialcorner.jp/lostpassword">Lost Password</a></li>
+                           <li><a href="http://dev.idialcorner.com/lostpassword">Lost Password</a></li>
                        </ul>
                      </div>
                </div>
@@ -306,7 +299,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                    <div>
                    <h3>Customer Service</h3>
                        <ul>
-                           <li><a href="http://idialcorner.jp/contact">Contact Us</a></li>
+                           <li><a href="http://dev.idialcorner.com/contact">Contact Us</a></li>
                            <li><a href="#">Returns</a></li>
                            <li><a href="#">Site Map</a></li>
                            <li><a href="#">Shipping</a></li>
@@ -336,12 +329,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                <div class="span12">
                    <p class="powered-text">Copyright <a href="#"> iDial Corner</a> 2013 <!--designed by <a href="http://www.nicolette.ro/">nicole_89</a>--></p>
 		            <ul class="payment-icons">
-                        <li><img alt="CITIBANK" src="http://idialcorner.jp/assets/idial/img/Citibank.png"></li>
-                        <li><img alt="BCA" src="http://idialcorner.jp/assets/idial/img/bca.png"></li>
-						<li><img alt="MANDIRI" src="http://idialcorner.jp/assets/idial/img/mandiri.png"></li>
+                        <li><img alt="CITIBANK" src="http://dev.idialcorner.com/assets/idial/img/Citibank.png"></li>
+                        <li><img alt="BCA" src="http://dev.idialcorner.com/assets/idial/img/bca.png"></li>
+						<li><img alt="MANDIRI" src="http://dev.idialcorner.com/assets/idial/img/mandiri.png"></li>
 
-						<!--<li><img alt="american" src="http://idialcorner.jp/assets/idial/image/paypal.png"></li>
-						<li><img alt="american" src="http://idialcorner.jp/assets/idial/image/visa.png"></li>-->
+						<!--<li><img alt="american" src="http://dev.idialcorner.com/assets/idial/image/paypal.png"></li>
+						<li><img alt="american" src="http://dev.idialcorner.com/assets/idial/image/visa.png"></li>-->
 		            </ul>
 		        </div>				
 		    </div>
@@ -352,8 +345,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:200,300,400,600,700' rel='stylesheet' type='text/css'/>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,600,700' rel='stylesheet' type='text/css'/>
 <script language="javascript" type="text/javascript" src="../../ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script>window.jQuery || document.write("<script src='http://idialcorner.jp/assets/idial/js/jquery-1.8.3.min.js'><\/script>")</script>
-<script language="javascript" type="text/javascript" src="http://idialcorner.jp/assets/idial/js/bootstrap.min.js"></script>
+<script>window.jQuery || document.write("<script src='http://dev.idialcorner.com/assets/idial/js/jquery-1.8.3.min.js'><\/script>")</script>
+<script language="javascript" type="text/javascript" src="http://dev.idialcorner.com/assets/idial/js/bootstrap.min.js"></script>
 
 
 </body>

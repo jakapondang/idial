@@ -30,15 +30,19 @@
 						<div class="control-group">
                        		 <p>Please type on your Email & Password :</p>
                             <span class="required">*</span><!--<label class="control-label" for="inputEmail"></label>-->
-							<div class="controls">
-								<input type="text" placeholder="Username or email" class="validate[required,custom[email]] text-input" name="email" id="email">
-							</div>
+                            <div class="span4" style="margin-left:-5px">
+                                <div class="controls">
+                                    <input type="text" placeholder="Username or email" class="validate[required,custom[email]] text-input" name="email" id="email">
+                                </div>
+                            </div>
 						</div>
 						<div class="control-group">
                             <span class="required">*</span><!--<label class="control-label" for="inputEmail"></label>-->
-							<div class="controls">
-								<input type="password" placeholder="Password" name="password" id="password"  class="validate[required,minSize[6]]">
-							</div>
+                            <div class="span4" style="margin-left:-5px">
+                                <div class="controls">
+                                    <input type="password" placeholder="Password" name="password" id="password"  class="validate[required,minSize[6]]">
+                                </div>
+                            </div>
 						</div>
 						<div class="control-group">
 							<div class="controls">

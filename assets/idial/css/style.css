@@ -64,13 +64,15 @@ img
 
 .navbar-inner
 {
-	background:#fff;
+	/*background:#fff;border-color: #EEEEEE;border-style: solid none;
+	border-width: 1px medium;border-left: medium none #EEEEEE;
+	border-right: medium none #EEEEEE;*/
+    background:transparent;
 	background-image:none;
-	border-color: #EEEEEE;
-	border-left: medium none #EEEEEE;
-	border-right: medium none #EEEEEE;
-	border-style: solid none;
-	border-width: 1px medium;
+    border:none !important;
+
+
+
 	font-family: 'Open Sans Condensed',sans-serif;
 	border-radius:0px;
 	box-shadow:none;
@@ -174,14 +176,15 @@ img
 
 	.navbar .nav > li 
 	{
-		padding:5px 7px 5px;
+		padding:35px 7px 30px;
+        border-right: 1px solid #ACACAC;
 	}
 
 	.navbar .nav > li > a
 	{
-	   padding:10px 19px;
-	   color:#555;
-	   font-size:18px;
+        font-size: 16px;
+        padding: 10px 8px;
+        color: #D2CBD6;
 	   font-family: 'Open Sans Condensed', sans-serif;  
 	}
 
@@ -300,7 +303,7 @@ ul,ol
     display:inline-block;
 	float:right;
 	/*margin-top:10px;*/
-    padding: 10px 15px;
+    padding: 5px 10px;
     border-right: 1px solid #D2CBD6 !important;
 
 }
@@ -345,12 +348,13 @@ input#search
     border-right: none ! important;
     border-top: none ! important;
     box-shadow: none !important;
-    border-bottom:1px solid #4ebabc;
+    /*border-bottom:1px solid #4ebabc;*/
+    border-bottom:1px solid #D2CBD6 ;
     height: 40px;
     color: white;
-    font-size: 18px;
+    font-size: 14px;
     font-family:'Open Sans Condensed',sans-serif;
-	width: 200px;
+	width: 150px;
 
 }
 input#search:hover
@@ -758,12 +762,12 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 }
 .btn:hover
 {
-   background-color:#762b90;
+   background:url("../img/iDial_bgh.png") no-repeat scroll 45% 30% #000000;
    color:#fff;
 }
 .btn-primary
 {
-	background-color:#762B9D;
+	background-color:#762b90;
 	padding:10px 25px;
 	transition:all 0.4s ease 0s;
 }
@@ -1100,7 +1104,7 @@ input[type="text"],label
 .tabs li a
 {
    background:none repeat scroll 0 0 rgba(245, 245, 245, 0.4);
-   color:#6587B5;
+   color:#762b90;
 }
 .tabs .table 
 {
@@ -1789,51 +1793,85 @@ h1.logoiDial{
 
 }
 
+
 .icon_account{
 
-    height:40px;width: 40px;
-    background:url('../img/ios_allicon.png') 70.5% 15%;
+    height:30px;width: 30px;
+    background:url('../img/ios_allicon.png') 70.5% 15.6%;
+    background-size: 1100px auto;
     display:inline-block;
+
     float:right;
 }
 .icon_account:hover{
     background:url('../img/ios_allicon.png') 70.6% 71.1%;
+    background-size: 1100px auto;
+
 }
 .icon_cart{
 
-    height:40px;width: 40px;
-    background:url('../img/ios_allicon.png') 8% 28%;
+    height:30px;width: 30px;
+    background:url('../img/ios_allicon.png') 8.3% 28%;
+    background-size: 1100px auto;
+    /*border: 1px solid white;*/
     display:inline-block;
     float:right;
 }
 .icon_cart:hover{
-    background:url('../img/ios_allicon.png') 7.9% 84.3%;
+    background:url('../img/ios_allicon.png') 8.3% 83.7%;
+    background-size: 1100px auto;
 }
 .icon_search{
 
-    height:40px;width: 40px;
-    background:url('../img/ios_allicon.png') 91.3% 15%;
+    height:30px;width: 30px;
+    background:url('../img/ios_allicon.png') 91.5% 15.5%;
+    background-size: 1100px auto;
+
+    display:inline-block;
+    float:right;
+    margin-top: 5px;
+    margin-left: -30px;
+
+
+}
+.icon_search:hover{
+    background:url('../img/ios_allicon.png') 91.5% 71.3%;
+    background-size: 1100px auto;
+}
+.icon_logout{
+
+    height:30px;width: 30px;
+    background:url('../img/ios_allicon.png') 65.5% 28.2%;
+    background-size: 1100px auto;
+
     display:inline-block;
     float:right;
 
+    margin-left: -30px;
+}
+.icon_logout:hover{
+
+    background:url('../img/ios_allicon.png') 65.5% 83.3%;
+    background-size: 1100px auto;
 }
 .headerSearch{
     padding: 0 0 2px 15px;
     margin-right: 0px;
+    margin-top: 15px;
     float: right;
+    bottom: 0;
+    clear: right;
    /* border-right:1px solid #D2CBD6 ;*/
 }
-.icon_search:hover{
-    background:url('../img/ios_allicon.png') 91.3% 71.3%;
-}
-.font_menuheader{
+
+/*.font_menuheader{
     margin-top: 9px;
     display:inline-block;
     float:right;
     display: none;
-}
+}*/
 .headerMenu{
-     padding: 10px 15px;
+     padding: 5px 10px;
      margin-right: 0px;
      float: right;
      border-right:1px solid #D2CBD6 ;

@@ -173,16 +173,17 @@ class Usersecure
 
 		//Check if already logged in
 		if($this->CI->session->userdata('user_email') == $user_email)
-			return true;
+        return true;
 		
 		
 		//Check against user table
 		$this->CI->db->where('user_email', $user_email); 
 		$query = $this->CI->db->get_where($this->user_table);
 
-		
-		if ($query->num_rows() > 0) 
-		{
+
+
+		if ($query->num_rows() > 0)
+        {
 			$user_data = $query->row_array(); 
 
 			$hasher = new PasswordHash(PHPASS_HASH_STRENGTH, PHPASS_HASH_PORTABLE);
@@ -195,14 +196,38 @@ class Usersecure
 			
 			//Create a fresh, brand new session
 			$this->CI->session->sess_create();
+            //join user meta with user ;
 
-			$this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET user_last_login = "' . date('c') . '" WHERE user_id = ' . $user_data['user_id']);
+            //Join meta with session
+            $this->CI->db->select($this->user_table_meta.'.meta_key,'.$this->user_table_meta.'.meta_value');
+            $this->CI->db->from($this->user_table);
+            $this->CI->db->join($this->user_table_meta, $this->user_table .'.user_id = '.$this->user_table_meta.'.user_id');
+            $this->CI->db->where($this->user_table_meta.'.user_id', $user_data['user_id']);
+            $querymeta = $this->CI->db->get();
+            if ($querymeta->num_rows() > 0)
+            {
+                $userdataMeta = array();
+                foreach ($querymeta->result() as $rowmeta)
+                {
+                    $userdataMeta[$rowmeta->meta_key] = $rowmeta->meta_value;
+                }
+
+                $user_data = array_merge($user_data ,$userdataMeta);
+
+
+            }
+
+
+            $this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET user_last_login = "' . date('c') . '" WHERE user_id = ' . $user_data['user_id']);
 
 			//Set session data
 			unset($user_data['user_pass']);
 			$user_data['user'] = $user_data['user_email']; // for compatibility with Simplelogin
 			$user_data['logged_in'] = true;
 			$this->CI->session->set_userdata($user_data);
+            //logout
+            $dataLogout = array('html_logout'=>'<div class="headerMenu"><a href="{site_url}logout"><div class="icon_logout"></div></a></div>');
+            $this->CI->session->set_userdata($dataLogout);
 			
 			return true;
 		} 
@@ -303,6 +328,11 @@ class Usersecure
         } else {
             return TRUE;
         }
+    }
+
+    function getUser_meta($userid){
+
+
     }
 }
 ?>

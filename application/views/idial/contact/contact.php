@@ -30,11 +30,11 @@
                 <h3>Contact Form</h3>
                 <form>
                     <fieldset>
-                        <label>Name<span class="required">*</span></label>
+                        <span class="required">*</span>
                         <input type="text" placeholder="Name">
-                        <label>Email<span class="required">*</span></label>
+                        <span class="required">*</span>
                         <input type="text" placeholder="Email">
-                        <label>Subject<span class="required">*</span></label>
+                        <span class="required">*</span>
                         <input type="text" placeholder="Subject">
                     </fieldset>
                 </form>

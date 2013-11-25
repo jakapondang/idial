@@ -11,25 +11,74 @@
 
     <div class="container header">
 		<div class="row">
-		    <div class="span7">
-			    <div class="logo">
-                   <img src="{base_url}img/iDial-Logo.png" width="100px">
-               </div>
+		    <div class="span9">
+                <div class="logo" style="float:left">
+                    <img src="{base_url}img/iDial-Logo.png" width="100px">
+                </div>
+
+                <div class="span7" style="float:left">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </a>
+                            <div class="nav-collapse collapse navbar-responsive-collapse">
+                                <ul class="nav">
+                                    <li><a href="{site_url}">HOME</a></li>
+                                    <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">SMARTPHONE</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Apple</a></li>
+                                            <li><a href="#">Blackberry</a></li>
+                                            <li><a href="#">Samsung</a></li>
+                                            <li><a href="#">Lenovo</a></li>
+                                            <li><a href="#">Nokia</a></li>
+                                        </ul>
+                                    </li>
+                                 <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">TABLET</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Apple</a></li>
+                                            <li><a href="#">Blackberry</a></li>
+                                            <li><a href="#">Samsung</a></li>
+                                            <li><a href="#">Lenovo</a></li>
+                                            <li><a href="#">Nokia</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li><a href="{site_url}">MAC</a></li>
+
+                                    <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">ACCESSORIES</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="cart.html">iPhone</a></li>
+                                            <li><a href="site-map.html">iPad</a></li>
+                                            <li><a href="404.html">Samsung</a></li>
+                                            <li><a href="forgot-password.html">Lenovo</a></li>
+
+                                        </ul>
+                                    </li>
+
+                                    <li><a href="checkout.html">SECOND</a></li>
+                                    <!--<li><a href="about.html">LAYANAN</a></li>
+
+                                    <li><a href="about.html">TENTANG KAMI</a></li>
+                                    <li><a href="{site_url}contact">HUBUNGI</a></li>-->
+                                    <li><a href="blog.html">BLOG</a></li>
+
+
+                                </ul>
+                            </div><!-- /collapse -->
+                        </div><!-- /navbar-inner -->
+                    </div><!-- /navbar -->
+
+
+                </div><!--span-->
+
             </div>
 
-
-               <div class="headerMenu">
-
-                   <a href="cart.html">
-                       <div class="font_menuheader"> iSearch</div> <div class="icon_search"></div>
-                   </a>
-
-               </div>
-
-
-               <div class="cart dropdown">
+                    <div class="cart dropdown">
                        <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">
-                           <div class="font_menuheader"> iCart</div> <div class="icon_cart"></div>
+                           <div class="icon_cart"></div>
                        </a>
                       <div class="cart-info dropdown-menu">
                            <table class="table">
@@ -69,14 +118,20 @@
                            </div>
                        </div>
                   </div>
-
+                <!--<div class="headerMenu">
+                </div>-->
                 <div class="headerMenu">
                     <a href="{site_url}login">
-                        <div class="font_menuheader">iAccount</div><div class="icon_account"></div>
+                     <div class="icon_account"></div>
                     </a>
                  </div>
+                {html_logout}
 
-                <div class="headerSearch"><input type="text" id="search" placeholder="Search" style=""/></div>
+                <div class="headerSearch">
+                    <div class="icon_search"></div>
+                    <input type="text" id="search" placeholder="Search" style=""/>
+                </div>
+
 
                 </div>
 
@@ -84,63 +139,4 @@
         </div>
 
 
-        <!--menu-->
-    <div class="container menu">
-		<div class="row">
-		    <div class="span12">
-                <div class="navbar">
-                    <div class="navbar-inner">
-						<a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</a>
-					<div class="nav-collapse collapse navbar-responsive-collapse">
-                    <ul class="nav">							
-                       <li><a href="{site_url}">HOME</a></li>
-						<li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">SMARTPHONE</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Apple</a></li>
-                                <li><a href="#">Blackberry</a></li>
-                                <li><a href="#">Samsung</a></li>
-                                <li><a href="#">Lenovo</a></li>
-                                <li><a href="#">Nokia</a></li>
-							</ul>
-						</li>
-                        <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">TABLET</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Apple</a></li>
-                                <li><a href="#">Blackberry</a></li>
-                                <li><a href="#">Samsung</a></li>
-                                <li><a href="#">Lenovo</a></li>
-                                <li><a href="#">Nokia</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="{site_url}">MAC</a></li>
-
-                        <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">ACCESSORIES</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="cart.html">iPhone</a></li>
-                                <li><a href="site-map.html">iPad</a></li>
-                                <li><a href="404.html">Samsung</a></li>
-                                <li><a href="forgot-password.html">Lenovo</a></li>
-
-                            </ul>
-                        </li>
-
-						<li><a href="checkout.html">SECOND</a></li>
-                        <!--<li><a href="about.html">LAYANAN</a></li>
-
-						<li><a href="about.html">TENTANG KAMI</a></li>
-						<li><a href="{site_url}contact">HUBUNGI</a></li>-->
-                        <li><a href="blog.html">BLOG</a></li>
-
-
-					</ul>
-					</div><!-- /collapse -->
-                    </div><!-- /navbar-inner -->
-					</div><!-- /navbar -->
-                </div><!-- /span -->
-		</div><!-- /row -->
-    </div>
+        <br/>

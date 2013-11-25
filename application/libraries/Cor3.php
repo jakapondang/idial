@@ -6,7 +6,7 @@ class Cor3 {
 			$this->CI =& get_instance();
 			$this->CI->load->database();
 			$this->CI->load->helper(array('url'));
-			$this->CI->load->library(array('parser','email'));
+			$this->CI->load->library(array('parser','email','session'));
 			//,'session','email'
 			//$this->CI->load->model(array('general_model'));
 			
@@ -17,11 +17,18 @@ class Cor3 {
         $content = "";
         $themes_css = explode("/", $themes);
 
+
         $preload = "";
         $data = array(
             'base_url'=>base_url()."assets/".$themes_css[0]."/",
             "preload"=>$preload,
+            "html_logout"=>""
         );
+        //merge if login user
+        if($this->CI->session->userdata('html_logout')){
+            $dataLogout = array("html_logout"=>$this->CI->session->userdata('html_logout'));
+            $data = array_merge($data, $dataLogout);
+        }
         if(!empty($data_inject)||($data_inject!="")):
             $data = $result = array_merge($data, $data_inject);
         endif;

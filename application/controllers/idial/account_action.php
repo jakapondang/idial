@@ -105,7 +105,10 @@
         }
 
         public function logout(){
+            if($this->session->userdata('user_email') ==NULL){
+                print '<script>window.location="'.base_url().'login";</script>';
 
+            }
             $this->usersecure->logout();
             $themes ="idial";
             $structure = array("head","body","account/logout","footer","account/faccount");
@@ -251,10 +254,87 @@
 			}
 		 }
 
-		
-		
-		 
 
+        public function editAccount() {
+            $fname = $this->input->post('fname');
+
+            $lname = $this->input->post('lname');
+
+            $phone = $this->input->post('phone');
+
+            $email = $this->input->post('email');
+
+            $pass  = $this->input->post('cpassword');
+
+            $oldpass = $this->input->post('oldpass');
+
+            $user_id = $this->session->userdata('user_id');
+            $error = "";
+            $table = "jp_users";
+            $tableMeta = "jp_usermeta";
+
+            $dataAttribute = array(
+                "firstname" =>$fname,
+                "lastname"=>$lname,
+                "phone"=>$phone,
+            );
+            // Update email
+            $dataWhereEmail = array(
+               "user_email"=>$email,
+            );
+            $cekRowEmail = $this->account_model->cekGetRow($table ,$dataWhereEmail);
+            //if email already exist
+             if($cekRowEmail==0){
+                $this->usersecure->update($user_id, $email);
+             }else{
+                 $error = "email";
+             }
+            // Update password
+            if(!empty($oldpass) && !empty($pass)){
+                $this->usersecure->edit_password($this->session->userdata('user_email') , $oldpass, $pass);
+            }
+            // Save attribute meta
+            foreach($dataAttribute as $keyName => $valName){
+
+                $dataWhere = array(
+                    "user_id"=>$user_id,
+                    "meta_key"=>$keyName,
+                );
+                //cek if meta key exist
+                $cekRowAttribute = $this->account_model->cekGetRow($tableMeta ,$dataWhere);
+
+                if($cekRowAttribute>0){
+                    //cek if the same
+                    $dataWhere_ts = array(
+                        "user_id"=>$user_id,
+                        "meta_key"=>$keyName,
+                        "meta_value"=>$valName
+                    );
+                    $cekRowAttribute_ts = $this->account_model->cekGetRow($tableMeta ,$dataWhere_ts);
+                    if($cekRowAttribute_ts== 0){
+                        $dataValue = array(
+                            "meta_value"=>$valName,
+                        );
+                        $this->account_model->updateValue($tableMeta,$dataValue,$dataWhere);
+
+                    }
+                }else{
+                    $dataValue = array(
+                        "user_id"=>$user_id,
+                        "meta_key"=>$keyName,
+                        "meta_value"=>$valName,
+                    );
+                    $this->account_model->insertValue($tableMeta,$dataValue);
+
+                }
+
+            }//end attribute meta foreach
+
+
+
+
+
+        }
         
     }
     

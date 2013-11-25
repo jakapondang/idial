@@ -39,7 +39,7 @@
 	width: 20px;
 	height: 20px;
 	cursor: pointer;
-	background: url("../image/bg_direction_nav1.png") no-repeat -36px -5px rgb(42, 127, 211);
+	background: url("../image/bg_direction_nav1.png") no-repeat -36px -5px #7C627F;
 }
 .jcarousel-direction-rtl .jcarousel-next-horizontal {
 	left: 5px;
@@ -62,7 +62,7 @@
 	width: 20px;
 	height: 20px;
 	cursor: pointer;
-	background: url("../image/bg_direction_nav1.png") no-repeat -6px -5px rgb(42, 127, 211);
+	background: url("../image/bg_direction_nav1.png") no-repeat -6px -5px #7C627F;
 }
 .jcarousel-direction-rtl .jcarousel-prev-horizontal {
 	left: auto;

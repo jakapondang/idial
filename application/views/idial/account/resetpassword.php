@@ -34,26 +34,27 @@
 
                             <input type="hidden" name="token" id="token"  value="{token}">
                              <input type="hidden" name="userid" id="userid"  value="{userid}">
-				            <div class="control-group">
-					            <label class="control-label" for="inputPassword">Password<span class="required">*</span></label>
-					            <div class="controls">
-                                
-					                <input type="password" name="password" id="password"  class="validate[required,minSize[6]] text-input">
-					            </div>
+                            <div class="span4" style="margin-left:-5px">
+                                <div class="control-group">
+                                    <span class="required">*</span>
+                                    <div class="controls">
+
+                                        <input type="password" placeholder="Password" name="password" id="password"  class="validate[required,minSize[6]] text-input">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="control-group">
+                                    <span class="required">*</span>
+                                    <div class="controls">
+                                        <input type="password" placeholder="Re-enter password" id="inputPassword" name="cpassword" id="cpassword" class="validate[required,equals[password],minSize[6]] text-input">
+                                    </div>
+                                </div>
 				            </div>
-				        
-				            
-                            
-							<div class="control-group">
-								<label class="control-label" for="inputPassword">Re-enter password<span class="required">*</span></label>
-								<div class="controls">
-									<input type="password" id="inputPassword" name="cpassword" id="cpassword" class="validate[required,equals[password],minSize[6]] text-input">
-								</div>
-							</div>
-				        
 			           
 				    </div>
-                    <div class="span5" align="right">
+                    <div class="span5" align="left">
                     	<div class="control-group">
 					            <div class="controls">
 					                <input class="btn" value ="SUBMIT" type="submit"/>

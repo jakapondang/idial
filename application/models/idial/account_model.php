@@ -44,5 +44,14 @@ class Account_model extends CI_Model {
 
         return $returnValue;
     }
+
+    function cekGetRow ($table,$data){
+
+        $query = $this->db->get_where($table,$data);
+
+        $returnRow = $query->num_rows();
+
+        return $returnRow;
+    }
    
 }
