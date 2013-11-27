@@ -21,6 +21,7 @@
 			<div id="login-circle">
 				<section id="login-form" class="login-inner-form">
 					<h1>Login</h1>
+                    {error_message}
 					<form class="form-vertical" action="{site_url}jp/action/login" method="post">
 						<div class="control-group-merged">
 							<div class="control-group">
@@ -92,8 +93,5 @@
 
 		</div>
 
-	    <!-- <div id="login-social" class="login-inset">
-	    	<button class="zocial facebook">Connect with Facebook</button>
-	    	<button class="zocial twitter">Connect with Twitter</button>
-	    </div> -->
+
     </div>

@@ -31,6 +31,6 @@
 
 <![endif]-->
 
-<title>iDial Corner Backend :: Login</title>
+<title>iDial Corner Backend ::</title>
 
 </head>

@@ -269,7 +269,7 @@
             $oldpass = $this->input->post('oldpass');
 
             $user_id = $this->session->userdata('user_id');
-            $error = "";
+            $errorValue = "";
             $table = "jp_users";
             $tableMeta = "jp_usermeta";
 
@@ -282,16 +282,20 @@
             $dataWhereEmail = array(
                "user_email"=>$email,
             );
+
             $cekRowEmail = $this->account_model->cekGetRow($table ,$dataWhereEmail);
             //if email already exist
              if($cekRowEmail==0){
                 $this->usersecure->update($user_id, $email);
-             }else{
-                 $error = "email";
              }
             // Update password
             if(!empty($oldpass) && !empty($pass)){
-                $this->usersecure->edit_password($this->session->userdata('user_email') , $oldpass, $pass);
+                $resultEditPass = $this->usersecure->edit_password($this->session->userdata('user_email') , $oldpass, $pass);
+                if($resultEditPass== false){
+                    $errorValue= "?err=2";
+                }
+            }else{
+                $errorValue= "?err=1";
             }
             // Save attribute meta
             foreach($dataAttribute as $keyName => $valName){
@@ -315,7 +319,7 @@
                         $dataValue = array(
                             "meta_value"=>$valName,
                         );
-                        $this->account_model->updateValue($tableMeta,$dataValue,$dataWhere);
+                       $resultQuery =  $this->account_model->updateValue($tableMeta,$dataValue,$dataWhere);
 
                     }
                 }else{
@@ -324,15 +328,20 @@
                         "meta_key"=>$keyName,
                         "meta_value"=>$valName,
                     );
-                    $this->account_model->insertValue($tableMeta,$dataValue);
+                    $resultQuery = $this->account_model->insertValue($tableMeta,$dataValue);
 
+                }
+                // update session meta
+                if($resultQuery == true){
+                    $user_data[$keyName] = $valName;
+                    $this->session->set_userdata($user_data);
                 }
 
             }//end attribute meta foreach
-
-
-
-
+            if( empty($errorValue)){
+                $errorValue = "err=3";
+            }
+           print "<script>window.location='".base_url()."account/#profile".$errorValue."'</script>";
 
         }
         

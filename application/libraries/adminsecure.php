@@ -5,6 +5,7 @@ require_once('phpass-0.3/PasswordHash.php');
 define('PHPASS_HASH_STRENGTH', 8);
 define('PHPASS_HASH_PORTABLE', false);
 
+
 /**
  * SimpleLoginSecure Class
  *
@@ -16,13 +17,13 @@ define('PHPASS_HASH_PORTABLE', false);
  * 
  *   CREATE TABLE `users` (
  *     `user_id` int(10) unsigned NOT NULL auto_increment,
- *     `user_email` varchar(255) NOT NULL default '',
+ *     `user_admin` varchar(255) NOT NULL default '',
  *     `user_pass` varchar(60) NOT NULL default '',
  *     `user_date` datetime NOT NULL default '0000-00-00 00:00:00' COMMENT 'Creation date',
  *     `user_modified` datetime NOT NULL default '0000-00-00 00:00:00',
  *     `user_last_login` datetime NULL default NULL,
  *     PRIMARY KEY  (`user_id`),
- *     UNIQUE KEY `user_email` (`user_email`),
+ *     UNIQUE KEY `user_admin` (`user_admin`),
  *   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  * 
  * @package   SimpleLoginSecure
@@ -32,11 +33,11 @@ define('PHPASS_HASH_PORTABLE', false);
  * @license   http://www.gnu.org/licenses/gpl-3.0.txt
  * @link      https://github.com/DaBourz/SimpleLoginSecure
  */
-class usersecure
+class Adminsecure
 {
 	var $CI;
-	var $user_table = 'jp_users';
-    var $user_table_meta = 'jp_usermeta';
+	var $user_table = 'jp_useradmin';
+
 
 	/**
 	 * Create a user account
@@ -47,28 +48,30 @@ class usersecure
 	 * @param	bool
 	 * @return	bool
 	 */
-    function usersecure(){
+    function Usersecure(){
 
         $this->CI =& get_instance();
         $this->CI->load->library('session');
 
+
+
     }
-	function create($user_email = '', $user_pass = '', $user_fname='',$auto_login = true)
+	function create($user_admin = '', $user_pass = '', $user_fname='',$auto_login = true)
 	{
 		$this->CI =& get_instance();
 		
 
 
 		//Make sure account info was sent
-		if($user_email == '' OR $user_pass == '') {
+		if($user_admin == '' OR $user_pass == '') {
 			return false;
 		}
 		
 		//Check against user table
-		$this->CI->db->where('user_email', $user_email); 
+		$this->CI->db->where('user_admin', $user_admin); 
 		$query = $this->CI->db->get_where($this->user_table);
 		
-		if ($query->num_rows() > 0) //user_email already exists
+		if ($query->num_rows() > 0) //user_admin already exists
 			return false;
 
 		//Hash user_pass using phpass
@@ -77,7 +80,7 @@ class usersecure
 
 		//Insert account into the database
 		$data = array(
-					'user_email' => $user_email,
+					'user_admin' => $user_admin,
 					'user_pass' => $user_pass_hashed,
 					'user_date' => date('c'),
 					'user_modified' => date('c'),
@@ -92,16 +95,16 @@ class usersecure
 				
 		if($auto_login)
             //insert user meta
-            $data_meta = array(
+            /*$data_meta = array(
 
                 'user_id' => $insert_id,
                 'meta_key' => "firstname",
                 'meta_value' => $user_fname,
             );
             $this->CI->db->set($data_meta);
-            $this->CI->db->insert($this->user_table_meta);
+            $this->CI->db->insert($this->user_table_meta);*/
 
-            $this->login($user_email, $user_pass);
+            $this->login($user_admin, $user_pass);
 		
 		return $insert_id;
 	}
@@ -118,12 +121,12 @@ class usersecure
 	 * @param	bool
 	 * @return	bool
 	 */
-	function update($user_id = null, $user_email = '', $auto_login = true) 
+	function update($user_id = null, $user_admin = '', $auto_login = true) 
 	{
 		$this->CI =& get_instance();
 
 		//Make sure account info was sent
-		if($user_id == null OR $user_email == '') {
+		if($user_id == null OR $user_admin == '') {
 			return false;
 		}
 		
@@ -137,7 +140,7 @@ class usersecure
 		
 		//Update account into the database
 		$data = array(
-					'user_email' => $user_email,
+					'user_admin' => $user_admin,
 					'user_modified' => date('c'),
 				);
  
@@ -147,8 +150,8 @@ class usersecure
 			return false;						
 				
 		if($auto_login){
-			$user_data['user_email'] = $user_email;
-			$user_data['user'] = $user_data['user_email']; // for compatibility with Simplelogin
+			$user_data['user_admin'] = $user_admin;
+			$user_data['user'] = $user_data['user_admin']; // for compatibility with Simplelogin
 			
 			$this->CI->session->set_userdata($user_data);
 			}
@@ -163,21 +166,21 @@ class usersecure
 	 * @param	string
 	 * @return	bool
 	 */
-	function login($user_email = '', $user_pass = '') 
+	function login($user_admin = '', $user_pass = '') 
 	{
 		$this->CI =& get_instance();
 
-		if($user_email == '' OR $user_pass == '')
+		if($user_admin == '' OR $user_pass == '')
 			return false;
 
 
 		//Check if already logged in
-		if($this->CI->session->userdata('user_email') == $user_email)
+		if($this->CI->session->userdata('user_admin') == $user_admin)
         return true;
 		
 		
 		//Check against user table
-		$this->CI->db->where('user_email', $user_email); 
+		$this->CI->db->where('user_admin', $user_admin); 
 		$query = $this->CI->db->get_where($this->user_table);
 
 
@@ -199,7 +202,7 @@ class usersecure
             //join user meta with user ;
 
             //Join meta with session
-            $this->CI->db->select($this->user_table_meta.'.meta_key,'.$this->user_table_meta.'.meta_value');
+           /* $this->CI->db->select($this->user_table_meta.'.meta_key,'.$this->user_table_meta.'.meta_value');
             $this->CI->db->from($this->user_table);
             $this->CI->db->join($this->user_table_meta, $this->user_table .'.user_id = '.$this->user_table_meta.'.user_id');
             $this->CI->db->where($this->user_table_meta.'.user_id', $user_data['user_id']);
@@ -215,18 +218,20 @@ class usersecure
                 $user_data = array_merge($user_data ,$userdataMeta);
 
 
-            }
+            }*/
 
 
             $this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET user_last_login = "' . date('c') . '" WHERE user_id = ' . $user_data['user_id']);
 
 			//Set session data
 			unset($user_data['user_pass']);
-			$user_data['user'] = $user_data['user_email']; // for compatibility with Simplelogin
+			$user_data['user'] = $user_data['user_admin']; // for compatibility with Simplelogin
 			$user_data['logged_in'] = true;
 			$this->CI->session->set_userdata($user_data);
             //logout
-            $dataLogout = array('html_logout'=>'<div class="headerMenu"><a href="{site_url}logout"><div class="icon_logout"></div></a></div>');
+            $dataLogout = array('html_logout'=>' <div id="logout-ribbon">
+                        <a href="{site_url}jp/action/logout"><i class="icon-off"></i></a>
+                    </div>');
             $this->CI->session->set_userdata($dataLogout);
 			
 			return true;
@@ -279,12 +284,12 @@ class usersecure
 	* @param  string
 	* @return  bool
 	*/
-	function edit_password($user_email = '', $old_pass = '', $new_pass = '')
+	function edit_password($user_admin = '', $old_pass = '', $new_pass = '')
 	{
 		$this->CI =& get_instance();
 		// Check if the password is the same as the old one
 		$this->CI->db->select('user_pass');
-		$query = $this->CI->db->get_where($this->user_table, array('user_email' => $user_email));
+		$query = $this->CI->db->get_where($this->user_table, array('user_admin' => $user_admin));
 		$user_data = $query->row_array();
 
 		$hasher = new PasswordHash(PHPASS_HASH_STRENGTH, PHPASS_HASH_PORTABLE);	
@@ -301,7 +306,7 @@ class usersecure
 		);
 		
 		$this->CI->db->set($data);
-		$this->CI->db->where('user_email', $user_email);
+		$this->CI->db->where('user_admin', $user_admin);
 		if(!$this->CI->db->update($this->user_table, $data)){ // There was a problem!
 			return FALSE;
 		} else {
@@ -330,9 +335,6 @@ class usersecure
         }
     }
 
-    function getUser_meta($userid){
 
-
-    }
 }
 ?>

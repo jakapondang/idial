@@ -9,7 +9,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="J P">
+    <meta name="author" content="">
 
     <!-- Bootstrap Stylesheet -->
     <link rel="stylesheet" href="{base_url}bootstrap/css/bootstrap.min.css" media="all">
@@ -24,29 +24,16 @@
 
     <!-- Plugin Stylsheets first to ease overrides -->
 
+    <!-- CLEditor -->
+    <link rel="stylesheet" href="{base_url}plugins/cleditor/jquery.cleditor.css" media="screen">
     <!-- iButton -->
     <link rel="stylesheet" href="{base_url}plugins/ibutton/jquery.ibutton.css" media="screen">
-
-    <!-- Circular Stat -->
-    <link rel="stylesheet" href="{base_url}custom-plugins/circular-stat/circular-stat.css">
-
-    <!-- Fullcalendar -->
-    <link rel="stylesheet" href="{base_url}plugins/fullcalendar/fullcalendar.css" media="screen">
-    <link rel="stylesheet" href="{base_url}plugins/fullcalendar/fullcalendar.print.css" media="print">
-
     <!-- End Plugin Stylesheets -->
 
     <!-- Main Layout Stylesheet -->
     <link rel="stylesheet" href="{base_url}css/fonts/icomoon/style.css" media="screen">
     <link rel="stylesheet" href="{base_url}css/main-style.css" media="screen">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>>
-
-    <![endif]-->
-
-
-
-<title>iDial Corner Backend ::</title>
+    <title>iDial Corner Backend ::</title>
 
 </head>

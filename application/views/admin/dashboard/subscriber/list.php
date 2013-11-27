@@ -1,4 +1,21 @@
 
+<section id="main" class="clearfix">
+<div id="main-header" class="page-header">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home"></i>iDial
+            <span class="divider">&raquo;</span>
+        </li>
+        <li>
+            <a href="#">Subscribe</a>
+        </li>
+    </ul>
+
+    <h1 id="main-heading">
+        Subscribe <span>You can see list the subscriber</span>
+    </h1>
+</div>
+
 <div id="main-content">
 
 <div class="row-fluid">
@@ -8,28 +25,18 @@
     <span class="title">Subscriber DataTable</span>
 </div>
 <div class="widget-content table-container">
-<table id="demo-dtable-01" class="table table-striped">
+<table id="{tableFormName}" class="table table-striped">
 <thead>
 <tr>
-    <th>No</th>
-    <th>Code</th>
+    <th>ID</th>
     <th>Contact Person</th>
-    <th>Date Time</th>
+    <th>Code</th>
+    <th>Created</th>
 
 </tr>
 </thead>
 <tbody>
 
-{dataSubscriber}
-<tr>
-    <td>{id}</td>
-    <td>{cd}</td>
-    <td>{cp}</td>
-    <td>{dt}</td>
-
-</tr>
-
-{/dataSubscriber}
 </tbody>
 </table>
 </div>

@@ -40,6 +40,7 @@
                         <div class="tab-pane" id="profile">
 
                             <h3>EDIT ACCOUNT INFORMATION</h3>
+                            {error_message}
                             <p>You can edit your account information here :</p>
                             <form  id="editAccountInfo" method="post" action="{site_url}idial/account_action/editAccount">
 

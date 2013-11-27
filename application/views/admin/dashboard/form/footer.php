@@ -4,6 +4,10 @@
 </footer>
 
 </div>
+<script>
+    var site_url="{site_url}";
+    var pageContent="{pageContent}";
+</script>
 
 <!-- Core Scripts -->
 <script src="{base_url}js/libs/jquery-1.8.3.min.js"></script>
@@ -29,15 +33,30 @@
 
 <!-- Plugin Scripts -->
 
-<!-- DataTables -->
-<script src="{base_url}plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="{base_url}plugins/datatables/TableTools/js/TableTools.min.js"></script>
-<script src="{base_url}plugins/datatables/FixedColumns/FixedColumns.min.js"></script>
-<script src="{base_url}plugins/datatables/dataTables.bootstrap.js"></script>
-<script src="{base_url}plugins/datatables/jquery.dataTables.columnFilter.js"></script>
+<!-- CLEditor -->
+<script src="{base_url}plugins/cleditor/jquery.cleditor.min.js"></script>
+<script src="{base_url}plugins/cleditor/jquery.cleditor.icon.min.js"></script>
+<script src="{base_url}plugins/cleditor/jquery.cleditor.table.min.js"></script>
+<script src="{base_url}plugins/cleditor/jquery.cleditor.xhtml.min.js"></script>
 
-<!-- Demo Scripts -->
-<script src="{base_url}js/demo/dataTables.js"></script>
+<!--  Scripts -->
+<script src="{base_url}adminjs/wysiwyg.js"></script>
+<!-- Plugin Scripts -->
+
+<!-- Bootstrap FileInput -->
+<script src="{base_url}custom-plugins/bootstrap-fileinput.min.js"></script>
+
+<!-- Select2 -->
+<script src="{base_url}plugins/select2/select2.min.js"></script>
+
+<!-- Validation -->
+<script src="{base_url}plugins/validate/jquery.validate.min.js"></script>
+
+<!--  Scripts -->
+<script src="{base_url}adminjs/form_validation.js"></script>
+
+<!-- iButton -->
+<script src="{base_url}plugins/ibutton/jquery.ibutton.min.js"></script>
 
 </body>
 

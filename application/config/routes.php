@@ -44,9 +44,11 @@ $route['404_override'] = '';
 //Admin
 $route['jp'] = 'admin/adminroot';
 $route['jp/action/login'] = 'admin/adminroot/action_login';
+$route['jp/action/logout'] = 'admin/adminroot/action_logout';
 $route['jp/dashboard'] = 'admin/dashboard';
-$route['jp/dashboard/data_subscriber'] = 'admin/dashboard/data_subscriber';
-
+$route['jp/subscriber'] = 'admin/subscriber';
+$route['jp/category'] = 'admin/category';
+$route['jp/brand'] = 'admin/brand';
 // Web
 $route['home'] = 'idial/homeroot';
 $route['home/email'] = 'idial/homeroot/email';

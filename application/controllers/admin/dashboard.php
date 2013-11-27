@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     
     class Dashboard extends CI_Controller {
-        
+
         /**
         * Index Page for this controller.
         *
@@ -20,49 +20,37 @@
         
         public function __construct() {
             parent::__construct();
-            $this->load->library(array('cor3'));
-			 $this->load->model(array('admin_model'));
+            $this->load->library(array('cor3','adminsecure'));
+			$this->load->model(array('admin/admin_model'));
+            //$this->config->set_item('base_url','http://idialcorner.jp/jp') ;
+            if($this->session->userdata('user_admin')==NULL){
+                print "<script>window.location='".base_url()."jp/?err=2'</script>";
+            }
 
         }
         
         public function index() {
-			$themes ="admin/dashboard";
-            $structure = array("head","body","dashboard","footer");
+
+            $themes ="admin";
+            $structure = array("dashboard/head","dashboard/body","dashboard/dashboard","dashboard/footer");
+
+            $error_message = "";
             $data = array(
-                        "site_url"=>base_url(),
-                         "Page"=>"Dashboard"
+                "site_url"=>base_url(),
+                "dashboard" => 'class="active"',
+                "catalog" =>'' ,
+                "extra" => '',
+                "pageContent"=>"dashboard",
+                "pageContent2"=>"Welcome to iDial Dashboard",
+                "error_message"=>$error_message
             );
+
 
 			print $this->cor3->html($themes,$structure,$data);
         }
 
 
-        public function data_subscriber(){
-            $queryData = $this->admin_model->dataSubscriber();
-            $data = array(
-                    "site_url"=>base_url(),
-                    "Page"=>"Subscriber",
-                    "dataSubscriber" =>$queryData
-            );
 
-            $themes1 ="admin/dashboard/table/subscriber";
-            $structure1 = array("head");
-
-            $themes2 ="admin/dashboard";
-            $structure2 = array("body");
-
-
-            $structure3 = array("subscriber","footer");
-
-            print $this->cor3->html($themes1,$structure1,$data);
-            print $this->cor3->html($themes2,$structure2,$data);
-            print $this->cor3->html($themes1,$structure3,$data);
-
-
-
-
-
-        }
 		 
 
         
