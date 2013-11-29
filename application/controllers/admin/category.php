@@ -2,7 +2,9 @@
     
     class Category extends CI_Controller {
 
-        var $table ="jp_category";
+        var $table      ="jp_category";
+        var $iColumn    = "cat_id";
+        var $page       = "category";
         /**
         * Index Page for this controller.
         *
@@ -33,22 +35,8 @@
 
 
              $err_val = $this->input->get('err');
-             $error_message = "";
-             if($err_val != null){
-                 $error_message  = '<div style="top:0px; left:0px;width:100%;background-color:#f2f2f2;margin-bottom:20px">';
-                 if($err_val == 1 ){
-                     $error_message .= '<div style=" font-size: 14px; color:green; padding: 10px;">Data Successfully inserted.</div>';
-                 }
-                 elseif($err_val == 2){
-                     $error_message .= '<div style="font-size: 14px; color:green; padding: 10px;">Data Successfully Updated.</div>';
-                 }
-                 elseif($err_val == 3 ){
-                     $error_message .= '<div style=" font-size: 14px; color:green; padding: 10px;">Data Has been Deleted.</div>';
-                 }
+             $error_message = $this->errorMessage($err_val);
 
-                 $error_message .= '</div>';
-
-             }
             $themes ="admin";
             $structure = array(
                 "dashboard/table/head",
@@ -58,10 +46,10 @@
 
 
             $tableName =$this->table;
-            $page = strtoupper("category");
+            $page = strtoupper($this->page);
             $column = "cat_id,parent_id,name,status,created,updated";
             $colEnd = count(explode(',',$column));
-            $iColumns = "cat_id";
+            $iColumns = $this->iColumn;
 
 
             $data = array(
@@ -70,13 +58,14 @@
                 "catalog" =>'class="active"' ,
                 "extra" =>'' ,
                 "urlActionTable"=>$themes.'/tableview/?tBn='.$tableName.'&colTab='.$column.'&icl='.$iColumns,
-                "urlEditRow"=>$themes.'/'.$page.'/newUpdate/',
-                "urlDelRow"=>$themes.'/'.$page.'/delete/',
+                "urlEditRow"=>$themes.'/'.strtolower($page).'/newUpdate/',
+                "urlDelRow"=>$themes.'/'.strtolower($page).'/delete/',
                 "tableFormName" =>$tableName,
                 "tableType" =>"action",
                 "colEnd" =>$colEnd,
                 "error_message"=>$error_message,
                 "pageContent"=>$page,
+                "pageContentLink"=>strtolower($page),
                 "pageContent2"=>"You can see list data of Category",
 
             );
@@ -93,7 +82,7 @@
 
             //themes
             $themes ="admin";
-            $page = strtoupper("category");
+            $page = strtoupper($this->page);
             $structure = array(
                 "dashboard/form/head",
                 "dashboard/body",
@@ -112,6 +101,7 @@
                         $valueEdited['parent_id'] =  $row->parent_id;
                         $valueEdited['name'] =  $row->name;
                         $valueEdited['desc'] =  $row->desc;
+                        $valueEdited['sdesc'] =  $row->sdesc;
                         if($row->status>0){
                             $valueEdited['status'] = "checked" ;
                         }else{
@@ -143,7 +133,7 @@
                         "extra" =>'',
                         "pageContent"=>$page,
                         "id"=>$id,
-                        "pageContent"=>$page,
+                        "pageContentLink"=>strtolower($page),
                         "pageContentHeader" =>$pageContentHeader,
                         "pageContent2"=>"You can ".$pageContentHeader." Content here",
                         "error_message"=>$error_message,
@@ -163,7 +153,7 @@
                     "extra" =>'',
                     "pageContent"=>$page,
                     "id"=>$id,
-                    "pageContent"=>$page,
+                    "pageContentLink"=>strtolower($page),
                     "pageContentHeader" =>$pageContentHeader,
                     "pageContent2"=>"You can ".$pageContentHeader." Content here",
                     "error_message"=>$error_message,
@@ -171,7 +161,8 @@
                     "cat_id"=>"",
                     "name"=>"",
                     "desc"=>"",
-                    "status"=>"",
+                    "sdesc"=>"",
+                    "status"=>"checked",
                     "parent_id"=>"",
                     "selected"=>"",
 
@@ -188,11 +179,18 @@
         public function delete(){
            $id =  $this->input->get('id');
            $table = $this->table;
-           $dataWhere = array('cat_id'=>$id);
+           $dataWhere = array($this->iColumn=>$id);
            if(!empty($id)){
-             $this->cor3_model->deleteValue($table, $dataWhere);
+            //cek parent register another category
+            $Result = $this->cor3_model->getNumberRow($table,$this->iColumn,"parent_id",$id);
+            if($Result>0){
+                print "<script>window.location='".base_url()."jp/".$this->page."/?err=11'</script>";
+            }else{
+                print "<script>window.location='".base_url()."jp/".$this->page."/?err=3'</script>";
+            }
+            // $this->cor3_model->deleteValue($table, $dataWhere);
 
-               print "<script>window.location='".base_url()."jp/category/?err=3'</script>";
+            // print "<script>window.location='".base_url()."jp/".$this->page."/?err=3'</script>";
                //print "<script>window.location='".base_url()."jp/category'</script>";
 
            }
@@ -205,38 +203,40 @@
             $parent_id     =  $this->input->post('parent_id');
             $name   = $this->input->post('name');
             $status =  $this->input->post('status');
+
             if(empty($status)){
                 $status="0";
             }
             $desc   = $this->input->post('desc');
-
+            $sdesc   = $this->input->post('sdesc');
             $data = array(
                 "parent_id"=>$parent_id,
                 "name"=>$name,
                 "status"=>$status,
-                "desc"=>$desc
+                "desc"=>$desc,
+                "sdesc"=>$sdesc
             );
 
             if(!empty($id)){
                 $dataWhere = array(
-                    "cat_id"=>$id
+                    $this->iColumn=>$id
                 );
-
+                $data["updated"] = DATE('Y-m-d H:i:s');
                 $ResultQuery = $this->cor3_model->updateValue($table, $data, $dataWhere);
                 if($ResultQuery==TRUE){
-                    print "<script>window.location='".base_url()."jp/category/?err=2'</script>";
+                    print "<script>window.location='".base_url()."jp/".$this->page."/?err=2'</script>";
                 }else{
-                   // print "not updated";
+                   print "not updated";
                 }
 
             }else{
 
                 $ResultQuery = $this->cor3_model->insertValue($table,$data);
-                if($ResultQuery==TRUE){
+                if($ResultQuery['qstatus']==TRUE){
 
-                    print "<script>window.location='".base_url()."jp/category/?err=1'</script>";
+                    print "<script>window.location='".base_url()."jp/".$this->page."/?err=1'</script>";
                 }else{
-                    //print "not inserted";
+                    print "not inserted";
                 }
 
             }/**/
@@ -244,8 +244,35 @@
         }
 
 
+        public function errorMessage($err_val=""){
+            $error_message="";
+            if($err_val != null){//
+                if(($err_val>0)&&($err_val<11)){
+                    $error_message  = '<div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>';
+                    if($err_val == 1 ){
+                        $error_message .= '<strong>Data Successfully Inserted..</strong></div>';
+
+                    }
+                    elseif($err_val == 2){
+                        $error_message .= '<strong>Data Successfully Updated.</strong></div>';
+
+                    }
+                    elseif($err_val == 3 ){
+                        $error_message .= '<strong>Data Has been Deleted. !</strong></div>';
+                    }
+                }else{
+                    $error_message  = '<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>';
+                    if($err_val == 11 ){
+
+                        $error_message .= '<strong>Sorry , Data Cannot be Delete !</strong><br> Because is PARENT.</div>';
+                    }
+                }
 
 
+
+            }
+            return $error_message;
+        }
 
     }
     

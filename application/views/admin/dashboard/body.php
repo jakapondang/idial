@@ -16,8 +16,9 @@
             </div>
 
             <div id="header-right" class="clearfix">
-
-
+                <div id="nav-toggle" data-toggle="collapse" data-target="#navigation" class="collapsed">
+                    <i class="icon-caret-down"></i>
+                </div>
                 <div id="header-functions" class="pull-right">
                     <div id="user-info" class="clearfix">
                                 <span class="info">
@@ -68,7 +69,7 @@
                 <ul class="inner-nav">
                     <li><a href="{site_url}jp/category"><i class="icol-databases"></i>Manage Category</a></li>
                     <li><a href="{site_url}jp/brand"><i class="icos-tags"></i> Manage Brand</a></li>
-                    <li><a href="data_tables.html"><i class="icos-iphone-3g"></i>Manage Products</a></li>
+                    <li><a href="{site_url}jp/product"><i class="icos-iphone-3g"></i>Manage Products</a></li>
 
                 </ul>
             </li>
@@ -97,12 +98,12 @@
                     <span class="divider">&raquo;</span>
                 </li>
                 <li>
-                    <a href="{site_url}jp/{pageContent}">{pageContent}</a>
+                    <a href="{site_url}jp/{pageContentLink}">{pageContent}</a>
                 </li>
             </ul>
 
             <h1 id="main-heading">
                 {pageContent} <span>{pageContent2}</span>
             </h1>
-            {error_message}
+
         </div>

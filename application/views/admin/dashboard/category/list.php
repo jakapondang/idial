@@ -1,6 +1,6 @@
 
 <div id="main-content">
-
+    {error_message}
 <div class="row-fluid">
 <div class="span12">
 <div class="widget">
@@ -8,8 +8,8 @@
         <span class="title">{pageContent} DataTable</span>
         <div class="toolbar">
             <div class="btn-group">
-                <span class="btn" rel="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="<code>ADD NEW </code>" title="CATEGORY">
-                   <a href="{site_url}{urlEditRow}" class="buttonADDnew" >ADD NEW CATEGORY</a>
+                <span class="btn" rel="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="<code>ADD NEW </code>" title="{pageContent}">
+                   <a href="{site_url}{urlEditRow}" class="buttonADDnew" >ADD NEW {pageContent}</a>
                 </span>
             </div>
         </div>

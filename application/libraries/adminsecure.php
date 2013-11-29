@@ -48,7 +48,7 @@ class Adminsecure
 	 * @param	bool
 	 * @return	bool
 	 */
-    function Usersecure(){
+    function adminsecure(){
 
         $this->CI =& get_instance();
         $this->CI->load->library('session');

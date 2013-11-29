@@ -1,5 +1,5 @@
     <div id="main-content">
-
+        {error_message}
         <div class="row-fluid">
 
             <div class="span12 widget">
@@ -7,19 +7,8 @@
                     <span class="title"><i class="icon-edit"></i>{pageContentHeader} {pageContent}</span>
                 </div>
                 <div class="widget-content form-container">
-                    <form class="form-vertical" id="{pageContent}" action="{site_url}admin/{pageContentLink}/action" method="post" novalidate="novalidate">
-                       <div class="control-group">
-                             <label class="control-label" for="input01">Parent {pageContent}</label>
-                             <div class="controls">
-                                 <select id="input01" name="parent_id" class="span12">
-                                     <option value="0">No Parent</option>
-
-                                 {parentValue}
-                                     <option  value="{cat_id}" {selected}>{name}</option>
-                                 {/parentValue}
-                                 </select>
-                             </div>
-                         </div> <!-- -->
+                   <!-- <form method="post" action="<?php print base_url();?>homeroot/debug" enctype="multipart/form-data" id="upload_file">
+-->                     <form class="form-vertical" id="{pageContent}" action="{site_url}admin/{pageContentLink}/action" enctype="multipart/form-data" method="post">
                         <input type="hidden" name="id" value="{id}">
                         <div class="control-group">
                             <label class="control-label">
@@ -38,6 +27,8 @@
                                 </label>
                              </div>
                          </div>
+
+
                         <div class="control-group">
                             <label class="control-label">Short Description</label>
                             <div class="controls">
@@ -50,7 +41,20 @@
                                 <textarea id="desc" name="desc">{desc}</textarea>
                             </div>
                         </div>
+                        <div class="control-group">
+                            <label class="control-label" for="input04">Preview Logo</label>
+                            <div class="controls">
+                               <img src="{site_url}assets/upload/{pageContentLink}/{imgName}">
 
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="input04">Upload Logo</label>
+                            <div class="controls">
+                                <input type="file" name="userfile" id="userfile" data-provide="fileinput">
+                                <p class="help-block"><code>Format Logo : jpg , png , gif.</code></p>
+                            </div>
+                        </div>
 
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary">Save</button>

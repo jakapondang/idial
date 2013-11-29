@@ -7,6 +7,7 @@
 <script>
     var site_url="{site_url}";
     var pageContent="{pageContent}";
+
 </script>
 
 <!-- Core Scripts -->
@@ -58,6 +59,13 @@
 <!-- iButton -->
 <script src="{base_url}plugins/ibutton/jquery.ibutton.min.js"></script>
 
+<script>
+    /*$(document).ready(function() {
+        $('#logo').live('change', function()   {
+            alert("yesyesy");
+        });
+    });*/
+</script>
 </body>
 
 </html>

@@ -14,19 +14,9 @@
         
         public function index() {
             $err_val = $this->input->get('err');
-            $error_message ="";
-            if(!empty($err_val)){
-                $error_message  = ' <div style="top:0px; left:0px;width:100%;background-color:#f2f2f2;margin-bottom:20px">';
-                if($err_val == 1 ){
-                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
-                                Sorry , Invalid login or password.
-                                </div>';
-                }elseif($err_val == 2 ){
-                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
-                                Sorry , Your session is expired.
-                                </div>';
-                }
-            }
+
+            $error_message = $this->errorMessage($err_val);
+
 			$themes ="admin";
             $structure = array("head","body","footer");
             $data = array(
@@ -46,7 +36,7 @@
                   redirect('jp/dashboard', 'refresh');
               else:
 
-                  redirect('jp/dashboard/?err=1', 'refresh');
+                  redirect('jp/?err=1', 'refresh');
               endif;
 
         }
@@ -56,7 +46,29 @@
             redirect('jp', 'refresh');
 
         }
-		
+
+
+        public function errorMessage($err_val=""){
+            $error_message="";
+            if($err_val != null){//
+                if(($err_val>0)&&($err_val<11)){
+                    $error_message  = '<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>';
+                    if($err_val == 1 ){
+                        $error_message .= '<strong>Sorry , Invalid login or password.</strong></div>';
+                    }
+                    elseif($err_val == 2){
+                        $error_message .= '<strong>Sorry , Your session is expired.</strong></div>';
+                    }
+
+                }else{
+
+                }
+
+
+
+            }
+            return $error_message;
+        }
 		 
 
         

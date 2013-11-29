@@ -27,7 +27,9 @@
         public function login() {
             $email   = $this->input->post('email');
             $pass   = $this->input->post('password');
-            if(!empty($email)||!empty($pass)){
+			
+			/*print $email." - ".$pass;*/
+            if(!empty($email)&&!empty($pass)){
                 $returnValue = $this->usersecure->login($email,$pass);
                 if($returnValue==false){
                     print '<script>window.location="'.base_url().'login/?err=1";</script>';
