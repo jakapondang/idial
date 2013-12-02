@@ -72,13 +72,14 @@
                     <li><a href="{site_url}jp/product"><i class="icos-iphone-3g"></i>Manage Products</a></li>
 
                 </ul>
-            </li>
+            </li><!---->
             <li {extra}>
                 <span title="Extra">
                     <i class="icon-gift"></i>
 					<span class="nav-title">Extra</span>
                 </span>
                 <ul class="inner-nav">
+                    <li><a href="{site_url}jp/page"><i class="icol-plugin"></i> Page</a></li>
                     <li><a href="{site_url}jp/subscriber"><i class="icol-user"></i> Subscriber</a></li>
 
                 </ul>

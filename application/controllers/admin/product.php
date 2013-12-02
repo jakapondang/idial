@@ -1,11 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     
-    class Brand extends CI_Controller {
+    class Product extends CI_Controller {
 
-        var $table      ="jp_brand";
-        var $tableMeta  ="jp_brandmeta";
-        var $iColumn    = "bra_id";
-        var $page       = "brand";
+        var $table      ="jp_product";
+        var $table2      ="jp_productprice";
+        var $tableMeta  ="jp_productmeta";
+        var $iColumn    = "pro_id";
+        var $page       = "product";
         /**
         * Index Page for this controller.
         *
@@ -21,11 +22,11 @@
         * map to /index.php/welcome/<method_name>
         * @see http://codeigniter.com/user_guide/general/urls.html
         */
-        
+
         public function __construct() {
             parent::__construct();
             $this->load->library(array('cor3','cor3_model','jpupload'));
-			$this->load->model(array('admin/brand_model'));
+			$this->load->model(array('admin/product_model'));
             $this->load->helper("file");
 
             if($this->session->userdata('user_admin')==NULL){
@@ -33,52 +34,49 @@
             }
 
         }
-        
+
          public function index(){
 
-            $err_val = $this->input->get('err');
-
-            $error_message = $this->errorMessage($err_val);
-
-            $themes ="admin";
-            $structure = array(
-                "dashboard/table/head",
-                "dashboard/body",
-                "dashboard/".$this->page."/list",
-                "dashboard/table/footer");
-
-            $tableName = $this->table;
-            $tableName_meta = $this->tableMeta;
-            $page = strtoupper($this->page);
-            // var table
-            $ColumnOrder =$this->iColumn.",meta_value,name,status,created,updated";
-            $column = $this->iColumn.",name,status,created,updated";
-            $colEnd = count(explode(',',$column));
-
-            $columnWhereKey ='imgName';
-            $column2 = "meta_value";
-            $colEnd += count(explode(',',$column2));
+             $err_val = $this->input->get('err');
+             $error_message = $this->errorMessage($err_val);
+             $page= $this->page;
+             $iColumn=$this->iColumn;
+             $themes ="admin";
+             $structure = array(
+                 "dashboard/table/head",
+                 "dashboard/body",
+                 "dashboard/".$page."/list",
+                 "dashboard/table/footer");
 
 
-            $iColumns = $this->iColumn;
+             $tableName =$this->table;
+             $page = strtoupper($this->page);
+             // var table
+             $ColumnOrder =$this->iColumn.",sku,name,nett,gross,status,created,updated";
+             $column = $this->iColumn.",sku,name,status,created,updated";
+             $colEnd = count(explode(',',$column));
 
-            $data = array(
-                "site_url"=>base_url(),
-                "dashboard" => '',
-                "catalog" =>'class="active"' ,
-                "extra" =>'' ,
-                "urlActionTable"=>$themes.'/tableview/tjoin/?tBn1='.$tableName.'&tBn2='.$tableName_meta.'&Oc='.$ColumnOrder.'&colTab1='.$column.'&colTab2='.$column2.'&icl='.$iColumns.'&cWk='.$columnWhereKey,
-                "urlEditRow"=>$themes.'/'.strtolower($page).'/newUpdate/',
-                "urlDelRow"=>$themes.'/'.strtolower($page).'/delete/',
-                "tableFormName" =>$tableName,
-                "tableType" =>"action",
-                "colEnd" =>$colEnd,
-                "error_message"=>$error_message,
-                "pageContent"=>$page,
-                "pageContent2"=>"You can see list data of Brand",
+             $column2 = "nett,gross";
+             $colEnd += count(explode(',',$column2));
 
-            );
-            print $this->cor3->html($themes,$structure,$data);
+             $data = array(
+                 "site_url"=>base_url(),
+                 "dashboard" => '',
+                 "catalog" =>'class="active"' ,
+                 "extra" =>'' ,
+                 "urlActionTable"=>$themes.'/tableview/ijoin/?tBn1='.$this->table.'&tBn2='.$this->table2.'&Oc='.$ColumnOrder.'&colTab1='.$column.'&colTab2='.$column2.'&icl='.$iColumn,
+                 "urlEditRow"=>$themes.'/'.strtolower($page).'/newUpdate/',
+                 "urlDelRow"=>$themes.'/'.strtolower($page).'/delete/',
+                 "tableFormName" =>$tableName,
+                 "tableType" =>"action",
+                 "colEnd" =>$colEnd,
+                 "error_message"=>$error_message,
+                 "pageContent"=>$page,
+                 "pageContentLink"=>strtolower($page),
+                 "pageContent2"=>"You can see list data of ".$page,
+
+             );
+             print $this->cor3->html($themes,$structure,$data);
 
          }
 
@@ -87,6 +85,7 @@
 
             $table = $this->table;
             $tableMeta = $this->tableMeta;
+            $iColumn = $this->iColumn;
             $id = "";
             //error
             $err_val = $this->input->get('err');
@@ -104,29 +103,6 @@
             if($this->input->get('id')!=NULL){// if EDIT
                 $id = $this->input->get('id');
                 $pageContentHeader = "Edit";
-                // data edited
-                $editCatValue = $this->brand_model->getValueBrand($table,$id);
-                $valueEdited = array();
-                foreach($editCatValue as $row){
-                    $valueEdited[$this->iColumn] =  $row->bra_id;
-                    $valueEdited['name'] =  $row->name;
-                    $valueEdited['desc'] =  $row->desc;
-                    $valueEdited['sdesc'] =  $row->sdesc;
-                    if($row->status>0){
-                        $valueEdited['status'] = "checked" ;
-                    }else{
-                        $valueEdited['status'] = "" ;
-                    }
-                }
-                // data meta edited
-                $dataWhere = array(
-                    $this->iColumn=>$id,
-                    "meta_key"=>"imgName"
-                );
-                $imgName = $this->cor3_model->getSQLvalue_where($tableMeta,$dataWhere,"meta_value");
-
-                // variable html
-
                 $data = array(
                     "site_url"=>base_url(),
                     "dashboard" => '',
@@ -138,9 +114,56 @@
                     "pageContentHeader" =>$pageContentHeader,
                     "pageContent2"=>"You can ".$pageContentHeader." Content here",
                     "error_message"=>$error_message,
-                    "imgName"=>$imgName
+
                 );
-                $data = array_merge($data,$valueEdited);
+                // data edited 1
+                $editValue = $this->product_model->getValueBrand($table,$iColumn,$id);
+
+                foreach($editValue as $row){
+                    $data[$this->iColumn] =  $row->$iColumn;
+                    $data['name'] =  $row->name;
+                    $data['sku'] =  $row->sku;
+                    if($row->status>0){
+                        $data['status'] = "checked" ;
+                    }else{
+                        $data['status'] = "" ;
+                    }
+                }
+                // data edited 2
+                $editValue2 = $this->product_model->getValueBrand($this->table2,$iColumn,$id);
+
+                foreach($editValue2 as $row){
+                   $data['nett'] =  $row->nett;
+                   $data['gross'] =  $row->gross;
+                   $data['discount'] =  $row->discount;
+
+                }
+                // data meta edited
+
+                $editValuemeta = $this->product_model->getValueBrand($tableMeta,$iColumn,$id);
+                $data['imagePreview'] ="";
+                foreach($editValuemeta as $row){
+                    $data[$row->meta_key] =  $row->meta_value;
+
+                    if($row->meta_key==="imgName1"){
+                        $data['imagePreview'] .=  '<div class="controls"><img src="'.base_url().'assets/upload/'.$this->page.'/'.$row->meta_value.'"></div>';
+                    }
+                    elseif($row->meta_key==="imgName2"){
+                        $data['imagePreview'] .=  '<div class="controls"><img src="'.base_url().'assets/upload/'.$this->page.'/'.$row->meta_value.'"></div>';
+                    }
+                    elseif($row->meta_key==="imgName3"){
+                        $data['imagePreview'] .=  '<div class="controls"><img src="'.base_url().'assets/upload/'.$this->page.'/'.$row->meta_value.'"></div>';
+                    }
+                    elseif($row->meta_key==="imgName4"){
+                        $data['imagePreview'] .=  '<div class="controls"><img src="'.base_url().'assets/upload/'.$this->page.'/'.$row->meta_value.'"></div>';
+                    }
+                    elseif($row->meta_key==="imgName5"){
+                        $data['imagePreview'] .=  '<div class="controls"><img src="'.base_url().'assets/upload/'.$this->page.'/'.$row->meta_value.'"></div>';
+                    }
+
+                }
+
+
 
             }else{// if NEW
                 $pageContentHeader = "Add New";
@@ -158,10 +181,15 @@
                     $this->iColumn=>"",
                     "name"=>"",
                     "desc"=>"",
+                    "sku"=>"",
+                    "nett"=>"",
+                    "gross"=>"",
+                    "discount"=>"",
                     "status"=>"checked",
                     "parent_id"=>"",
                     "selected"=>"",
                     "sdesc"=>"",
+                    "imagePreview" =>"",
                     "error_message"=>$error_message,
 
                 );
@@ -179,23 +207,32 @@
 
             $id =  $this->input->get('id');
             $table = $this->table;
-            $table2 = $this->tableMeta;
+            $table2 = $this->table2;
+            $tableMeta  =$this->tableMeta;
             $dataWhere = array($this->iColumn=>$id);
             if(!empty($id)){
-               $this->cor3_model->deleteValue($table, $dataWhere);
-                $this->cor3_model->deleteValue($table2, $dataWhere);
+               //$this->cor3_model->deleteValue($table, $dataWhere);
+               // $this->cor3_model->deleteValue($table2, $dataWhere);
+
                 $dataWhere['meta_key'] = "imgName";
                 //delete img
-                $resultValue = $this->cor3_model->getSQLvalue_where($table2,$dataWhere,"meta_value");
+                $resultValue = $this->product_model->getValueImage($tableMeta,$id);
+                //print_r($resultValue);
+                //$this->cor3_model->deleteValue($tableMeta, $dataWhere);
+                if(!empty($resultValue)||($resultValue!=NULL)){
+                    for($i=0;$i<count($resultValue);$i++ ){
+                        print_r($resultValue[$i]);
+                        $pathDelete='assets/upload/'.$this->page.'/'.$resultValue[$i]['meta_value'];
 
-                $pathDelete='assets/upload/'.$this->page.'/'.$resultValue;
-                if(!empty($resultValue)|| ($resultValue!= NULL)){
-                    unlink($pathDelete);
-                    //delete_files('assets/upload/'.$this->page.'/'.$resultValue);
+                            print $pathDelete."<br/>";
+                            //unlink($pathDelete);
+                            //delete_files('assets/upload/'.$this->page.'/'.$resultValue);
 
+
+                    }
                 }
 
-                print "<script>window.location='".base_url()."jp/".$this->page."/?err=3'</script>";
+                //print "<script>window.location='".base_url()."jp/".$this->page."/?err=3'</script>";
 
 
             }
@@ -211,84 +248,129 @@
             $id     =  $this->input->post('id');
             $name   = $this->input->post('name');
             $status =  $this->input->post('status');
+            $sku    =  $this->input->post('sku');
 
-
-            //status myquery
-            if(empty($status)){
-                $status="0";
-            }
-            $desc   = $this->input->post('desc');
-            $sdesc   = $this->input->post('sdesc');
-
-            $data = array(
-                "name"=>$name,
-                "status"=>$status,
-                "desc"=>$desc,
-                "sdesc"=>$sdesc
-            );
-
-            if(!empty($id)){
-                $dataWhere = array(
-                    $this->iColumn=>$id
-                );
-                $data["updated"] = DATE('Y-m-d H:i:s');
-                $ResultQuery = $this->cor3_model->updateValue($table, $data, $dataWhere);
-
-                // upload
-                $imageName = $this->jpupload->singleUpload($name."-".$id,$this->page);
-
-                if(is_array($imageName)){
-                    $insertValue = array();
-                    foreach($imageName as $keyimg => $rowimg){
-                        $insertValue[] = $keyimg.",".$rowimg;
-                    }
-                    $insertValue = implode(';', $insertValue); /**/
+            if(!empty($name)&&!empty($sku)){
+                //status myquery
+                if(empty($status)){
+                    $status="0";
                 }
-                // input upload data att
-                if(is_array($imageName)){
-                    $dataAttribute = array(
-                        "imgAtr" =>$insertValue,
-                        "imgName" =>$imageName['file_name'],// upload logo
+                $desc   = $this->input->post('desc');
+                $sdesc   = $this->input->post('sdesc');
+
+                if(!empty($name)&& !empty($sku)){
+                    $data = array(
+                        "name"=>$name,
+                        "sku"=>$sku,
+                        "status"=>$status,
+                        "author"=>$this->session->userdata('user_id'),
                     );
-                    $this->action_meta($dataAttribute,$id ,$tableMeta);
-                }
-                if($ResultQuery==TRUE){
-                    print "<script>window.location='".base_url()."jp/".$this->page."/?err=2'</script>";
                 }else{
-                    // print "not updated";
+                    $data ="";
+                }
+                $nett    =  $this->input->post('nett');
+                $gross    =  $this->input->post('gross');
+                $discount    =  $this->input->post('discount');
+
+                if(!empty($nett)&& !empty($gross)){
+
+                    $data2 = array(
+                    "nett"=>$nett,
+                    "gross"=>$gross,
+                    "discount"=>$discount,
+
+                    );
+                }else{
+                    $data2 = "";
                 }
 
-            }else{
+                $dataAttribute = array(
+                    "desc"=>$desc,
+                    "sdesc"=>$sdesc,// Description
+                );
 
-                $ResultQuery = $this->cor3_model->insertValue($table,$data);
-                // upload
-                $imageName = $this->jpupload->singleUpload($name."-".$ResultQuery['id'],$this->page);
+                if(!empty($id)){
+                    $dataWhere = array(
+                        $this->iColumn=>$id
+                    );
+                    $data["updated"] = DATE('Y-m-d H:i:s');
 
-                if(is_array($imageName)){
-                    $insertValue = array();
-                    foreach($imageName as $keyimg => $rowimg){
-                        $insertValue[] = $keyimg.",".$rowimg;
+                    if(!empty($data)){
+                        $ResultQuery = $this->cor3_model->updateValue($table, $data, $dataWhere);
                     }
-                    $insertValue = implode(';', $insertValue); /**/
-                }
-                // input upload data att
-                if($ResultQuery['qstatus']==TRUE){
+
+                    if(!empty($data2)){
+
+                        $returnRow = $this->cor3_model->GetNumber_Row($this->table2,$dataWhere);
+                        if($returnRow>0){
+
+                            $ResultQuery2 = $this->cor3_model->updateValue($this->table2, $data2, $dataWhere);
+
+                        }else{
+                            $data2[$this->iColumn] = $id;
+                            $ResultQuery2 = $this->cor3_model->insertValue($this->table2, $data2);
+                        }
+                    }
+                    //upload
+                     $imageName = $this->jpupload->multiUpload($name."-".$id,$this->page);
                     // input upload data att
-                    if(is_array($imageName)){
-                        $dataAttribute = array(
-                            "imgAtr" =>$insertValue,
-                            "imgName" =>$imageName['file_name'],// upload logo
-                        );
-                        $this->action_meta($dataAttribute,$ResultQuery['id'] ,$tableMeta);
+
+                    //print_r($imageName);
+                    $imgI =1;
+                    for($i=0;$i<=count($imageName);$i++){
+                        if($imageName[$i]){
+                            $dataAttribute["imgName".$imgI] =$imageName[$i]['file_name'];
+                        }
+                        $imgI ++;
                     }
-                    print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$ResultQuery['id']."&err=1'</script>";
+                    print_r($dataAttribute);
+
+                    $this->action_meta($dataAttribute,$id ,$tableMeta);
+
+                    if(($ResultQuery==TRUE)||($ResultQuery2==TRUE)){
+                        print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$id."&err=2".$errUpload."'</script>";
+                    }else{
+                         print "not updated";
+                    }
 
                 }else{
-                    //print "not inserted";
-                }
+                    if(!empty($data)){
+                        $ResultQuery = $this->cor3_model->insertValue($table,$data);
+                    }
+                    if(!empty($data2)){
+                        if(!empty($ResultQuery['id'])){
+                            $data2[$this->iColumn] = $ResultQuery['id'];
+                            $ResultQuery = $this->cor3_model->insertValue($this->table2,$data2);
+                        }
 
-            /**/
-            }
+                    }
+
+                    // input upload data att
+                    if($ResultQuery['qstatus']==TRUE){
+                        //upload
+                         $imageName = $this->jpupload->multiUpload($name."-".$ResultQuery['id'],$this->page);
+                        // input upload data att
+
+                        //print_r($imageName);
+                        $imgI =1;
+                        for($i=0;$i<=count($imageName);$i++){
+                            if($imageName[$i]){
+                                $dataAttribute["imgName".$imgI] =$imageName[$i]['file_name'];
+                            }
+                            $imgI ++;
+                        }
+                        $this->action_meta($dataAttribute,$ResultQuery['id'] ,$tableMeta);
+                        print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$ResultQuery['id']."&err=1".$errUpload."'</script>";
+
+                    }else{
+                        print "not inserted";
+                    }
+
+
+                }
+            }else{
+                print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?err=12'</script>";
+            }/**/
         }
 
         public function action_meta($dataAttribute=array(),$id ,$tableMeta){
@@ -350,11 +432,16 @@
                     elseif($err_val == 3 ){
                         $error_message .= '<strong>Data Has been Deleted. !</strong></div>';
                     }
+
+
                 }else{
                     $error_message  = '<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>';
                     if($err_val == 11 ){
 
                         $error_message .= '<strong>Sorry , Data Cannot be Delete !</strong><br> Because is PARENT.</div>';
+                    }
+                    elseif($err_val == 12 ){
+                        $error_message .= '<strong>Please fill NAME & SKU. !</strong></div>';
                     }
                 }
 
@@ -367,6 +454,6 @@
 
 
     }
-    
+
     /* End of file homeroot.php */
     /* Location: ./application/controllers/homeroot.php */

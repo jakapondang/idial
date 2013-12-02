@@ -1,11 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     
-    class Brand extends CI_Controller {
+    class Page extends CI_Controller {
 
-        var $table      ="jp_brand";
-        var $tableMeta  ="jp_brandmeta";
-        var $iColumn    = "bra_id";
-        var $page       = "brand";
+        var $table      ="jp_page";
+
+        var $iColumn    = "pag_id";
+        var $page       = "page";
         /**
         * Index Page for this controller.
         *
@@ -25,7 +25,7 @@
         public function __construct() {
             parent::__construct();
             $this->load->library(array('cor3','cor3_model','jpupload'));
-			$this->load->model(array('admin/brand_model'));
+			$this->load->model(array('admin/page_model'));
             $this->load->helper("file");
 
             if($this->session->userdata('user_admin')==NULL){
@@ -36,72 +36,98 @@
         
          public function index(){
 
-            $err_val = $this->input->get('err');
+             $err_val = $this->input->get('err');
+             $error_message = $this->errorMessage($err_val);
 
-            $error_message = $this->errorMessage($err_val);
-
-            $themes ="admin";
-            $structure = array(
-                "dashboard/table/head",
-                "dashboard/body",
-                "dashboard/".$this->page."/list",
-                "dashboard/table/footer");
-
-            $tableName = $this->table;
-            $tableName_meta = $this->tableMeta;
-
-            $page = strtoupper($this->page);
-            // var table
-            $ColumnOrder =$this->iColumn.",meta_value,name,status,created,updated";
+             $themes ="admin";
+             $structure = array(
+                 "dashboard/table/head",
+                 "dashboard/body",
+                 "dashboard/".$this->page."/list",
+                 "dashboard/table/footer");
             $column = $this->iColumn.",name,status,created,updated";
-            $colEnd = count(explode(',',$column));
-
-            $columnWhereKey ='imgName';
-            $column2 = "meta_value";
-            $colEnd += count(explode(',',$column2));
+             $colEnd = count(explode(',',$column));
+             $iColumns = $this->iColumn;
 
 
-            $iColumns = $this->iColumn;
+             $data = array(
+                 "site_url"=>base_url(),
+                 "dashboard" => '',
+                 "catalog" =>'class="active"' ,
+                 "extra" =>'' ,
+                 "urlActionTable"=>$themes.'/tableview/?tBn='.$this->table.'&colTab='.$column.'&icl='.$iColumns,
+                 "urlEditRow"=>$themes.'/'.$this->page.'/newUpdate/',
+                 "urlDelRow"=>$themes.'/'.$this->page.'/delete/',
+                 "tableFormName" =>$this->table,
+                 "tableType" =>"action",
+                 "colEnd" =>$colEnd,
+                 "error_message"=>$error_message,
+                 "pageContent"=>strtoupper($this->page),
+                 "pageContentLink"=>strtolower($this->page),
+                 "pageContent2"=>"You can see list data of Category",
 
-            $data = array(
-                "site_url"=>base_url(),
-                "dashboard" => '',
-                "catalog" =>'class="active"' ,
-                "extra" =>'' ,
-                "urlActionTable"=>$themes.'/tableview/tjoin/?tBn1='.$tableName.'&tBn2='.$tableName_meta.'&Oc='.$ColumnOrder.'&colTab1='.$column.'&colTab2='.$column2.'&icl='.$iColumns.'&cWk='.$columnWhereKey,
-                "urlEditRow"=>$themes.'/'.strtolower($page).'/newUpdate/',
-                "urlDelRow"=>$themes.'/'.strtolower($page).'/delete/',
-                "tableFormName" =>$tableName,
-                "tableType" =>"action",
-                "colEnd" =>$colEnd,
-                "error_message"=>$error_message,
-                "pageContent"=>$page,
-                "pageContent2"=>"You can see list data of Brand",
-
-            );
-            print $this->cor3->html($themes,$structure,$data);
+             );
+             print $this->cor3->html($themes,$structure,$data);
 
          }
 
+        public function previewPage() {
+            $desc = $this->input->post('pdesc_pre');
+            $id = $this->input->post('id');
 
+            $goback = '<div class="header row">
+            <div class="container">
+                <div class="row">
+                    <div class="span12" style="text-align: center">
+                       <a href="#" onclick="window.close();"> <h3>GO BACK EDITING PAGE</h3></a>
+                   </div>
+               </div>
+           </div>';
+            if($id==1){
+            $subscribe = ' <h3 style="color:#9B67AD">SUBSCRIBE AND GET OUR PROMO</h3>
+                    <form class="form-inline" action="{site_url}homeroot/subscribe" method="post">
+                        <input type="text" name="email" placeholder="Masukan email / No Hp">
+                        <button type="submit" id="submit" disabled class="btn">Submit</button>
+                        <img id="loadform" src="{base_url}img/loading-animation.gif" title="iDial load" width=""/>
+                    </form>
+                    <div class="success-message"></div>
+                    <div class="error-message"></div>';
+
+            }else{
+                $subscribe="";
+            }
+            $themes ="cs";
+            $structure = array("head","body-cs","footer");
+            $data = array(
+                "site_url"=>base_url(),
+                "title_page"=>"PREVIEW PAGE",
+                "disabled"=>'disabled',
+                "goback"=>$goback,
+                "desc"=>$desc,
+                "back"=>"PREVIEW</br>PAGE",
+                  "subscribe"=>$subscribe,
+
+            );
+
+            print $this->cor3->html($themes,$structure,$data);
+        }
         public function newUpdate(){
 
-            $table = $this->table;
-            $tableMeta = $this->tableMeta;
             $id = "";
-            $iColumn = $this->iColumn;
+
             //error
             $err_val = $this->input->get('err');
             $error_message = $this->errorMessage($err_val);
 
             //themes
             $themes ="admin";
-            $page = strtoupper($this->page);
+
             $structure = array(
                 "dashboard/form/head",
                 "dashboard/body",
                 "dashboard/".$this->page."/form",
                 "dashboard/form/footer");
+
 
             if($this->input->get('id')!=NULL){// if EDIT
                 $id = $this->input->get('id');
@@ -109,22 +135,23 @@
                 $data = array(
                     "site_url"=>base_url(),
                     "dashboard" => '',
-                    "catalog" =>'class="active"' ,
-                    "extra" =>'',
-                    "pageContent"=>$page,
+                    "catalog" =>'' ,
+                    "extra" =>'class="active"',
+                    "pageContent"=>strtoupper($this->page),
                     "id"=>$id,
-                    "pageContentLink"=>strtolower($page),
+                    "pageContentLink"=>$this->page,
                     "pageContentHeader" =>$pageContentHeader,
                     "pageContent2"=>"You can ".$pageContentHeader." Content here",
                     "error_message"=>$error_message,
 
                 );
                 // data edited
-                $editCatValue = $this->brand_model->getValueBrand($table,$iColumn,$id);
+                $editCatValue = $this->page_model->getValue($this->table,$this->iColumn,$id);
 
                 foreach($editCatValue as $row){
-                    $data[$this->iColumn] =  $row->$iColumn;
+
                     $data['name'] =  $row->name;
+                    $data['desc'] =  $row->desc;
 
                     if($row->status>0){
                         $data['status'] = "checked" ;
@@ -134,11 +161,7 @@
                 }
                 // data meta edited
 
-                $editValuemeta = $this->brand_model->getValueBrand($tableMeta,$iColumn,$id);
-                foreach($editValuemeta as $row){
-                    $data[$row->meta_key] =  $row->meta_value;
 
-                }
 
 
             }else{// if NEW
@@ -147,20 +170,18 @@
                 $data = array(
                     "site_url"=>base_url(),
                     "dashboard" => '',
-                    "catalog" =>'class="active"' ,
-                    "extra" =>'',
-                    "pageContent"=>$page,
+                    "catalog" =>'' ,
+                    "extra" =>'class="active"',
+                    "pageContent"=>strtoupper($this->page),
                     "id"=>$id,
-                    "pageContentLink"=>strtolower($page),
+                    "pageContentLink"=>$this->page,
                     "pageContentHeader" =>$pageContentHeader,
                     "pageContent2"=>"You can ".$pageContentHeader." Content here",
                     $this->iColumn=>"",
                     "name"=>"",
                     "desc"=>"",
                     "status"=>"checked",
-                    "parent_id"=>"",
-                    "selected"=>"",
-                    "sdesc"=>"",
+                    "desc"=>"",
                     "error_message"=>$error_message,
 
                 );
@@ -203,80 +224,44 @@
 
         public function action(){
 
-
-            $table  = $this->table;
-            $tableMeta = $this->tableMeta;
-            $page = $this->page;
-
             $id     =  $this->input->post('id');
             $name   = $this->input->post('name');
             $status =  $this->input->post('status');
-
+            $pdesc   = $this->input->post('pdesc');
 
             //status myquery
             if(empty($status)){
                 $status="0";
             }
-            $desc   = $this->input->post('desc');
-            $sdesc   = $this->input->post('sdesc');
 
             $data = array(
                 "name"=>$name,
                 "status"=>$status,
+                "desc"=>$pdesc,
                 "author"=>$this->session->userdata('user_id'),
             );
-            $dataAttribute = array(
-                "desc"=>$desc,
-                "sdesc"=>$sdesc,// Description
-            );
+
 
             if(!empty($id)){
                 $dataWhere = array(
                     $this->iColumn=>$id
                 );
                 $data["updated"] = DATE('Y-m-d H:i:s');
-                $ResultQuery = $this->cor3_model->updateValue($table, $data, $dataWhere);
-
-
-
+                $ResultQuery = $this->cor3_model->updateValue($this->table, $data, $dataWhere);
                 if($ResultQuery==TRUE){
-                    // upload
-                    $imageName = $this->jpupload->singleUpload($name."-".$id,$this->page);
-                     // input upload data att
-                    $errUpload="";
-                    if($imageName!= 0){
 
-                        $dataAttribute["imgName"] =$imageName['file_name'];
-
-                    }else{
-                        $errUpload = '&err2=5';
-                    }
-                    $this->action_meta($dataAttribute,$id ,$tableMeta);
-
-                    print "<script>window.location='".base_url()."jp/".$this->page."/?err=2".$errUpload."'</script>";
+                    print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$id."&err=2'</script>";
                 }else{
                     // print "not updated";
                 }
 
             }else{
 
-                $ResultQuery = $this->cor3_model->insertValue($table,$data);
+                $ResultQuery = $this->cor3_model->insertValue($this->table,$data);
 
                  if($ResultQuery['qstatus']==TRUE){
-                    // upload
-                    $imageName = $this->jpupload->singleUpload($name."-".$ResultQuery['id'],$this->page);
-                    // input upload data att
-                    $errUpload="";
-                    // input upload data att
-                    if($imageName!= 0){
 
-                        $dataAttribute["imgName"] =$imageName['file_name'];
-
-                    }else{
-                        $errUpload = '&err2=5';
-                    }
-                    $this->action_meta($dataAttribute,$ResultQuery['id'] ,$tableMeta);
-                    print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$ResultQuery['id']."&err=1".$errUpload."'</script>";
+                    print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$ResultQuery['id']."&err=1'</script>";
 
                 }else{
                     //print "not inserted";
@@ -286,48 +271,7 @@
             }
         }
 
-        public function action_meta($dataAttribute=array(),$id ,$tableMeta){
-
-
-
-            foreach($dataAttribute as $keyName => $valName){
-
-                $dataWhere = array(
-                    $this->iColumn=>$id,
-                    "meta_key"=>$keyName,
-                );
-                //cek if meta key exist
-                $cekRowAttribute = $this->cor3_model->GetNumber_Row($tableMeta ,$dataWhere);
-
-                if($cekRowAttribute>0){
-                    //cek if the same
-                    $dataWhere_ts = array(
-                        $this->iColumn=>$id,
-                        "meta_key"=>$keyName,
-                        "meta_value"=>$valName
-                    );
-                    $cekRowAttribute_ts = $this->cor3_model->GetNumber_Row($tableMeta ,$dataWhere_ts);
-                    if($cekRowAttribute_ts== 0){
-                        $dataValue = array(
-                            "meta_value"=>$valName,
-                        );
-                        $resultQuery =  $this->cor3_model->updateValue($tableMeta,$dataValue,$dataWhere);
-
-                    }
-                }else{
-                    $dataValue = array(
-                        $this->iColumn=>$id,
-                        "meta_key"=>$keyName,
-                        "meta_value"=>$valName,
-                    );
-                    $resultQuery = $this->cor3_model->insertValue($tableMeta,$dataValue);
-
-                }
-            }//foreach
-
-
-        }
-
+      
 
         public function errorMessage($err_val=""){
             $error_message="";

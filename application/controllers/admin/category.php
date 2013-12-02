@@ -34,20 +34,20 @@
          public function index(){
 
 
-             $err_val = $this->input->get('err');
-             $error_message = $this->errorMessage($err_val);
-
+            $err_val = $this->input->get('err');
+            $error_message = $this->errorMessage($err_val);
+            $page= $this->page;
             $themes ="admin";
             $structure = array(
                 "dashboard/table/head",
                 "dashboard/body",
-                "dashboard/category/list",
+                "dashboard/".$page."/list",
                 "dashboard/table/footer");
 
 
             $tableName =$this->table;
             $page = strtoupper($this->page);
-            $column = "cat_id,parent_id,name,status,created,updated";
+            $column = $this->iColumn.",parent_id,name,status,created,updated";
             $colEnd = count(explode(',',$column));
             $iColumns = $this->iColumn;
 
@@ -207,6 +207,7 @@
             if(empty($status)){
                 $status="0";
             }
+
             $desc   = $this->input->post('desc');
             $sdesc   = $this->input->post('sdesc');
             $data = array(
@@ -214,7 +215,8 @@
                 "name"=>$name,
                 "status"=>$status,
                 "desc"=>$desc,
-                "sdesc"=>$sdesc
+                "sdesc"=>$sdesc,
+                "author"=>$this->session->userdata('user_id'),
             );
 
             if(!empty($id)){

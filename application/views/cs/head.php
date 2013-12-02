@@ -25,7 +25,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </script>
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-		<title>iDial Corner | Jual iPhone 5s , iPhone 5c, iPad mini | Toko iPhone , iPad , Android & Blackberry</title>
+		<title>{title_page}</title>
 	<!-- META FOR IOS & HANDHELD -->
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes"/>
@@ -34,6 +34,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         
         <meta name="apple-touch-fullscreen" content="YES" />
 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
         <!-- //META FOR IOS & HANDHELD -->

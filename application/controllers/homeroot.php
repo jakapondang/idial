@@ -20,17 +20,55 @@
         
         public function __construct() {
             parent::__construct();
-            $this->load->library(array('cor3','usersecure','jpupload'));
+            $this->load->library(array('cor3','usersecure','jpupload','cor3_model'));
 			 $this->load->model(array('home_model'));
 
         }
         
         public function index() {
+            $data=array('pag_id'=>1);
+            $desc = $this->cor3_model->getSQLvalue_where("jp_page",$data,"desc");
+            $name = $this->cor3_model->getSQLvalue_where("jp_page",$data,"name");
 			$themes ="cs";
-            $structure = array("head","body","footer");
-            $data = array("site_url"=>base_url());
+            $structure = array("head","body-cs","footer");
+            $subscribe = ' <h3 style="color:#9B67AD">'.$name.'</h3>
+                    <form class="form-inline" action="{site_url}homeroot/subscribe" method="post">
+                        <input type="text" name="email" placeholder="Masukan email / No Hp">
+                        <button type="submit" id="submit" class="btn">Submit</button>
+                        <img id="loadform" src="'.base_url().'assets/cs/img/loading-animation.gif" title="iDial load" width=""/>
+                    </form>
+                    <div class="success-message"></div>
+                    <div class="error-message"></div>';
+            $data = array(
+                "site_url"=>base_url(),
+                "title_page"=>"iDial Corner | Jual iPhone 5s , iPhone 5c, iPad mini | Toko iPhone , iPad , Android & Blackberry",
+                "disabled"=>"",
+                "goback"=>"",
+                "back"=>"<a href='".base_url()."price-list'>CHECKOUT</br>PRICE LIST</a>",
+                "desc"=>$desc,
+                "subscribe"=>$subscribe,
+            );
 
 			print $this->cor3->html($themes,$structure,$data);
+        }
+        public function priceList() {
+            $data=array('pag_id'=>2);
+
+            $desc = $this->cor3_model->getSQLvalue_where("jp_page",$data,"desc");
+            $name = $this->cor3_model->getSQLvalue_where("jp_page",$data,"name");
+            $themes ="cs";
+            $structure = array("head","body-cs","footer");
+            $data = array(
+                "site_url"=>base_url(),
+                "title_page"=>"iDial Corner | PRICE LIST | Toko iPhone , iPad , Android & Blackberry",
+                "disabled"=>"",
+                "goback"=>"",
+                "back"=>"<a href='".base_url()."'>HOME</br>PAGE</a>",
+                "desc"=>$desc,
+                "subscribe"=>' <h3 style="color:#9B67AD">'.$name.'</h3>',
+            );
+
+            print $this->cor3->html($themes,$structure,$data);
         }
 		
 		public function subscribe(){

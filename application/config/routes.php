@@ -38,9 +38,11 @@
 |
 */
 
-$route['default_controller'] = "idial/homeroot";
+$route['default_controller'] = "homeroot";
 $route['404_override'] = '';
+//cs
 
+$route['price-list'] = 'homeroot/priceList';
 //Admin
 $route['jp'] = 'admin/adminroot';
 $route['jp/action/login'] = 'admin/adminroot/action_login';
@@ -49,6 +51,8 @@ $route['jp/dashboard'] = 'admin/dashboard';
 $route['jp/subscriber'] = 'admin/subscriber';
 $route['jp/category'] = 'admin/category';
 $route['jp/brand'] = 'admin/brand';
+$route['jp/product'] = 'admin/product';
+$route['jp/page'] = 'admin/page';
 // Web
 $route['home'] = 'idial/homeroot';
 $route['home/email'] = 'idial/homeroot/email';

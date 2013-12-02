@@ -54,6 +54,10 @@
                  "urlDelRow"=>'',
                  "tableFormName" =>$tableName,
                  "tableType" =>"view",
+                 "error_message"=>$error_message,
+                 "pageContent"=>strtoupper($page),
+                 "pageContentLink"=>strtolower($page),
+                 "pageContent2"=>"You can see list data of ".$page,
              );
 
             print $this->cor3->html($themes,$structure,$data);

@@ -7,7 +7,7 @@
                     <span class="title"><i class="icon-edit"></i>{pageContentHeader} {pageContent}</span>
                 </div>
                 <div class="widget-content form-container">
-                  <form class="form-vertical" id="{pageContent}" action="{site_url}admin/{pageContentLink}/action" enctype="multipart/form-data" method="post">
+                  <form class="form-vertical" id="{pageContent}" action="{site_url}admin/{pageContentLink}/action" enctype="multipart/form-data" method="post" >
                         <input type="hidden" name="id" value="{id}">
                         <div class="control-group">
                             <label class="control-label">
@@ -29,36 +29,23 @@
 
 
                         <div class="control-group">
-                            <label class="control-label">Short Description</label>
-                            <div class="controls">
-                                <textarea id="sdesc" name="sdesc">{sdesc}</textarea>
-                            </div>
-                        </div>
-                        <div class="control-group">
                             <label class="control-label">Description</label>
                             <div class="controls">
-                                <textarea id="desc" name="desc">{desc}</textarea>
+                                <textarea id="pdesc" name="pdesc">{desc}</textarea>
                             </div>
                         </div>
-                        <div class="control-group">
-                            <label class="control-label" for="input04">Preview Logo</label>
-                            <div class="controls">
-                               <img src="{site_url}assets/upload/{pageContentLink}/{imgName}">
 
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="input04">Upload Logo</label>
-                            <div class="controls">
-                                <input type="file" name="userfile" id="userfile" data-provide="fileinput">
-                                <p class="help-block"><code>Format Logo : jpg , png , gif.</code></p>
-                            </div>
-                        </div>
 
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary">Save</button>
-                          <!--  <button class="btn" type="reset">Clear Fields</button>-->
+                            <a class="btn" type="reset" onclick="return PreviewPage();">Preview Page</a>
                         </div>
+
+                  </form>
+
+                    <form id="previewp" method="post" target="_blank" action="{site_url}admin/{pageContentLink}/previewPage">
+                        <textarea style="display: none" id="pdesc_pre" name="pdesc_pre"></textarea>
+                        <input type="hidden" name="id" value="{id}">
                     </form>
                 </div>
             </div>
@@ -70,3 +57,13 @@
 </div>
 </div>
 </div>
+    <script>
+
+        function PreviewPage()
+        {
+           var pdesc_pre = document.getElementById("pdesc_pre");
+            pdesc_pre.value =document.getElementById("pdesc").value;
+            document.getElementById("previewp").submit();
+
+        }
+    </script>
