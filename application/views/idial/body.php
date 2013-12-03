@@ -26,6 +26,10 @@
                             </a>
                             <div class="nav-collapse collapse navbar-responsive-collapse">
                                 <ul class="nav">
+                                    {menuCategory}
+                                        <li><a href="{site_url}{name}">{name}</a></li>
+                                    {/menuCategory}
+                                    <!--
                                     <li><a href="{site_url}">HOME</a></li>
                                     <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">SMARTPHONE</a>
                                         <ul class="dropdown-menu">
@@ -62,8 +66,8 @@
                                     <!--<li><a href="about.html">LAYANAN</a></li>
 
                                     <li><a href="about.html">TENTANG KAMI</a></li>
-                                    <li><a href="{site_url}contact">HUBUNGI</a></li>-->
-                                    <li><a href="blog.html">BLOG</a></li>
+                                    <li><a href="{site_url}contact">HUBUNGI</a></li>
+                                    <li><a href="blog.html">BLOG</a></li>-->
 
 
                                 </ul>

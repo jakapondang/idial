@@ -45,9 +45,12 @@ class Cor3 {
 
 
         return $content;
-        //$content  =  $this->CI->parser->parse('html/html', $data, TRUE);
-        //return $base_url;
-        //$head = '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="id" lang="id"><head>#headcontent</head>';
+
+    }
+
+    public function getConfig()
+    {
+
     }
 
 

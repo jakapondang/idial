@@ -25,7 +25,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </script>
     	
 
-		<title>iDial Corner | Jual iPhone 5s , iPhone 5c, iPad mini | Toko iPhone , iPad , Android & Blackberry</title>
+		<title>{title}</title>
 	<!-- META FOR IOS & HANDHELD -->
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
