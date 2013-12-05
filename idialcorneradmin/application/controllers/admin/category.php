@@ -78,7 +78,7 @@
             $table = $this->table;
             $id = "";
             $edit = "";
-            $error_message="";
+            $error_message = $this->errorMessage($this->input->get('err'));
 
             //themes
             $themes ="admin";
@@ -100,8 +100,8 @@
                     foreach($editCatValue as $row){
                         $valueEdited['parent_id'] =  $row->parent_id;
                         $valueEdited['name'] =  $row->name;
-                        $valueEdited['desc'] =  $row->desc;
-                        $valueEdited['sdesc'] =  $row->sdesc;
+                        $valueEdited['uri_name'] =  $row->uri_name;
+
                         if($row->status>0){
                             $valueEdited['status'] = "checked" ;
                         }else{
@@ -160,8 +160,7 @@
                     "parentValue"=>$parentValue,
                     "cat_id"=>"",
                     "name"=>"",
-                    "desc"=>"",
-                    "sdesc"=>"",
+
                     "status"=>"checked",
                     "parent_id"=>"",
                     "selected"=>"",
@@ -204,19 +203,18 @@
             $parent_id     =  $this->input->post('parent_id');
             $name   = $this->input->post('name');
             $status =  $this->input->post('status');
+            $uri_name =  $this->input->post('uri_name');
 
             if(empty($status)){
                 $status="0";
             }
 
-            $desc   = $this->input->post('desc');
-            $sdesc   = $this->input->post('sdesc');
+
             $data = array(
                 "parent_id"=>$parent_id,
                 "name"=>$name,
                 "status"=>$status,
-                "desc"=>$desc,
-                "sdesc"=>$sdesc,
+                "uri_name"=>$uri_name,
                 "author"=>$this->session->userdata('user_id'),
             );
 
@@ -227,7 +225,7 @@
 
                 $ResultQuery = $this->cor3_model->updateValue($table, $data, $dataWhere);
                 if($ResultQuery==TRUE){
-                    print "<script>window.location='".base_url().$this->page."/?err=2'</script>";
+                    print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$id."&err=2'</script>";
                 }else{
                    print "not updated";
                 }
@@ -237,7 +235,7 @@
                 $ResultQuery = $this->cor3_model->insertValue($table,$data);
                 if($ResultQuery['qstatus']==TRUE){
 
-                    print "<script>window.location='".base_url().$this->page."/?err=1'</script>";
+                    print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$ResultQuery['id']."&err=1'</script>";
                 }else{
                     print "not inserted";
                 }
