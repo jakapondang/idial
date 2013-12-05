@@ -1,14 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
 class Cor3 {
+    var $themes ="idial";
+
 	
 	function Cor3(){
 			$this->CI =& get_instance();
-			$this->CI->load->database();
+            $this->CI->load->model(array('cor3_model'));
 			$this->CI->load->helper(array('url'));
 			$this->CI->load->library(array('parser','email','session'));
 			//,'session','email'
-			//$this->CI->load->model(array('general_model'));
+			//$this->CI->load->model(array('core3_model'));
 			
 	}
 	
@@ -45,11 +47,6 @@ class Cor3 {
 
 
         return $content;
-
-    }
-
-    public function getConfig()
-    {
 
     }
 
@@ -111,5 +108,52 @@ class Cor3 {
         $this->CI->email->send();
 
         }
+
+// ======================================= ============= ============= ============= =============FUNCTION PAGE
+    public function mainConfig(){
+        $data=array(
+            "themes" =>$this->themes,
+            "mpreload"  => $this->html($this->themes,array("preload")),//preload
+            "mMenu"     => $this->mainMenu(),//menu
+            "mtitle"    => "iDial Corner | Jual iPhone 5s , iPhone 5c, iPad mini | Toko iPhone , iPad , Android & Blackberry",
+            "mbaseurl" =>base_url().'/assets/'.$this->themes.'/',
+        );
+        return $data;
+    }
+    public function mainMenu(){
+        $table = 'jp_category';
+        $where  = "AND parent_id=0";
+        $mainMenu = $this->CI->cor3_model->getMAinMenu2($table,$where);
+
+        $value ="";
+
+
+        for($i=0;$i<count($mainMenu['name']);$i++){
+
+            //print $mainMenu['name'][$i]."<br/>";
+
+            /*/* */
+            $whereS  = "AND parent_id=". $mainMenu['id'][$i];
+            $subMenu = $this->CI->cor3_model->getMainMenu($table,$whereS);
+            if(!empty($subMenu)||($subMenu!=NULL)){
+
+                $value .='<li class="dropdown"><a href="'.base_url().$mainMenu['uri_name'][$i].'" class="dropdown-toggle" data-toggle="dropdown">'. $mainMenu['name'][$i]."</a>";
+                $value .='<ul class="dropdown-menu">';
+                foreach($subMenu as $rowS){
+
+                    $value .= '<li><a href="'.base_url().$mainMenu['uri_name'][$i].'/'.$rowS->uri_name.'">'.$rowS->name.'</li></a>';
+                }
+                $value .='</ul>';
+                $value .= '</li>';
+            }
+            else{
+
+                $value .='<li><a href="'.$mainMenu['id'][$i].'" >'. $mainMenu['name'][$i]."</a>";
+            }
+        }
+        return $value;
+    }
+
+
 }
 ?>

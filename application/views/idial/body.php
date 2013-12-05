@@ -5,7 +5,7 @@
       	 <div style="position:fixed; top:0px; left:0px; z-index:3000; height:100%; width:100%; background-color:#FFFFFF">
    		<div style="font-family: Tahoma; font-size: 14px; background-color:#5AC6FF; padding: 10pt;">To see this page as it is meant to appear, we ask that you please enable your Javascript!</div></div>
   		</noscript>
-{preload}
+<?php print $preload;?>
 	<div class="page-header container_black">
         <!--header-->
 
@@ -13,7 +13,7 @@
 		<div class="row">
 		    <div class="span9">
                 <div class="logo" style="float:left">
-                    <img src="{base_url}img/iDial-Logo.png" width="100px">
+                    <img src="<?php print $mbaseurl; ?>img/iDial-Logo.png" width="100px">
                 </div>
 
                 <div class="span7" style="float:left">
@@ -26,9 +26,12 @@
                             </a>
                             <div class="nav-collapse collapse navbar-responsive-collapse">
                                 <ul class="nav">
-                                    {menuCategory}
+                                    <?php
+                                    print $mMenu;
+                                    ?>
+                                    <!--{menuCategory}
                                         <li><a href="{site_url}{name}">{name}</a></li>
-                                    {/menuCategory}
+                                    {/menuCategory}-->
                                     <!--
                                     <li><a href="{site_url}">HOME</a></li>
                                     <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">SMARTPHONE</a>
@@ -90,18 +93,18 @@
                                </thead>
                                <tbody>
                                <tr>
-                                   <td class="image"><img alt="IMAGE" src="{base_url}products/dress33.jpg"></td>
-                                   <td class="name"><a href="{base_url}product.html">iPhone 5s</a></td>
+                                   <td class="image"><img alt="IMAGE" src="<?php print $mbaseurl; ?>products/dress33.jpg"></td>
+                                   <td class="name"><a href="<?php print $mbaseurl; ?>product.html">iPhone 5s</a></td>
                                    <td class="quantity">x&nbsp;3</td>
                                    <td class="total">Rp.8000.000</td>
-                                   <td class="remove"><img src="{base_url}image/remove-small.png" alt="Remove" title="Remove"></td>
+                                   <td class="remove"><img src="<?php print $mbaseurl; ?>image/remove-small.png" alt="Remove" title="Remove"></td>
                                </tr>
                                <!--<tr>
-                                   <td class="image"><img alt="IMAGE" src="{base_url}products/dress11.jpg"></td>
-                                   <td class="name"><a href="{base_url}product.html">Blue Dress</a></td>
+                                   <td class="image"><img alt="IMAGE" src="<?php print $mbaseurl; ?>products/dress11.jpg"></td>
+                                   <td class="name"><a href="<?php print $mbaseurl; ?>product.html">Blue Dress</a></td>
                                    <td class="quantity">x&nbsp;3</td>
                                    <td class="total">$230.00</td>
-                                   <td class="remove"><img src="{base_url}image/remove-small.png" alt="Remove" title="Remove"></td>
+                                   <td class="remove"><img src="<?php print $mbaseurl; ?>image/remove-small.png" alt="Remove" title="Remove"></td>
                                </tr>-->
                                </tbody>
                            </table>
@@ -125,11 +128,11 @@
                 <!--<div class="headerMenu">
                 </div>-->
                 <div class="headerMenu">
-                    <a href="{site_url}login">
+                    <a href="<?php print base_url();?>login">
                      <div class="icon_account"></div>
                     </a>
                  </div>
-                {html_logout}
+
 
                 <div class="headerSearch">
                     <div class="icon_search"></div>

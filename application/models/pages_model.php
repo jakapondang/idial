@@ -7,13 +7,9 @@ class Pages_model extends CI_Model {
         $this->load->database();
     }
 
-    public function getMainMenu($table)
-    {
-        $query = $this->db->query('SELECT name FROM '.$table.' WHERE parent_id=0');
 
-        return $query->result_array();
-    }
-    
+
+
    
 }
 /*$this->db->select('content.*, mainmenu.label');

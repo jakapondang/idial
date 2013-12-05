@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     
     class Pages extends CI_Controller {
-        var $themes ="idial";
+
         /**
         * Index Page for this controller.
         *
@@ -28,18 +28,19 @@
         public function index()
         {
 
-            $structure = array("head","body","home/home","footer","home/fhome");
-            $preload = $this->cor3->html($this->themes,array("preload"));
-            $menuCategory=$this->pages_model->getMainMenu('jp_category');
+           $mConfig = $this->cor3->mainConfig();
+            $head       = $mConfig;
+            $body       = $mConfig;
+            $content    = $mConfig;
+            $footer     = $mConfig;
+            $fcontent   = $mConfig;
 
-            $data = array(
-                "site_url"=>base_url(),
-                "preload"=>$preload,
-                "title"=>"iDial Corner | Jual iPhone 5s , iPhone 5c, iPad mini | Toko iPhone , iPad , Android & Blackberry",
-                "menuCategory"=> $menuCategory
-            );
+            $this->load->view($mConfig['themes'].'/head',$head);
+            $this->load->view($mConfig['themes'].'/body',$body);
+            $this->load->view($mConfig['themes'].'/home/home',$content);
+            $this->load->view($mConfig['themes'].'/footer',$footer);
+            $this->load->view($mConfig['themes'].'/home/fhome',$fcontent);
 
-            print $this->cor3->html($this->themes,$structure,$data);
         }
         public function view($page = '')
         {
@@ -55,7 +56,7 @@
                 "preload"=>"",
             );
             $menuCategory=$this->pages_model->getMainMenu('jp_category');
-            print_r($menuCategory);
+
             $data['title'] = ucfirst($page);
             $data['menuCategory'] = $menuCategory;// Capitalize the first letter
             //$data['nav'] = $this->content_model->get_nav();
@@ -73,6 +74,11 @@
 
 
         }
+
+
+
+
+
 
         
     }

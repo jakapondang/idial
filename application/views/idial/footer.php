@@ -2,9 +2,9 @@
     <div class="footer2 container">
         <div class="row">
             <div class="span12 faddress" style="text-align: center">
-           LIKE US <img src="{base_url}img/facebook-iDial.png" width="50px">
-            <img src="{base_url}img/bestprice1.png" width="70px">
-            <img src="{base_url}img/twitter-iDial.png" width="50px"> FOLLOW US
+           LIKE US <img src="<?php print $mbaseurl; ?>img/facebook-iDial.png" width="50px">
+            <img src="<?php print $mbaseurl; ?>img/bestprice1.png" width="70px">
+            <img src="<?php print $mbaseurl; ?>img/twitter-iDial.png" width="50px"> FOLLOW US
             </div>
         </div>
    </div>
@@ -84,12 +84,12 @@
                <div class="span12">
                    <p class="powered-text">Copyright <a href="#"> iDial Corner</a> 2013 <!--designed by <a href="http://www.nicolette.ro/">nicole_89</a>--></p>
 		            <ul class="payment-icons">
-                        <li><img alt="CITIBANK" src="{base_url}img/Citibank.png"></li>
-                        <li><img alt="BCA" src="{base_url}img/bca.png"></li>
-						<li><img alt="MANDIRI" src="{base_url}img/mandiri.png"></li>
+                        <li><img alt="CITIBANK" src="<?php print $mbaseurl; ?>img/Citibank.png"></li>
+                        <li><img alt="BCA" src="<?php print $mbaseurl; ?>img/bca.png"></li>
+						<li><img alt="MANDIRI" src="<?php print $mbaseurl; ?>img/mandiri.png"></li>
 
-						<!--<li><img alt="american" src="{base_url}image/paypal.png"></li>
-						<li><img alt="american" src="{base_url}image/visa.png"></li>-->
+						<!--<li><img alt="american" src="<?php print $mbaseurl; ?>image/paypal.png"></li>
+						<li><img alt="american" src="<?php print $mbaseurl; ?>image/visa.png"></li>-->
 		            </ul>
 		        </div>				
 		    </div>

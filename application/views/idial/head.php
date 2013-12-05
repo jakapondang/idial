@@ -25,7 +25,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </script>
     	
 
-		<title>{title}</title>
+		<title><?php print $mtitle;?></title>
 	<!-- META FOR IOS & HANDHELD -->
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -35,7 +35,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         
         <meta name="apple-touch-fullscreen" content="YES" />
         
-        <link rel="shortcut icon" href="{base_url}img/iDial-D-Logo.png">
+        <link rel="shortcut icon" href="<?php print $mbaseurl; ?>img/iDial-D-Logo.png">
 
         
         <!-- //META FOR IOS & HANDHELD -->
@@ -48,7 +48,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         <meta name="robots" content="INDEX,FOLLOW" />
 		<!--facebook-->
         <meta property="og:title" content="iDial Corner | Jual iPhone 5s , iPhone 5c, iPad mini | Toko iPhone , iPad , Android & Blackberry"/>
-        <meta property="og:image" content="{base_url}img/iDial-og.png"/>
+        <meta property="og:image" content="<?php print $mbaseurl; ?>img/iDial-og.png"/>
         <meta property="og:site_name" content="iDialCorner.com"/>
         <meta property="og:description" content="iDial Corner Toko Handphone online di ITC Kuningan Jakarta.Jual iPad mini,Jual iPhone 5s,Jual iPhone 5c,Promo iPhone,Promo iPad,Promo Android.Dapatkan PROMO setiap pembelian iPhone , iPad , Android dan Blackberry ."/>
 		<meta property="og:type" content="website"/>
@@ -56,11 +56,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         
         
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="{base_url}css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="{base_url}css/bootstrap-responsive.css">
-		<link rel="stylesheet" type="text/css" href="{base_url}css/style.css">
+        <link rel="stylesheet" type="text/css" href="<?php print $mbaseurl; ?>css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="<?php print $mbaseurl; ?>css/bootstrap-responsive.css">
+		<link rel="stylesheet" type="text/css" href="<?php print $mbaseurl; ?>css/style.css">
 		<!--[if lt IE 9]>
-			<link rel="stylesheet" type="text/css" href="{base_url}css/ie.css">
+			<link rel="stylesheet" type="text/css" href="<?php print $mbaseurl; ?>css/ie.css">
 		<![endif]-->
 		<!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script -->
 

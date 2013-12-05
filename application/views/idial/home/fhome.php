@@ -1,16 +1,16 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:200,300,400,600,700' rel='stylesheet' type='text/css'/>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,600,700' rel='stylesheet' type='text/css'/>
 <script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script>window.jQuery || document.write("<script src='{base_url}js/jquery-1.8.3.min.js'><\/script>")</script>
-<script language="javascript" type="text/javascript" src="{base_url}js/bootstrap.min.js"></script>
-<script language="javascript" type="text/javascript" src="{base_url}js/jquery.easing.1.3.js"></script>
-<script language="javascript" type="text/javascript" src="{base_url}js/jquery.eislideshow.js"></script>
-<link href='{base_url}css/ei-slider.css' rel='stylesheet' type='text/css'/>
-<link href='{base_url}css/slideshow.css' rel='stylesheet' type='text/css'/>
+<script>window.jQuery || document.write("<script src='<?php print $mbaseurl; ?>js/jquery-1.8.3.min.js'><\/script>")</script>
+<script language="javascript" type="text/javascript" src="<?php print $mbaseurl; ?>js/bootstrap.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php print $mbaseurl; ?>js/jquery.easing.1.3.js"></script>
+<script language="javascript" type="text/javascript" src="<?php print $mbaseurl; ?>js/jquery.eislideshow.js"></script>
+<link href='<?php print $mbaseurl; ?>css/ei-slider.css' rel='stylesheet' type='text/css'/>
+<link href='<?php print $mbaseurl; ?>css/slideshow.css' rel='stylesheet' type='text/css'/>
 
-<script language="javascript" type="text/javascript" src="{base_url}js/jquery.jcarousel.min.js"></script>
-<link href='{base_url}css/carousel.css' rel='stylesheet' type='text/css'/>
-<script type="text/javascript" src="{base_url}js/jpreloader.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php print $mbaseurl; ?>js/jquery.jcarousel.min.js"></script>
+<link href='<?php print $mbaseurl; ?>css/carousel.css' rel='stylesheet' type='text/css'/>
+<script type="text/javascript" src="<?php print $mbaseurl; ?>js/jpreloader.min.js"></script>
 <script>
     jQuery(document).ready(function()
     {
