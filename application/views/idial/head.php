@@ -25,7 +25,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </script>
     	
 
-		<title><?php print $mtitle;?></title>
+		<title><?php print $main_title;?></title>
 	<!-- META FOR IOS & HANDHELD -->
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -35,7 +35,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         
         <meta name="apple-touch-fullscreen" content="YES" />
         
-        <link rel="shortcut icon" href="<?php print $mbaseurl; ?>img/iDial-D-Logo.png">
+        <link rel="shortcut icon" href="<?php print $mbaseurl; ?>img/idialfavicon.png">
 
         
         <!-- //META FOR IOS & HANDHELD -->

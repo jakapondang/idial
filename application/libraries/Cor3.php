@@ -109,15 +109,37 @@ class Cor3 {
 
         }
 
+    public function cekRowContent($table ,$data){
+        return $this->CI->cor3_model->GetNumber_Row($table ,$data);
+    }
+
 // ======================================= ============= ============= ============= =============FUNCTION PAGE
     public function mainConfig(){
         $data=array(
             "themes" =>$this->themes,
-            "mpreload"  => $this->html($this->themes,array("preload")),//preload
             "mMenu"     => $this->mainMenu(),//menu
-            "mtitle"    => "iDial Corner | Jual iPhone 5s , iPhone 5c, iPad mini | Toko iPhone , iPad , Android & Blackberry",
-            "mbaseurl" =>base_url().'/assets/'.$this->themes.'/',
+            "mbaseurl" =>base_url().'assets/'.$this->themes.'/',
         );
+        // preload
+        $home = $this->CI->uri->segment(1);
+        if(($home!=NULL) || ($home!='home')){
+            $data['mpreload']="";
+        }else{
+            $data['mpreload']=$this->html($this->themes,array("preload"));
+        }
+
+        $editValue = $this->CI->cor3_model->getContentValue('jp_config');
+        if($editValue){
+            foreach($editValue as $row){
+                $data[$row->type] = $row->content;
+                if (strpos($row->type,'background') !== false) {
+                    $data[$row->type]= 'style="background:'.$row->content.';"';
+                }
+
+            }
+        }
+
+
         return $data;
     }
     public function mainMenu(){
@@ -137,7 +159,7 @@ class Cor3 {
             $subMenu = $this->CI->cor3_model->getMainMenu($table,$whereS);
             if(!empty($subMenu)||($subMenu!=NULL)){
 
-                $value .='<li class="dropdown"><a href="'.base_url().$mainMenu['uri_name'][$i].'" class="dropdown-toggle" data-toggle="dropdown">'. $mainMenu['name'][$i]."</a>";
+                $value .='<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">'. $mainMenu['name'][$i]."</a>";
                 $value .='<ul class="dropdown-menu">';
                 foreach($subMenu as $rowS){
 
@@ -148,7 +170,7 @@ class Cor3 {
             }
             else{
 
-                $value .='<li><a href="'.$mainMenu['id'][$i].'" >'. $mainMenu['name'][$i]."</a>";
+                $value .='<li><a href="'.base_url().$mainMenu['uri_name'][$i].'" >'. $mainMenu['name'][$i]."</a></li>";
             }
         }
         return $value;

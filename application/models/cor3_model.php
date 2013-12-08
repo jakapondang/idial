@@ -57,8 +57,12 @@ class Cor3_model extends CI_Model {
 
         return $returnValue;
     }
+    function getContentValue($table){
+        $query = $this->db->query("SELECT * FROM ".$table."");
+        $query_result =  $query->result();
+        return $query_result;
 
-
+    }
     function getMainMenu($table,$where="")
     {
         $query = $this->db->query('SELECT cat_id,parent_id AS pid,name,uri_name FROM '.$table.' WHERE status="1" '.$where );

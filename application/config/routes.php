@@ -40,11 +40,13 @@
 
 //$route['default_controller'] = "homeroot";
 $route['default_controller'] = "pages/index";
-$route['404_override'] = 'error404';
+$route['404_override'] = '';
 
 $route['/:any/(:any)'] = 'pages/view/$1';
 $route['(:any)'] = 'pages/view/$1';
 $route['Index'] = 'pages/index';
+$route['account'] = 'idial/account';
+$route['login'] = 'idial/login';
 
 /*
 

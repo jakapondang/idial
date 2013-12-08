@@ -1,4 +1,4 @@
-<div class="page-footer container_grey2">
+<div class="page-footer container_grey2" <?php print $bf_background?>>
     <div class="footer2 container">
         <div class="row">
             <div class="span12 faddress" style="text-align: center">
@@ -10,7 +10,7 @@
    </div>
 
 </div>
-<div class="page-footer container_grey">
+<div class="page-footer container_grey" <?php print $fo_background?>>
 	<div class="footer container">
 		    <div class="row">
                 <div class="span2 offset1">

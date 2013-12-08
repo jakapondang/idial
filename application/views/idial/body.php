@@ -1,19 +1,19 @@
 </head>
-<body>
+<body >
         <!-- Header -->
         <noscript>
       	 <div style="position:fixed; top:0px; left:0px; z-index:3000; height:100%; width:100%; background-color:#FFFFFF">
    		<div style="font-family: Tahoma; font-size: 14px; background-color:#5AC6FF; padding: 10pt;">To see this page as it is meant to appear, we ask that you please enable your Javascript!</div></div>
   		</noscript>
-<?php print $preload;?>
-	<div class="page-header container_black">
+<?php print $mpreload;?>
+	<div class="page-header container_black" <?php print $hm_background;?>>
         <!--header-->
 
     <div class="container header">
 		<div class="row">
 		    <div class="span9">
                 <div class="logo" style="float:left">
-                    <img src="<?php print $mbaseurl; ?>img/iDial-Logo.png" width="100px">
+                    <img src="<?php print $mbaseurl; ?>img/iDialLogo.png" style="width:100px">
                 </div>
 
                 <div class="span7" style="float:left">

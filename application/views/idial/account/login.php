@@ -77,7 +77,7 @@
                        </div>
                       	<div class="control-group">
 					        <div class="controls">
-					                <button class="btn" type="button" onclick="javascript:window.location='{site_url}register'">REGISTER</button>
+					                <button class="btn" type="button" onclick="javascript:window.location='<?php print base_url();?>register'">REGISTER</button>
 					         </div>
 				       </div>
                      </div>

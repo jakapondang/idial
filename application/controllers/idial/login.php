@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     
     class Login extends CI_Controller {
-        
+        //var  $themes ="idial";
         /**
         * Index Page for this controller.
         *
@@ -28,45 +28,24 @@
 
         }
         public function index() {
+            //main config
+            $mConfig = $this->cor3->mainConfig();
 
-            $themes ="idial";
-            $structure = array("head","body","account/hlogin_regis","account/login","footer","account/flogin");
-            $error_message = "";
-            $err_val = $this->input->get('err');
-            if(!empty($err_val)){
-                $error_message  = ' <div style="top:0px; left:0px;width:100%;background-color:#f2f2f2;margin-bottom:20px">';
-                if($err_val == 1 ){
-                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
-                                Sorry , Invalid login or password.
-                                </div>';
-                }
-                elseif($err_val == 2 ){
-                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
-                                If there is an account associated . you will receive an email with a link to reset your password.
-                                </div>';
-                }
-                elseif($err_val == 3 ){
-                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
-                                Sorry , Your session link is expired . Please try again.
-                                </div>';
-                }
-                elseif($err_val == 4 ){
-                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
-                                Thank you . Your password has been renew. Please try to login.
-                                </div>';
-                }
+           $errorMessage = $this->errorMessage($this->input->get('err'));
+            $head       = $mConfig;
+            $body       = $mConfig;
+            $content    ="";
+            $footer     ="";
+            $fcontent = "";
+
+            $this->load->view($mConfig['themes'].'/head',$head);
+            $this->load->view($mConfig['themes'].'/body',$body);
+            $this->load->view($mConfig['themes'].'/account/hlogin_regis',$content);
+            $this->load->view($mConfig['themes'].'/account/login',$content);
+            $this->load->view($mConfig['themes'].'/footer',$footer);
+            $this->load->view($mConfig['themes'].'/account/flogin',$fcontent);
 
 
-                $error_message .= '</div>';
-            }
-
-            /**/
-            $data = array(
-                "site_url"=>base_url(),
-                "error_message"=>$error_message,
-            );
-
-            print $this->cor3->html($themes,$structure,$data);
         }
 
         public function register() {
@@ -135,6 +114,39 @@
 			}else{
 				   print '<script>window.location="'.base_url().'login/?err=3";</script>';
 				}
+        }
+
+        public function errorMessage($err_val){
+
+            $error_message = "";
+
+            if(!empty($err_val)){
+                $error_message  = ' <div style="top:0px; left:0px;width:100%;background-color:#f2f2f2;margin-bottom:20px">';
+                if($err_val == 1 ){
+                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
+                                Sorry , Invalid login or password.
+                                </div>';
+                }
+                elseif($err_val == 2 ){
+                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
+                                If there is an account associated . you will receive an email with a link to reset your password.
+                                </div>';
+                }
+                elseif($err_val == 3 ){
+                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
+                                Sorry , Your session link is expired . Please try again.
+                                </div>';
+                }
+                elseif($err_val == 4 ){
+                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
+                                Thank you . Your password has been renew. Please try to login.
+                                </div>';
+                }
+
+
+                $error_message .= '</div>';
+            }
+            return $error_message;
         }
         
     }
