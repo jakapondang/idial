@@ -21,28 +21,32 @@
         public function __construct() {
             parent::__construct();
             $this->load->library(array('cor3'));
-            if($this->session->userdata('user_email')==NULL){
-                print '<script>window.location="'.base_url().'login";</script>';
-            }
 
         }
         
         public function index() {
             //get error message
-            $error_message = $this->errorMessage($this->input->get('err'));
 
-			$themes ="idial";
-            $structure = array("head","body","account/account","footer","account/faccount");
-            $data = array(
-                "site_url"=>base_url(),
-                "error_message"=>$error_message,
-                "email"=>$this->session->userdata('user_email'),
-                "firstname"=>$this->session->userdata('firstname'),
-                "lastname"=>$this->session->userdata('lastname'),
-                "phone"=>$this->session->userdata('phone'),
-            );
+            $mConfig = $this->cor3->mainConfig();
 
-			print $this->cor3->html($themes,$structure,$data);
+            $head       = $mConfig;
+            $body       = $mConfig;
+            $content    = $mConfig;
+            $footer     = $mConfig;
+            $fcontent   = $mConfig;
+
+
+            $content['error_message']   =$this->errorMessage($this->input->get('err'));
+            $content["email"]           =$this->session->userdata('user_email');
+            $content["firstname"]       =$this->session->userdata('firstname');
+            $content["lastname"]        =$this->session->userdata('lastname');
+            $content["phone"]           =$this->session->userdata('phone');
+
+			$this->load->view($mConfig['themes'].'/head',$head);
+            $this->load->view($mConfig['themes'].'/body',$body);
+            $this->load->view($mConfig['themes'].'/account/account',$content);
+            $this->load->view($mConfig['themes'].'/footer',$footer);
+            $this->load->view($mConfig['themes'].'/account/faccount',$fcontent);
         }
 		
         public function errorMessage($err_val=0){

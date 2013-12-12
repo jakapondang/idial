@@ -31,7 +31,9 @@
     <!-- Zebra Datepicker -->
     <link rel="stylesheet" href="{base_url}plugins/zebradp/css/mooncake/zebra_datepicker.css" media="screen">
 
-    <!-- End Plugin Stylesheets -->
+
+    <!-- CLEditor -->
+    <link rel="stylesheet" href="{base_url}plugins/cleditor/jquery.cleditor.css" media="screen">
 
     <!-- Main Layout Stylesheet -->
     <link rel="stylesheet" href="{base_url}css/fonts/icomoon/style.css" media="screen">

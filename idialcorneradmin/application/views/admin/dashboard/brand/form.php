@@ -9,13 +9,17 @@
                 <div class="widget-content form-container">
                   <form class="form-vertical" id="{pageContent}" action="{site_url}admin/{pageContentLink}/action" enctype="multipart/form-data" method="post">
                         <input type="hidden" name="id" value="{id}">
+                      <div style="padding: 10px" align="right">
+                          <button type="submit" class="btn btn-primary">Save</button>
+                          <!--  <button class="btn" type="reset">Clear Fields</button>-->
+                      </div>
                         <div class="control-group">
                             <label class="control-label">
                                 Name
                                 <span class="required">*</span>
                             </label>
                                 <div class="controls">
-                                    <input class="span12" value="{name}" type="text" name="name">
+                                    <input class="span12" value="{name}" onchange="return cekName(this.value)" id="name" type="text" name="name">
                                 </div>
                         </div>
                         <div class="control-group">
@@ -70,3 +74,28 @@
 </div>
 </div>
 </div>
+    <script>
+        function cekName(valueName){
+
+            if(valueName!=""){
+                var inputName = document.getElementById('name');
+                $.post( "<?php print base_url()?>admin/brand/postcekName", { name: valueName })
+                    .done(function( data ) {
+                        if(data>0){
+                            inputName.value = "";
+                        }else{
+                            //uri_name
+                            if (valueName) {
+                                var valueName = valueName.toLowerCase();
+                                var valueName = valueName.split(' ').join('-');
+                                document.getElementById('uri_name').value =valueName ;
+                            }
+
+                        }
+                    });
+            }
+
+
+
+        }
+    </script>

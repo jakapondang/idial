@@ -4,7 +4,7 @@
 		    <div class="span12">
 			    <div class="breadcrumbs">
 				    <ul class="breadcrumb">
-                        <li><a href="{site_url}">Home</a> <span class="divider">/</span></li>
+                        <li><a href="<?php print base_url();?>">Home</a> <span class="divider">/</span></li>
                         <li class="active">Account</li>
                     </ul>
 				</div>
@@ -19,14 +19,14 @@
 		</div>
 		
 		<div class="row">
-            {error_message}
+            <?php print $error_message?>
 		    <div class="span6">
 
 				<div class="row">
               
 				    <div class="span6">
                      	
-			        <form class="form-horizontal loginbox" id="loginForm" method="post" action="{site_url}idial/account_action/login">
+			        <form class="form-horizontal loginbox" id="loginForm" method="post" action="<?php print base_url();?>action/login">
 						<div class="control-group">
                        		 <p>Please type on your Email & Password :</p>
                             <span class="required">*</span><!--<label class="control-label" for="inputEmail"></label>-->
@@ -47,7 +47,7 @@
 						<div class="control-group">
 							<div class="controls">
 								<input class="btn" type="submit" value="LOGIN"/>
-								<a href="{site_url}lostpassword">Lost Password?</a>
+								<a href="<?php print base_url();?>account/lost-password">Lost Password?</a>
 							</div>
 						</div>
 			        </form>
@@ -77,55 +77,13 @@
                        </div>
                       	<div class="control-group">
 					        <div class="controls">
-					                <button class="btn" type="button" onclick="javascript:window.location='<?php print base_url();?>register'">REGISTER</button>
+					                <button class="btn" type="button" onclick="javascript:window.location='<?php print base_url();?>account/register'">REGISTER</button>
 					         </div>
 				       </div>
                      </div>
                     </div>
                   </div>
-			 <!--   <p>Register</p>
-			    <div class="row">
-				    <div class="span3">
-				            <form class="form-vertical">
-				            <div class="control-group">
-					            <label class="control-label" for="inputEmail">Username<span class="required">*</span></label>
-					            <div class="controls">
-					                <input type="text">
-					            </div>
-				            </div>
-				            <div class="control-group">
-					            <label class="control-label" for="inputPassword">Password<span class="required">*</span></label>
-					            <div class="controls">
-					                <input type="password">
-					            </div>
-				            </div>
-				            <div class="control-group">
-					            <div class="controls">
-					                <button class="btn" type="button">Register</button>
-					            </div>
-				            </div>
-				            </form>					
-                       
-                    </div>				
-			        <div class="span3">
-			            
-				        <form class="form-vertical">
-				            <div class="control-group">
-					            <label class="control-label" for="inputEmail">Email<span class="required">*</span></label>
-					            <div class="controls">
-					                <input type="text" id="inputEmail">
-					            </div>
-				            </div>
-							<div class="control-group">
-								<label class="control-label" for="inputPassword">Re-enter password<span class="required">*</span></label>
-								<div class="controls">
-									<input type="password" id="inputPassword">
-								</div>
-							</div>
-				        </form>	
-			           
-				    </div>
-                    -->
+
 				</div>
 			</div>
 		</div>

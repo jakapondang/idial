@@ -44,8 +44,10 @@
 
         }
         public function register() {
+            //main config
+            $mConfig = $this->cor3->mainConfig();
 
-
+            //action
           $email = $this->input->post('email');
             $phone = $this->input->post('phone');
             $pass  = $this->input->post('cpassword');
@@ -62,17 +64,16 @@
                 $subject    = "Welcome to iDialCorner.com";
                 $mailfrom   = "hello@idialcorner.com";
                 $mailto     = $email;
-                $mailbcc    = "jaka.pondang@gmail.com";
+                //$mailbcc    = $mConfig['main_email'];
                 $mailfname  = "iDial Corner";
 
                 $themes     ="idial";
                 $structure  = array("email/head","email/register","email/footer");
-                $data       = array(
-                    "site_url"=>base_url(),
-                    "username"=>ucfirst($username[0]),
-                    "email_user"=>$email,
-                    "pass_user"=> $pass
-                );
+                $data = $mConfig;
+                $data["username"]= ucfirst($username[0]);
+                $data["email_user"]=$email;
+                $data["pass_user"]= $pass;
+
                 $plain_message="";
                 $message    =  $this->cor3->html($themes,$structure,$data);
 
@@ -107,20 +108,32 @@
         }
 
         public function logout(){
-            if($this->session->userdata('user_email') ==NULL){
-                print '<script>window.location="'.base_url().'login";</script>';
 
-            }
             $this->usersecure->logout();
-            $themes ="idial";
-            $structure = array("head","body","account/logout","footer","account/faccount");
-            $data = array("site_url"=>base_url());
 
-            print $this->cor3->html($themes,$structure,$data);
+            $mConfig = $this->cor3->mainConfig();
+
+
+            $head       = $mConfig;
+            $body       = $mConfig;
+            $content    = $mConfig;
+            $footer     = $mConfig;
+            $fcontent   = $mConfig;
+
+
+            $this->load->view($mConfig['themes'].'/head',$head);
+            $this->load->view($mConfig['themes'].'/body',$body);
+            $this->load->view($mConfig['themes'].'/account/logout',$content);
+            $this->load->view($mConfig['themes'].'/footer',$footer);
+            $this->load->view($mConfig['themes'].'/account/faccount',$fcontent);
             print "<script>setInterval(function(){window.location='".base_url()."';},5000);</script>";
         }
 
         public function sentLostpassword() {
+            //main config
+            $mConfig = $this->cor3->mainConfig();
+            //$mConfig['main_email']="";
+            //
             $table = "jp_users";
             $email =  $this->input->post('email');
             $get   = "user_id";
@@ -162,17 +175,15 @@
                 $subject    = "Reset Password - iDialCorner.com";
                 $mailfrom   = "hello@idialcorner.com";
                 $mailto     = $email;
-                $mailbcc    = "jaka.pondang@gmail.com";
+                //$mailbcc    = $mConfig['main_email'];
                 $mailfname  = "iDial Corner";
 
                 $themes     ="idial";
                 $structure  = array("email/head","email/resetpassword","email/footer");
-                $data       = array(
-                    "site_url"=>base_url(),
-                    "username"=>ucfirst($fname),
-                    "reset_link"=>base_url()."reset_password/?token=".$code."&iD=".$userid,
+                $data = $mConfig;
+                $data["username"] = ucfirst($fname);
+                $data["reset_link"]= base_url()."account/reset-password/?token=".$code."&iD=".$userid;
 
-                );
                 $plain_message="";
                 $message    =  $this->cor3->html($themes,$structure,$data);
                 $this->cor3->sentEmail($subject,$message,$plain_message,$mailfrom,$mailfname,$mailto,$mailbcc);
@@ -214,7 +225,7 @@
                 print '<script>window.location="'.base_url().'lostpassword/?err=1";</script>';
             }
 
-            //print "test";
+
 
         }
 		
@@ -334,16 +345,16 @@
 
                 }
                 // update session meta
-                if($resultQuery == true){
+
                     $user_data[$keyName] = $valName;
                     $this->session->set_userdata($user_data);
-                }
+
 
             }//end attribute meta foreach
             if( empty($errorValue)){
-                $errorValue = "err=3";
+                $errorValue = "?err=3";
             }
-           print "<script>window.location='".base_url()."account/#profile".$errorValue."'</script>";
+         print "<script>window.location='".base_url()."account/".$errorValue."'</script>";
 
         }
         

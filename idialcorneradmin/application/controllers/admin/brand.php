@@ -6,7 +6,7 @@
         var $tableMeta  ="jp_brandmeta";
         var $iColumn    = "bra_id";
         var $page       = "brand";
-        var $imageLink  = "http://idialcorner.jp/assets/upload/";
+        var $imageLink  = "http://idialcorner.jp/assets/idial/upload/";
 
         /**
         * Index Page for this controller.
@@ -121,6 +121,7 @@
                     "pageContent2"=>"You can ".$pageContentHeader." Content here",
                     "error_message"=>$error_message,
                     "imageLink"=>$this->imageLink,
+                    "valUpload"=>"none"
 
                 );
                 // data edited
@@ -167,6 +168,7 @@
                     "sdesc"=>"",
                     "error_message"=>$error_message,
                     "imageLink"=>$this->imageLink,
+                    "valUpload"=>""
 
                 );
 
@@ -189,29 +191,34 @@
                $this->cor3_model->deleteValue($table, $dataWhere);
 
                 //delete img
-                $dataWhere["meta_key"]="imgName";
-                $resultValue = $this->cor3_model->getSQLvalue_where($tableMeta,$dataWhere,"meta_value");
-                $this->cor3_model->deleteValue($tableMeta, $dataWhere);
-
-                $pathDelete='../assets/upload/'.$this->page.'/'.$resultValue;
-                if(!empty($resultValue)|| ($resultValue!= NULL)){
-                    unlink($pathDelete);
-                    //delete_files('assets/upload/'.$this->page.'/'.$resultValue);
-                    print"success";
+                $dataWhere="bra_id ='".$id."' AND meta_key = 'imgName'";
+                $resultValue = $this->cor3_model->getResultContent($tableMeta,$dataWhere);
+                foreach($resultValue AS $row){
+                        $this->cor3_model->deleteValue($tableMeta, $dataWhere);
+                        $pathDelete1='../assets/idial/upload/'.$this->page.'/'.$row->meta_value;
+                        $pathDelete2='../assets/idial/upload/'.$this->page.'/thmb/'.$row->meta_value;
+                        unlink($pathDelete1);
+                        unlink($pathDelete2);
+                        //print $pathDelete2;
                 }
 
-                print "<script>window.location='".base_url().$this->page."/?err=3'</script>";
-
+               print "<script>window.location='".base_url().$this->page."/?err=3'</script>";
 
             }
         }
-
+        public function postcekName(){
+            $data = array(
+                'name'=>$this->input->post('name'),
+            );
+            $row = $this->cor3_model->GetNumber_Row($this->table ,$data);
+            print $row;
+        }
         public function action(){
 
 
             $table  = $this->table;
             $tableMeta = $this->tableMeta;
-            $page = $this->page;
+//            $page = $this->page;
 
             $id     =  $this->input->post('id');
             $name   = $this->input->post('name');
@@ -242,26 +249,26 @@
 
                 $ResultQuery = $this->cor3_model->updateValue($table, $data, $dataWhere);
 
-
-
-                if($ResultQuery==TRUE){
-                    // upload
+                // upload
                     $imageName = $this->jpupload->singleUpload($name."-".$id,$this->page);
-                     // input upload data att
-                    $errUpload="";
-                    if($imageName!= 0){
 
-                        $dataAttribute["imgName"] =$imageName['file_name'];
+                    $resizeImage = $this->jpupload->resizeUpload($this->page,$imageName['file_name'],100,75);
+                    //print $imageName;
+                    // input upload data att
+                      $errUpload="";
+                      if($imageName!= 0){
 
-                    }else{
-                        $errUpload = '&err2=5';
-                    }
-                    $this->action_meta($dataAttribute,$id ,$tableMeta);
+                          $dataAttribute["imgName"] =$imageName['file_name'];
+                          $dataAttribute["imgNametmb"] =$resizeImage;
 
-                    print "<script>window.location='".base_url().$this->page."/?err=2".$errUpload."'</script>";
-                }else{
-                    // print "not updated";
-                }
+                      }else{
+                          $errUpload = '&err2=5';
+                       }
+                       $this->action_meta($dataAttribute,$id ,$tableMeta);
+
+                      print "<script>window.location='".base_url().'admin/'.$this->page."/newUpdate/?id=".$id."&err=2".$errUpload."'</script>";
+
+
 
             }else{
                 $data["created"] = DATE('Y-m-d H:i:s');
@@ -270,12 +277,16 @@
                  if($ResultQuery['qstatus']==TRUE){
                     // upload
                     $imageName = $this->jpupload->singleUpload($name."-".$ResultQuery['id'],$this->page);
+                    $resizeImage = $this->jpupload->resizeUpload($this->page,$imageName['file_name'],100,75);
+
+                    //print $resizeImage;
                     // input upload data att
                     $errUpload="";
                     // input upload data att
                     if($imageName!= 0){
 
                         $dataAttribute["imgName"] =$imageName['file_name'];
+                        $dataAttribute["imgNametmb"] =$resizeImage;
 
                     }else{
                         $errUpload = '&err2=5';

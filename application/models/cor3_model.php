@@ -47,16 +47,33 @@ class Cor3_model extends CI_Model {
     function getSQLvalue_where($table,$data,$get){
 
         $query = $this->db->get_where($table,$data);
-        $returnValue = "";
+        $returnValue = array();
         if ($query->num_rows() > 0)
         {
             $row = $query->row();
 
-            $returnValue =  $row->$get;
+            $returnValue['val'] =  $row->$get;
         }
+        $returnValue['row'] = $query->num_rows;
 
         return $returnValue;
     }
+    function getSQLvalue_where2($table,$data,$get,$get2){
+
+        $query = $this->db->get_where($table,$data);
+        $returnValue = array();
+        if ($query->num_rows() > 0)
+        {
+            $row = $query->row();
+
+            $returnValue[$get] =  $row->$get;
+            $returnValue[$get2] =  $row->$get2;
+        }
+        $returnValue['row'] = $query->num_rows;
+
+        return $returnValue;
+    }
+
     function getContentValue($table){
         $query = $this->db->query("SELECT * FROM ".$table."");
         $query_result =  $query->result();
@@ -76,7 +93,7 @@ class Cor3_model extends CI_Model {
     }
 
     function getMAinMenu2($table,$where){
-        $query = $this->db->query('SELECT cat_id,parent_id AS pid,name,uri_name FROM '.$table.' WHERE status="1" '.$where );
+        $query = $this->db->query('SELECT cat_id,parent_id AS pid,name,uri_name FROM '.$table.' WHERE status="1" '.$where." LIMIT 0,6" );
 
         $Value['name'] = array();
         $Value['id'] = array();

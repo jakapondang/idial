@@ -58,7 +58,8 @@
                   </span>
                 <ul class="inner-nav">
                     <li><a href="{site_url}dashboard"><i class="icol-dashboard"></i> Dashboard</a></li>
-                    <li><a href="{site_url}config"><i class="icol-cog"></i> Config</a></li>
+                    <li><a href="{site_url}config"><i class="icol-cog"></i> Main Store</a></li>
+                    <li><a href="{site_url}background"><i class="icol-cog"></i> Web Background colour</a></li>
 
                 </ul>
             </li>

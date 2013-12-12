@@ -2,7 +2,7 @@
 
 class Jpupload {
 
-    var $path= '../assets/upload/';
+    var $path= '../assets/idial/upload/';
 	
 	function Jpupload(){
 			$this->CI =& get_instance();
@@ -14,7 +14,9 @@ class Jpupload {
 	
     public function singleUpload($newName , $category="")
     {
-            $config['upload_path'] = $this->path.$category;
+            $path = $this->path.$category;
+
+            $config['upload_path'] =$path;
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']	= '0';
             $config['file_name'] = $newName;
@@ -24,19 +26,41 @@ class Jpupload {
             if (!$this->CI->upload->do_upload())
             {
 
-               // $data =  $this->CI->upload->display_errors();
+               //$data =  $this->CI->upload->display_errors();
                 $data = 0;
             }
             else
             {
                 $data =$this->CI->upload->data();
 
-
             }
         return $data;
 
 
     }
+
+
+    public function resizeUpload($category,$imgName,$width,$height){
+        $this->CI->load->library('image_lib');
+
+        $path = $this->path.$category.'/'.$imgName;
+        $npath = $this->path.$category.'/thmb/'.$imgName;
+
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $path;
+        $config['new_image'] = $npath;
+       // $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width']     = $width;
+        $config['height']   = $height;
+
+        $this->CI->image_lib->clear();
+        $this->CI->image_lib->initialize($config);
+        $this->CI->image_lib->resize();
+        return $imgName;
+    }
+
+
     public function  multiUpload($newName,$category="")
     {
 
@@ -66,7 +90,7 @@ class Jpupload {
 
             }
 
-
+            //$this->resizeUpload($category,$imgName,$width,$height);
         }
         return $data;
 
@@ -85,11 +109,37 @@ class Jpupload {
             return $config;
     }
 
+    // ============ CSV FILES
+    function csvUpload() {
 
+        $path =  $this->path.'import/';
+        $temp = $_FILES["userfile"]["tmp_name"];
+        $name = $_FILES["userfile"]["name"];
+        $type = $_FILES["userfile"]["type"];
+        $Result = "";
+        if(!empty($temp)){
+            if($type == "text/csv"){
+                if(! move_uploaded_file($temp, $path.$name )){
+                    $Result['error'] = 15;
 
+                }else{
+                    $Result['import']=$path.$name;
+                    $Result['error'] = 0;
+                }
+            }else{
+                $Result['error'] = 14;
 
+            }
+        }else{
+            $Result['error'] = 13;
+        }
+        return $Result;
 
+        //$allowedExts = array("text/csv", "jpeg", "jpg", "png");
+        /*if(! move_uploaded_file($temp, $path.$name )){
 
+        }*/
 
+    }
 }
 ?>

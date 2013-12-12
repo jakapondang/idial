@@ -9,7 +9,11 @@
                 <div class="widget-content form-container">
                   <form class="form-vertical" id="{pageContent}" action="{site_url}admin/{pageContentLink}/action" enctype="multipart/form-data" method="post" >
                         <input type="hidden" name="id" value="{id}">
-                        <div class="control-group">
+                      <div style="padding: 10px" align="right">
+                          <button type="submit" class="btn btn-primary">Save</button>
+                          <!--  <button class="btn" type="reset">Clear Fields</button>-->
+                      </div>
+                      <div class="control-group">
                             <label class="control-label">
                                 Name
                                 <span class="required">*</span>

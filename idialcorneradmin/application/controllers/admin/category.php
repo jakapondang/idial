@@ -195,7 +195,13 @@
 
            }
         }
-
+        public function postcekName(){
+            $data = array(
+                'name'=>$this->input->post('name'),
+            );
+            $row = $this->cor3_model->GetNumber_Row($this->table ,$data);
+            print $row;
+        }
         public function action(){
 
             $table  = $this->table;

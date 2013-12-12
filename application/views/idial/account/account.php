@@ -4,7 +4,7 @@
 		    <div class="span12">
 			    <div class="breadcrumbs">
 				    <ul class="breadcrumb">
-                        <li><a href="{site_url}">Home</a> <span class="divider">/</span></li>
+                        <li><a href="<?php print base_url();?>">Home</a> <span class="divider">/</span></li>
                         <li class="active">Account</li>
                     </ul>
 				</div>
@@ -30,7 +30,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
-                            <h3>Hello, {firstname} !</h3>
+                            <h3>Hello, <?php print $firstname?> !</h3>
 
                             <p>
                             Here on your Dashboard you have the ability to view a snapshot of your recent account activity and update your account information.
@@ -40,15 +40,15 @@
                         <div class="tab-pane" id="profile">
 
                             <h3>EDIT ACCOUNT INFORMATION</h3>
-                            {error_message}
+ <?php print $error_message?>
                             <p>You can edit your account information here :</p>
-                            <form  id="editAccountInfo" method="post" action="{site_url}idial/account_action/editAccount">
+                            <form  id="editAccountInfo" method="post" action="<?php print base_url();?>action/edit-account">
 
                                 <fieldset>
                                     <div class="span4" style="margin-left: -5px">
                                           <div class="control-group">
                                                 <div class="controls">
-                                                    <input type="text" value="{firstname}" id="fname" name="fname" placeholder="First Name" class="validate[required] text-input">
+                                                    <input type="text" value="<?php print $firstname?>" id="fname" name="fname" placeholder="First Name" class="validate[required] text-input">
                                                 </div>
 
                                         </div>
@@ -56,7 +56,7 @@
                                         <span class="required" style="float: right;margin-bottom:-20px">*</span>
 
                                             <div class="controls">
-                                                <input type="text" value="{email}" placeholder="Email" class="validate[required,custom[email]] text-input" name="email" id="email">
+                                                <input type="text" value="<?php print $email?>" placeholder="Email" class="validate[required,custom[email]] text-input" name="email" id="email">
                                             </div>
 
                                         </div>
@@ -65,7 +65,7 @@
                                     <div class="span4" style="">
                                         <div class="control-group">
                                             <div class="controls">
-                                                <input type="text" value="{lastname}" id="lname" name="lname"  placeholder="Last Name" >
+                                                <input type="text" value="<?php print $lastname?>" id="lname" name="lname"  placeholder="Last Name" >
                                             </div>
 
                                         </div>
@@ -73,7 +73,7 @@
                                         <div class="control-group">
                                             <span class="required" style="float: right;margin-bottom:-20px">*</span>
                                             <div class="controls">
-                                                <input type="text" value="{phone}" id="phone" name="phone" placeholder="Phone Number" class="validate[custom[phone]] text-input">
+                                                <input type="text" value="<?php print $phone?>" id="phone" name="phone" placeholder="Phone Number" class="validate[custom[phone]] text-input">
                                             </div>
 
                                         </div>

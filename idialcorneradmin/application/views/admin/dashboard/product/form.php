@@ -17,7 +17,12 @@
 
                <form class="form-vertical" id="{pageContent}" action="{site_url}admin/{pageContentLink}/action" enctype="multipart/form-data" method="post">
                     <input type="hidden" name="id" value="{id}">
+
                    <div class="tab-content">
+                       <div style="padding: 10px" align="right">
+                           <button type="submit" class="btn btn-primary">Save</button>
+                           <!--  <button class="btn" type="reset">Clear Fields</button>-->
+                       </div>
                        <div class="tab-pane active" id="tab-01">
                            <div class="widget-content form-container">
                                <div class="control-group">
@@ -26,7 +31,7 @@
                                        <span class="required">*</span>
                                    </label>
                                    <div class="controls">
-                                       <input class="span12" value="{name}" type="text" name="name">
+                                       <input class="span12" id="name" placeholder=""  value="{name}" type="text" name="name">
                                    </div>
                                </div>
                                <div class="control-group">
@@ -38,8 +43,21 @@
                                        <input class="span12" value="{sku}" type="text" name="sku">
                                    </div>
                                </div>
+
+                              <div class="control-group">
+                                   <label class="control-label" for="input01">Category</label>
+                                   <div class="controls">
+                                       <select id="input01" name="cat_id" class="span12">
+                                           <option value="0">-- Pick A Category --</option>
+                                           {catValue}
+                                           <option  value="{catid}" {selected}>{nameP} </option>
+                                           {/catValue}
+                                       </select>
+                                   </div>
+                               </div>
+
                                <div class="control-group">
-                                   <label class="control-label" for="input01">Parent {pageContent}</label>
+                                   <label class="control-label" for="input01">Brand</label>
                                    <div class="controls">
                                        <select id="input01" name="bra_id" class="span12">
                                            <option value="0">-- Pick A Brand --</option>
@@ -97,6 +115,16 @@
                                </div>
                                <div class="control-group">
                                    <label class="control-label">
+                                       STOCK ITEM
+                                       <span class="required">*</span>
+                                   </label>
+                                   <div class="controls">
+                                       <input class="span12" value="{stock}" type="text" name="stock">
+                                       <p class="help-block"><code>Format : Number Only.</code></p>
+                                   </div>
+                               </div>
+                              <!-- <div class="control-group">
+                                   <label class="control-label">
                                        DISCOUNT
                                        <span class="required">*</span>
                                    </label>
@@ -104,7 +132,7 @@
                                        <input class="span12" value="{discount}" type="text" name="discount">
                                        <p class="help-block"><code>Format : Number Only.</code></p>
                                    </div>
-                               </div>
+                               </div>-->
                            </div>
                        </div>
                        <div class="tab-pane" id="tab-03">
@@ -167,3 +195,4 @@
 </div>
 </div>
 </div>
+

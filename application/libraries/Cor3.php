@@ -109,23 +109,30 @@ class Cor3 {
 
         }
 
-    public function cekRowContent($table ,$data){
-        return $this->CI->cor3_model->GetNumber_Row($table ,$data);
-    }
 
 // ======================================= ============= ============= ============= =============FUNCTION PAGE
     public function mainConfig(){
         $data=array(
+            "base_url" =>base_url(),
             "themes" =>$this->themes,
             "mMenu"     => $this->mainMenu(),//menu
             "mbaseurl" =>base_url().'assets/'.$this->themes.'/',
         );
-        // preload
-        $home = $this->CI->uri->segment(1);
-        if(($home!=NULL) || ($home!='home')){
-            $data['mpreload']="";
+        // ACCOUNT LOGOUT
+        if($this->CI->session->userdata('user_email')==NULL){
+            $data['macc_logout']="";
+
         }else{
-            $data['mpreload']=$this->html($this->themes,array("preload"));
+            //logout
+           $data['macc_logout']='<div class="headerMenu"><a href="'.base_url().'logout"><div class="icon_logout"></div></a></div>';
+        }
+
+        // preload
+       /**/ $home = $this->CI->uri->segment(1);
+        if(($home!=NULL) ){
+            $data['mpreload']="";
+         }else{
+           $data['mpreload']=$this->html($this->themes,array("preload"));
         }
 
         $editValue = $this->CI->cor3_model->getContentValue('jp_config');
@@ -175,6 +182,14 @@ class Cor3 {
         }
         return $value;
     }
+
+    public function cekRowContent($table ,$data,$get){
+        return $this->CI->cor3_model->getSQLvalue_where($table ,$data,$get);
+    }
+    public function cekRowContent2($table ,$data,$get,$get2){
+        return $this->CI->cor3_model->getSQLvalue_where2($table ,$data,$get,$get2);
+    }
+
 
 
 }

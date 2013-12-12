@@ -758,6 +758,10 @@
                 "iTotalDisplayRecords" => $iFilteredTotal,
                 "aaData" => array()
             );
+            //category
+            $categoryName = $this->categoryNm();
+            // Brand
+            $brandName = $this->brandQuery();
 
             // merge join
             //$aColumns1 = array_merge($aColumns2,$aColumns1);
@@ -776,7 +780,14 @@
                     {
                         /* General output */
                         // status
-                        if($columnSetOrder[$i] == 'status'){
+
+                        if($columnSetOrder[$i] == 'cat_id'){
+                            $row[] = $categoryName[$aRow[$columnSetOrder[$i]]];
+                        }/**/
+                        elseif($columnSetOrder[$i] == 'bra_id'){
+                            $row[] = $brandName[$aRow[$columnSetOrder[$i]]];
+                        }
+                        elseif($columnSetOrder[$i] == 'status'){
                             if($aRow[ $columnSetOrder[$i] ]>0){
                                 $row[] = "enabled";
                             }else{
@@ -787,9 +798,8 @@
                         elseif($columnSetOrder[$i] == 'meta_value'){
 
                             $row[] = "<img src='".base_url()."assets/upload/brand/".$aRow[ $columnSetOrder[$i] ]."' width='100px'/>";
-
-
-                        }else{
+                        }
+                        else{
                             $row[] = $aRow[ $columnSetOrder[$i] ];
                         }
                     }
@@ -799,6 +809,65 @@
 
             echo json_encode( $output );
         }
+        function brandQuery(){
+
+            $query = sprintf("SELECT bra_id ,name FROM jp_brand WHERE status='1'");
+
+            // Perform Query
+            $result = mysql_query($query);
+
+                // Check result
+                // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+            if (!$result) {
+                $message  = 'Invalid query: ' . mysql_error() . "\n";
+                $message .= 'Whole query: ' . $query;
+                die($message);
+            }
+
+            // Use result
+            // Attempting to print $result won't allow access to information in the resource
+            // One of the mysql result functions must be used
+            // See also mysql_result(), mysql_fetch_array(), mysql_fetch_row(), etc.
+            $return = "";
+            while ($row = mysql_fetch_assoc($result)) {
+                $return[$row['bra_id']] = $row['name'];
+
+            }
+
+            return $return;
+
+        }
+
+      function categoryNm(){
+
+            $query = sprintf("SELECT cat_id ,name FROM jp_category WHERE status='1'");
+
+            // Perform Query
+            $result = mysql_query($query);
+
+            // Check result
+            // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+            if (!$result) {
+                $message  = 'Invalid query: ' . mysql_error() . "\n";
+                $message .= 'Whole query: ' . $query;
+                die($message);
+            }
+
+            // Use result
+            // Attempting to print $result won't allow access to information in the resource
+            // One of the mysql result functions must be used
+            // See also mysql_result(), mysql_fetch_array(), mysql_fetch_row(), etc.
+            $return = "";
+            while ($row = mysql_fetch_assoc($result)) {
+                $return[$row['cat_id']] = $row['name'];
+
+            }
+
+            return $return;
+
+        } /* */
+
+
 
     }
     

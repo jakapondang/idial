@@ -7,7 +7,7 @@
         var $tableMeta  ="jp_productmeta";
         var $iColumn    = "pro_id";
         var $page       = "product";
-        var $imageLink  = "http://idialcorner.jp/assets/upload/";
+        var $imageLink  = "http://idialcorner.jp/assets/idial/upload/";
         /**
         * Index Page for this controller.
         *
@@ -26,7 +26,7 @@
 
         public function __construct() {
             parent::__construct();
-            $this->load->library(array('cor3','cor3_model','jpupload'));
+            $this->load->library(array('cor3','cor3_model','jpupload','csvreader'));
 			$this->load->model(array('admin/product_model'));
             $this->load->helper("file");
 
@@ -53,8 +53,8 @@
              $tableName =$this->table;
              $page = strtoupper($this->page);
              // var table
-             $ColumnOrder =$this->iColumn.",sku,name,nett,gross,status,created,updated";
-             $column = $this->iColumn.",sku,name,status,created,updated";
+             $ColumnOrder =$this->iColumn.",cat_id,bra_id,sku,name,nett,gross,status,updated";
+             $column = $this->iColumn.",cat_id,bra_id,sku,name,status,updated";
              $colEnd = count(explode(',',$column));
 
              $column2 = "nett,gross";
@@ -68,6 +68,7 @@
                  "urlActionTable"=>$themes.'/tableview/ijoin/?tBn1='.$this->table.'&tBn2='.$this->table2.'&Oc='.$ColumnOrder.'&colTab1='.$column.'&colTab2='.$column2.'&icl='.$iColumn,
                  "urlEditRow"=>$themes.'/'.strtolower($page).'/newUpdate/',
                  "urlDelRow"=>$themes.'/'.strtolower($page).'/delete/',
+                 "urlImpPro"=>strtolower($page).'/import/' ,
                  "tableFormName" =>$tableName,
                  "tableType" =>"action",
                  "colEnd" =>$colEnd,
@@ -102,6 +103,9 @@
                 "dashboard/form/footer");
 
             $id = $this->input->get('id');
+            $brandValue = $this->product_model->getBrand();
+            $catValue = $this->product_model->getCategory2();
+            $catName = $this->product_model->getCategoryALL();
 
             if(!empty($id)){// if EDIT
 
@@ -126,6 +130,7 @@
                 foreach($editValue as $row){
                     $data[$this->iColumn] =  $row->$iColumn;
                     $data['name'] =  $row->name;
+                    $data['cat_id'] =  $row->cat_id;
                     $data['bra_id'] =  $row->bra_id;
                     $data['sku'] =  $row->sku;
 
@@ -138,8 +143,8 @@
                 }
 
 
-                // data parent selected
-                $brandValue = $this->product_model->getBrand();
+                // data BRAND selected
+
                 $Count = count($brandValue);
 
                 for($i=0;$i<$Count;$i++){
@@ -155,13 +160,36 @@
                 }
                  $data['brandValue'] = $brandValue;
 
+                // data Category selected
+
+                $Count = count($catValue);
+
+                for($i=0;$i<$Count;$i++){
+
+                    if(in_array($data['cat_id'], $catValue[$i])){
+
+                        $catValue[$i]['selected']="selected";
+
+                    }else{
+                        $catValue[$i]['selected']="";
+                    }
+
+                    if($catValue[$i]['parid']>0){
+                        $catValue[$i]['nameP'] = $catName[$catValue[$i]['parid']]." >> ".$catValue[$i]['nameP'];
+
+                    }
+
+                }
+                $data['catValue'] = $catValue;
+
                 // data edited 2
                 $editValue2 = $this->product_model->getValue($this->table2,$iColumn,$id);
 
                 foreach($editValue2 as $row){
                    $data['nett'] =  $row->nett;
                    $data['gross'] =  $row->gross;
-                   $data['discount'] =  $row->discount;
+                   //$data['discount'] =  $row->discount;
+                    $data['stock'] =  $row->stock;
 
                 }
                 // data meta edited
@@ -170,6 +198,7 @@
                 //$data['desc'] =   $this->product_model->getValueMeta($tableMeta,$id,'desc');
 
                 $editValuemeta = $this->product_model->getValueImage($tableMeta,$iColumn,$id);
+                //print_r($editValuemeta);
                 $data['imagePreview'] ="";
                 foreach($editValuemeta as $row){
                     $data[$row->meta_key] =  $row->meta_value;
@@ -197,10 +226,6 @@
             }else{// if NEW
                 $pageContentHeader = "Add New";
                 // data parent selected
-                $brandValue = $this->product_model->getBrand();
-
-
-
 
                 $data = array(
                     "site_url"=>base_url(),
@@ -218,7 +243,8 @@
                     "sku"=>"",
                     "nett"=>"",
                     "gross"=>"",
-                    "discount"=>"",
+                    //"discount"=>"",
+                    "stock"=>"",
                     "status"=>"checked",
                     "parent_id"=>"",
                     "selected"=>"",
@@ -228,10 +254,24 @@
                     'brandValue' => $brandValue,
 
                 );
+                // data Category
+
+                $Count = count($catValue);
+
+                for($i=0;$i<$Count;$i++){
+
+                   if($catValue[$i]['parid']>0){
+                        $catValue[$i]['nameP'] = $catName[$catValue[$i]['parid']]." >> ".$catValue[$i]['nameP'];
+
+                    }
+
+                }
+                $data['catValue'] = $catValue;
+
 
             }
 
-            print $this->cor3->html($themes,$structure,$data);
+           print $this->cor3->html($themes,$structure,$data);
 
 
 
@@ -249,14 +289,17 @@
                $this->cor3_model->deleteValue($table, $dataWhere);
                $this->cor3_model->deleteValue($table2, $dataWhere);
                 //delete img
-                $resultValue = $this->product_model->getValueImage($tableMeta,$id);
+                $resultValue = $this->product_model->getValueImage($tableMeta,$this->iColumn,$id);
                 //print_r($resultValue);
-                $this->cor3_model->deleteValue($tableMeta, $dataWhere);
+
                 if(!empty($resultValue)||($resultValue!=NULL)){
+                    $this->cor3_model->deleteValue($tableMeta, $dataWhere);
                     foreach($resultValue as $row){
 
-                       $pathDelete='../assets/upload/'.$this->page.'/'.$row->meta_value;
-                       unlink($pathDelete);
+                       $pathDelete1='../assets/idial/upload/'.$this->page.'/'.$row->meta_value;
+                       $pathDelete2='../assets/idial/upload/'.$this->page.'/thmb/'.$row->meta_value;
+                       unlink($pathDelete1);
+                        unlink($pathDelete2);
                        //delete_files('assets/upload/'.$this->page.'/'.$resultValue);
 
 
@@ -269,6 +312,7 @@
             }
         }
 
+
         public function action(){
 
 
@@ -280,6 +324,7 @@
             $name   = $this->input->post('name');
             $status =  $this->input->post('status');
             $sku    =  $this->input->post('sku');
+            $cat_id = $this->input->post('cat_id');
             $bra_id = $this->input->post('bra_id');
 
             if(!empty($name)&&!empty($sku)){
@@ -295,6 +340,7 @@
                     $data = array(
                         "name"=>$name,
                         "bra_id"=>$bra_id,
+                        "cat_id"=>$cat_id,
                         "sku"=>$sku,
                         "status"=>$status,
                         "author"=>$this->session->userdata('user_id'),
@@ -304,14 +350,17 @@
                 }
                 $nett    =  $this->input->post('nett');
                 $gross    =  $this->input->post('gross');
-                $discount    =  $this->input->post('discount');
+                //$discount    =  $this->input->post('discount');
+                $stock    =  $this->input->post('stock');
+
 
                 if(!empty($nett)&& !empty($gross)){
 
                     $data2 = array(
                     "nett"=>$nett,
                     "gross"=>$gross,
-                    "discount"=>$discount,
+                    //"discount"=>$discount,
+                     "stock"=>$stock
 
                     );
                 }else{
@@ -348,20 +397,22 @@
                     //upload
                      $imageName = $this->jpupload->multiUpload($name."-".$id,$this->page);
                     // input upload data att
-
-                    //print_r($imageName);
+                    $rowIMG = count($imageName);
                     $imgI =1;
-                    for($i=0;$i<=count($imageName);$i++){
+                    for($i=0;$i<=$rowIMG;$i++){
                         if($imageName[$i]){
+                           // $resizeImage = $this->jpupload->resizeUpload($this->page,$imageName['file_name']);
                             $dataAttribute["imgName".$imgI] =$imageName[$i]['file_name'];
+
+                            $dataAttribute["imgNametmb".$imgI] = $this->jpupload->resizeUpload($this->page,$imageName[$i]['file_name'],400,400);
                         }
                         $imgI ++;
                     }
 
 
-                    $this->action_meta($dataAttribute,$id ,$tableMeta);
+                    $actionMeta = $this->action_meta($dataAttribute,$id ,$tableMeta);
 
-                    if(($ResultQuery==TRUE)||($ResultQuery2==TRUE)){
+                    if(($ResultQuery==TRUE)||($ResultQuery2==TRUE)||($rowIMG>0) ){
                         print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$id."&err=2'</script>";
                     }else{
                          print "not updated";
@@ -391,6 +442,7 @@
                         for($i=0;$i<=count($imageName);$i++){
                             if($imageName[$i]){
                                 $dataAttribute["imgName".$imgI] =$imageName[$i]['file_name'];
+                                $dataAttribute["imgNametmb".$imgI] = $this->jpupload->resizeUpload($this->page,$imageName[$i]['file_name'],400,400);
                             }
                             $imgI ++;
                         }
@@ -467,6 +519,9 @@
                     elseif($err_val == 3 ){
                         $error_message .= '<strong>Data Has been Deleted. !</strong></div>';
                     }
+                    elseif($err_val == 4 ){
+                        $error_message .= '<strong>Data Has been Imported. !</strong></div>';
+                    }
 
 
                 }else{
@@ -478,12 +533,128 @@
                     elseif($err_val == 12 ){
                         $error_message .= '<strong>Please fill NAME & SKU. !</strong></div>';
                     }
+                    elseif($err_val == 13 ){
+                        $error_message .= '<strong>Your files is empty , please browse the import file .csv !</strong></div>';
+                    }
                 }
 
 
 
             }
             return $error_message;
+        }
+
+        public function importproduct(){
+            $err_val = $this->input->get('err');
+            $error_message = $this->errorMessage($err_val);
+            $page= $this->page;
+            $iColumn=$this->iColumn;
+            $themes ="admin";
+            $structure = array(
+                "dashboard/head",
+                "dashboard/body",
+                "dashboard/".$page."/impexp",
+                "dashboard/form/footer"
+            );
+            $data = array(
+                "site_url"=>base_url(),
+                "dashboard" => '',
+                "catalog" =>'class="active"' ,
+                "extra" =>'' ,
+                "error_message"=>$error_message,
+                "pageContent"=>strtoupper($page),
+                "pageContentLink"=>$page,
+                "pageContent2"=>"You can import your data ".strtoupper($page),
+            );
+
+            print $this->cor3->html($themes,$structure,$data);
+
+        }
+        public function action_import(){
+
+           $data = "";
+           $result =  $this->jpupload->csvUpload();
+            if($result['error']>0){//not success
+                print "<script>window.location='".base_url().$this->page."/import/?err=".$result['error']."';</script>";
+            }else{//success upload
+
+                $csvData = $this->csvreader->parse_file($result['import']);
+
+                $i =0;
+                $error =array();
+                foreach($csvData AS $row){
+                    //product main
+                    $data[$i] = array(
+                        "cat_id"=>$row['cat_id'],
+                        "bra_id"=>$row['bra_id'],
+                        "name"=>$row['name'],
+                        "sku"=>$row['sku'],
+                        "status"=>$row['status'],
+                        "created"=>date("Y-m-d H:i:s"),
+                        "author"=>$this->session->userdata('user_id')
+                    );
+
+                    //product price
+                    $data2[$i] = array(
+                        "nett"=>$row['nett'],
+                        "gross"=>$row['gross'],
+                        "stock"=>$row['stock']
+                    );
+
+                    if(($row['pro_id']>0)||($row['pro_id']!=NULL)||!empty($row['pro_id'])){
+                        $Whereid[$i]= array('pro_id'=>$row['pro_id']);
+                        // product main
+                        $result = $this->import_insert_updated($this->table,$Whereid[$i] ,$data[$i]);
+                        // product price
+                        $result2 = $this->import_insert_updated($this->table2,$Whereid[$i] ,$data2[$i]);
+
+
+                    }else{
+                       // product main
+                        $result = $this->cor3_model->insertValue($this->table,$data[$i]);
+                        if($result['id']>0){// product price if id exist
+                            $id[$i]= array('pro_id'=>$result['id']);
+                            $data2[$i] = array_merge($id[$i], $data2[$i]);
+                            $result2 = $this->cor3_model->insertValue($this->table2,$data2[$i]);
+
+                        }else{
+
+                        }
+
+                    }
+                    $i++;
+                }// end foreach
+
+
+                   print "<script>window.location='".base_url().$this->page."/import/?err=4';</script>";
+
+               /* if(!$error){ //success}else{
+                   print "<script>window.location='".base_url().$this->page."/import/?err=14&mess=".$error."';</script>";
+               }*/
+
+            }
+        }
+
+        function import_insert_updated($table,$Whereid ,$data){
+
+            $rowExist = $this->cor3_model->GetNumber_Row ($table,$Whereid);
+             if($rowExist>0){
+                 $result =  $this->cor3_model->updateValue($table, $data,$Whereid);
+                //print_r($data);
+
+             }else{
+                if($table==$this->table2){
+                    $join =array_merge( $Whereid ,$data);
+
+                    $result = $this->cor3_model->insertValue($table,$join);
+                }else{
+                    $result = $this->cor3_model->insertValue($table,$data);
+                }
+
+             }
+            return $result;
+
+
         }
 
 

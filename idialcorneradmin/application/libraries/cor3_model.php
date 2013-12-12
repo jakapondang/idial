@@ -75,5 +75,16 @@ class Cor3_model {
         return $returnValue;
     }
 
+    public function getResultContent ($table,$data){
+
+        $query = $this->CI->db->get_where($table,$data);
+        $return="";
+        if($query->num_rows()>0){
+            $return = $query->result();
+        }
+
+        return $return;
+    }
+
 }
 

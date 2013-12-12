@@ -21,22 +21,20 @@
         public function __construct() {
             parent::__construct();
             $this->load->library(array('cor3'));
-            if($this->session->userdata('user_email')!=NULL){
-                print '<script>window.location="'.base_url().'account";</script>';
-
-            }
 
         }
         public function index() {
             //main config
             $mConfig = $this->cor3->mainConfig();
 
-           $errorMessage = $this->errorMessage($this->input->get('err'));
             $head       = $mConfig;
             $body       = $mConfig;
-            $content    ="";
+            $content    = array(
+                            'error_message'=>$this->errorMessage($this->input->get('err')),
+                        );
+
             $footer     ="";
-            $fcontent = "";
+            $fcontent   = "";
 
             $this->load->view($mConfig['themes'].'/head',$head);
             $this->load->view($mConfig['themes'].'/body',$body);
@@ -49,68 +47,77 @@
         }
 
         public function register() {
-				$themes ="idial";
-					$structure = array("head","account/hlogin_regis","body","account/register","footer","account/fregister");
+            $mConfig = $this->cor3->mainConfig();
 
-					$error_message = "";
-                    $err_val = $this->input->get('err');
-					if($err_val == 1 ){
-                        $error_message = '
-                            <div style="top:0px; left:0px;width:100%;background-color:#f2f2f2;margin-bottom:20px">
-   							<div style=" font-size: 14px; color:red; padding: 10px;">
-							Sorry , Email address is already exist. Please try again.
-							</div></div>';
-                    }
-                        /**/
-					$data = array(
-							"site_url"=>base_url(),
-							"error_message"=>$error_message,
-					);
+            $head       = $mConfig;
+            $body       = $mConfig;
+            $content    = array(
+                'error_message'=>$this->errorMessage($this->input->get('err')),
+            );
 
-					print $this->cor3->html($themes,$structure,$data);
-			
-			
+            $footer     ="";
+            $fcontent   = "";
+
+            $this->load->view($mConfig['themes'].'/head',$head);
+            $this->load->view($mConfig['themes'].'/body',$body);
+            $this->load->view($mConfig['themes'].'/account/hlogin_regis',$content);
+            $this->load->view($mConfig['themes'].'/account/register',$content);
+            $this->load->view($mConfig['themes'].'/footer',$footer);
+            $this->load->view($mConfig['themes'].'/account/fregister',$fcontent);
+
         }
 
 
 
 
         public function lostpassword() {
+            $mConfig = $this->cor3->mainConfig();
 
-            $themes ="idial";
-            $structure = array("head","body","account/hlogin_regis","account/lostpass","footer","account/flostpass");
-            $error_message = "";
-           $err_val = $this->input->get('err');
-            if($err_val == 1 ){
-                $error_message = '<div style="top:0px; left:0px;width:100%;background-color:#f2f2f2;margin-bottom:20px">
-   							<div style=" font-size: 14px; color:red; padding: 10px;">
-							Sorry , Your email is not register yet . <a href="'.base_url().'register">Click here for register to our site </a>.
-							</div></div>';
-            }
-
-            /**/
-            $data = array(
-                "site_url"=>base_url(),
-                "error_message"=>$error_message,
+            $head       = $mConfig;
+            $body       = $mConfig;
+            $content    = array(
+                'error_message'=>$this->errorMessage($this->input->get('err')),
             );
 
-            print $this->cor3->html($themes,$structure,$data);
+            $footer     ="";
+            $fcontent   = "";
+
+            $this->load->view($mConfig['themes'].'/head',$head);
+            $this->load->view($mConfig['themes'].'/body',$body);
+            $this->load->view($mConfig['themes'].'/account/hlogin_regis',$content);
+            $this->load->view($mConfig['themes'].'/account/lostpass',$content);
+            $this->load->view($mConfig['themes'].'/footer',$footer);
+            $this->load->view($mConfig['themes'].'/account/flostpass',$fcontent);
+
+
         }
         public function resetpassword() {
 			$token = $this->input->get('token');
 			$userid = $this->input->get('iD');
 			if(!empty($token)){
-				$themes ="idial";
-				$structure = array("head","body","account/hlogin_regis","account/resetpassword","footer","account/fresetpass");
-				$error_message = "";
-				$data = array(
-					"site_url"=>base_url(),
-					"error_message"=>$error_message,
-					"token"=>$token,
-					"userid"=>$userid
-				);
+                $mConfig = $this->cor3->mainConfig();
+
+                $head       = $mConfig;
+                $body       = $mConfig;
+                $content    = array(
+                    'error_message'=>$this->errorMessage($this->input->get('err')),
+                    "token"=>$token,
+                    "userid"=>$userid,
+                );
+
+                $footer     ="";
+                $fcontent   = "";
+
+                $this->load->view($mConfig['themes'].'/head',$head);
+                $this->load->view($mConfig['themes'].'/body',$body);
+                $this->load->view($mConfig['themes'].'/account/hlogin_regis',$content);
+                $this->load->view($mConfig['themes'].'/account/resetpassword',$content);
+                $this->load->view($mConfig['themes'].'/footer',$footer);
+                $this->load->view($mConfig['themes'].'/account/fresetpass',$fcontent);
+
+
 	
-				print $this->cor3->html($themes,$structure,$data);
+
 			}else{
 				   print '<script>window.location="'.base_url().'login/?err=3";</script>';
 				}
@@ -141,6 +148,17 @@
                     $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
                                 Thank you . Your password has been renew. Please try to login.
                                 </div>';
+                }
+                elseif($err_val == 5 ){
+                    $error_message .= '<div style=" font-size: 14px; color:red; padding: 10px;">
+                                    Sorry , your email is already registered. Please try to <a href="'.base_url().'login">login</a> or <a href="'.base_url().'lost-password">forgot your password</a>.
+                                </div>';
+                }
+                elseif($err_val == 6 ){
+                    $error_message = '<div style="top:0px; left:0px;width:100%;background-color:#f2f2f2;margin-bottom:20px">
+   							<div style=" font-size: 14px; color:red; padding: 10px;">
+							Sorry , Your email is not register yet . <a href="'.base_url().'register">Click here for register to our site </a>.
+							</div></div>';
                 }
 
 

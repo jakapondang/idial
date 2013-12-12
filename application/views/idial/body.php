@@ -13,7 +13,9 @@
 		<div class="row">
 		    <div class="span9">
                 <div class="logo" style="float:left">
-                    <img src="<?php print $mbaseurl; ?>img/iDialLogo.png" style="width:100px">
+                    <a href="<?php print base_url();?>">
+                        <img src="<?php print $mbaseurl; ?>img/iDialLogo.png"  style="width:100px">
+                    </a>
                 </div>
 
                 <div class="span7" style="float:left">
@@ -29,48 +31,6 @@
                                     <?php
                                     print $mMenu;
                                     ?>
-                                    <!--{menuCategory}
-                                        <li><a href="{site_url}{name}">{name}</a></li>
-                                    {/menuCategory}-->
-                                    <!--
-                                    <li><a href="{site_url}">HOME</a></li>
-                                    <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">SMARTPHONE</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Apple</a></li>
-                                            <li><a href="#">Blackberry</a></li>
-                                            <li><a href="#">Samsung</a></li>
-                                            <li><a href="#">Lenovo</a></li>
-                                            <li><a href="#">Nokia</a></li>
-                                        </ul>
-                                    </li>
-                                 <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">TABLET</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Apple</a></li>
-                                            <li><a href="#">Blackberry</a></li>
-                                            <li><a href="#">Samsung</a></li>
-                                            <li><a href="#">Lenovo</a></li>
-                                            <li><a href="#">Nokia</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="{site_url}">MAC</a></li>
-
-                                    <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#">ACCESSORIES</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="cart.html">iPhone</a></li>
-                                            <li><a href="site-map.html">iPad</a></li>
-                                            <li><a href="404.html">Samsung</a></li>
-                                            <li><a href="forgot-password.html">Lenovo</a></li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="checkout.html">SECOND</a></li>
-                                    <!--<li><a href="about.html">LAYANAN</a></li>
-
-                                    <li><a href="about.html">TENTANG KAMI</a></li>
-                                    <li><a href="{site_url}contact">HUBUNGI</a></li>
-                                    <li><a href="blog.html">BLOG</a></li>-->
 
 
                                 </ul>
@@ -87,7 +47,7 @@
                        <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">
                            <div class="icon_cart"></div>
                        </a>
-                      <div class="cart-info dropdown-menu">
+                     <!-- <div class="cart-info dropdown-menu">
                            <table class="table">
                                <thead>
                                </thead>
@@ -105,7 +65,7 @@
                                    <td class="quantity">x&nbsp;3</td>
                                    <td class="total">$230.00</td>
                                    <td class="remove"><img src="<?php print $mbaseurl; ?>image/remove-small.png" alt="Remove" title="Remove"></td>
-                               </tr>-->
+                               </tr>
                                </tbody>
                            </table>
                            <div class="cart-total">
@@ -124,16 +84,16 @@
                                <div class="checkout"><a href="cart.html">View Cart</a> | <a href="checkout.html">Checkout</a></div>
                            </div>
                        </div>
-                  </div>
-                <!--<div class="headerMenu">
-                </div>-->
+
+-->
+                    </div>
                 <div class="headerMenu">
                     <a href="<?php print base_url();?>login">
                      <div class="icon_account"></div>
                     </a>
                  </div>
 
-
+                <?php print $macc_logout;?>
                 <div class="headerSearch">
                     <div class="icon_search"></div>
                     <input type="text" id="search" placeholder="Search" style=""/>

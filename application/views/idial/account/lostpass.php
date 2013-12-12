@@ -4,7 +4,7 @@
 		    <div class="span12">
 			    <div class="breadcrumbs">
 				    <ul class="breadcrumb">
-                        <li><a href="{site_url}">Home</a> <span class="divider">/</span></li>
+                        <li><a href="<?php print base_url()?>">Home</a> <span class="divider">/</span></li>
                         <li class="active">Lost Password</li>
                     </ul>
 				</div>
@@ -20,7 +20,7 @@
 		
 		<div class="row">
             <div class="span12">
-                {error_message}
+                <?php print $error_message?>
 			</div>
 			<div class="span6">
 
@@ -29,7 +29,7 @@
 
 				    <div class="span9">
 
-				            <form class="form-vertical" id="registerForm" method="post" action="{site_url}idial/account_action/sentLostpassword">
+				            <form class="form-vertical" id="registerForm" method="post" action="<?php print base_url()?>action/lost-password">
                            
                             
 				            <div class="control-group" >

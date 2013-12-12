@@ -4,7 +4,7 @@
         <div class="span12">
             <div class="breadcrumbs">
                 <ul class="breadcrumb">
-                    <li><a href="{site_url}">HOME</a> <span class="divider">/</span></li>
+                    <li><a href="<?php print base_url();?>">HOME</a> <span class="divider">/</span></li>
                     <li class="active">Contact Us</li>
                 </ul>
             </div>
@@ -27,7 +27,7 @@
     <div class="row">
         <div class="span6">
             <div class="contact_form">
-                <h3>Contact Form</h3>
+                <h3>Contact Us</h3>
                 <form>
                     <fieldset>
                         <span class="required">*</span>
@@ -48,16 +48,10 @@
         <div class="span6">
             <div class="location">
                 <h3>iDial info</h3>
-                <span class="address">Alamat:</span>
+                <span class="address">Address:</span>
 
-                <p> ITC Kuningan</p>
-                <p>Jembatan 1  , Lantai 3 , No.07 Jakarta</p>
-                <p>Indonesia 12940</p>
-                <br>
-                <p>Phone:  021 - 91799788</p>
-                <p>BBM: 2A9B48671</p>
-                <p>Email: hello@idialcorner.com</p>
-                <p>Web: idialcorner.com</p>
+                <?php print $main_store;?>
+
             </div>
         </div>
     </div>

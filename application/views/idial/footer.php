@@ -42,10 +42,10 @@
                    <div>
                    <h3>My Account</h3>
                        <ul>
-                           <li><a href="account.html">My Account</a></li>
-                           <li><a href="#">Order History</a></li>
+                           <li><a href="<?php print base_url()?>login">My Account</a></li>
+                           <li><a href="<?php print base_url()?>register">Resgister</a></li>
                            <li><a href="#">Wish List</a></li>
-                           <li><a href="{site_url}lostpassword">Lost Password</a></li>
+                           <li><a href="<?php print base_url()?>lost-password">Lost Password</a></li>
                        </ul>
                      </div>
                </div>
@@ -64,15 +64,7 @@
               <!-- --><div class="span4 faddress">
                    <div>
                    <h3>Address</h3>
-                       <ul>
-                           <li>ITC Kuningan Jakarta</li>
-                           <li>Jembatan 1 Lantai 3 No.07 , Indonesia </li>
-
-                           <li>Phone:  021 - 91799788 | 0859 - 59159555</li>
-                           <li>Email : hello@idialcorner.com | BBM: 2A9B48671</li>
-
-                          <!-- <li><a href="#">Accessories</a></li>-->
-                       </ul>
+                       <?php print $main_store;?>
                      </div>
                </div>
            </div>

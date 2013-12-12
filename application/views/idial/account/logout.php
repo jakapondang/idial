@@ -4,7 +4,7 @@
 		    <div class="span12">
 			    <div class="breadcrumbs">
 				    <ul class="breadcrumb">
-                        <li><a href="{site_url}">Home</a> <span class="divider">/</span></li>
+                        <li><a href="<?php print base_url(); ?>">Home</a> <span class="divider">/</span></li>
                         <li class="active">Logout</li>
                     </ul>
 				</div>

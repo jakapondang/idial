@@ -23,6 +23,8 @@
 <!-- Customizer, remove if not needed -->
 <script src="{base_url}js/customizer.js"></script>
 
+
+
 <!-- Uniform Script -->
 <script src="{base_url}plugins/uniform/jquery.uniform.min.js"></script>
 
@@ -34,15 +36,15 @@
 
 <!-- Plugin Scripts -->
 
-<!-- Zebra Datepicker -->
-<script src="{base_url}plugins/zebradp/zebra_datepicker.min.js"></script>
-
 <!-- Colorpicker -->
 <script src="{base_url}plugins/minicolors/jquery.minicolors.min.js"></script>
 <script src="{base_url}plugins/farbtastic/farbtastic.min.js"></script>
 
 <!-- Demo Scripts -->
 <script src="{base_url}adminjs/minicolour.js"></script>
+
+
+
 
 </body>
 

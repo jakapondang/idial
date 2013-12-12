@@ -46,13 +46,10 @@
             $pageContentHeader ="";
 
             $structure = array(
-                "dashboard/formc/head",
+                "dashboard/form/head",
                 "dashboard/body",
                 "dashboard/".$this->page."/form",
-                "dashboard/formc/footer");
-
-            // data edited
-            $editValue = $this->jpconfig_model->getValueConfig($this->table);
+                "dashboard/form/footer");
             $data= array(
                 "site_url"=>base_url(),
                 "dashboard" => 'class="active"',
@@ -65,103 +62,172 @@
                 "pageContent2"=>"You can set your ".$this->page." Content here",
                 "error_message"=>$error_message
             );
+            // data edited
+            $editValue = $this->jpconfig_model->getValueConfig($this->table,"WHERE type LIKE 'main_%'");
             foreach($editValue as $row){
                 $data[$row->type] = $row->content;
+                if($row->type == 'main_category'){// category
+                    $mcat_id =$row->content;
+                }
+            }
+            // Category
+            $catValue = $this->jpconfig_model->getCategory();
+            //$data['catValue1'] = $catValue;
+            //$data['catValue2']  = $catValue;
+            //$data['catValue3']  = $catValue;
+
+            $mcat_id =  explode(',',$mcat_id);
+            $mcat_array =array();
+            for($i=0;$i<count($mcat_id);$i++){
+                for($c= 0 ; $c<count($catValue);$c++){
+                    if(IN_ARRAY($mcat_id[$i] ,$catValue[$c])){
+
+                        $catValue[$c]['selected']="selected='selected'";
+                        //print   $catValue[$c]['catid']."selected";
+
+                    }else{
+                        $catValue[$c]['selected']="";
+                        //print  $catValue[$c]['catid']."NOTSELECTED";
+                    }
+
+
+                }
+                $data['catValue'.$i] = $catValue;
+
+            }
+
+
+
+
+
+          print $this->cor3->html($themes,$structure,$data);
+
+
+        }
+
+        public function background(){
+
+
+            //themes
+            $themes ="admin";
+            if($this->input->get('err')){
+                $error_message = $this->errorMessage($this->input->get('err'));
+            }else{
+                $error_message = "";
+            }
+            $pageContentHeader ="";
+
+            $structure = array(
+                "dashboard/formc/head",
+                "dashboard/body",
+                "dashboard/".$this->page."/bgform",
+                "dashboard/formc/footer");
+            $data= array(
+                "site_url"=>base_url(),
+                "dashboard" => 'class="active"',
+                "catalog" =>'' ,
+                "extra" =>'',
+                "error_message"=>$error_message,
+                "pageContent"=>strtoupper($this->page),
+                "pageContentLink"=>$this->page,
+                "pageContentHeader" =>$pageContentHeader,
+                "pageContent2"=>"You can set your ".$this->page." Content here",
+                "error_message"=>$error_message
+            );
+            // data edited
+            $editValue = $this->jpconfig_model->getValueConfig($this->table,"WHERE type NOT LIKE 'main_%'");
+            foreach($editValue as $row){
+                $data[$row->type] = $row->content;
+
             }
 
             print $this->cor3->html($themes,$structure,$data);
 
 
-            /* if($this->input->get('id')!=NULL){// if EDIT
-                 $id = $this->input->get('id');
-                 $pageContentHeader = "Edit";
-                 $edit = "AND cat_id !=".$id." ";
-
-
-
-                     // variable html
-                     $data = array(
-                         "site_url"=>base_url(),
-                         "dashboard" => 'class="active"',
-                         "catalog" =>'' ,
-                         "extra" =>'',
-                         "pageContent"=>strtoupper($this->page),
-
-                         "pageContentLink"=>$this->page,
-                         "pageContentHeader" =>$pageContentHeader,
-                         "pageContent2"=>"You can ".$pageContentHeader." Content here",
-                         "error_message"=>$error_message,
-
-                         //"editCatValue"=>$editCatValue,
-
-                     );
-                     $data = array_merge($data,$valueEdited);
-
-             }else{// if NEW
-                 $pageContentHeader = "";
-
-                 $data = array(
-                     "site_url"=>base_url(),
-                     "dashboard" => 'class="active"',
-                     "catalog" =>'' ,
-                     "extra" =>'',
-                     "pageContent"=>strtoupper($this->page),
-                     "id"=>$id,
-                     "pageContentLink"=>$this->page,
-                     "pageContentHeader" =>$pageContentHeader,
-                     "pageContent2"=>"You can set your ".$this->page." Content here",
-                     "error_message"=>$error_message,
-
-                     "type"=>"",
-                     "content"=>"",
-                     "status"=>"checked",
-
-                 );
-
-             }
- */
-            //print $this->cor3->html($themes,$structure,$data);
-
-
         }
 
 
-        public function action(){
-            $main_email = $this->input->post('main_email');
-            $header_menu_background = $this->input->post('header_menu_background');
-            $body_background = $this->input->post('body_background');
-            $footer_background = $this->input->post('footer_background');
-            if(!empty($main_email)||!empty($header_menu_background)){
+        public function action_config(){
+           $main_title = $this->input->post('main_title');
+           $main_email = $this->input->post('main_email');
+           $main_store = $this->input->post('main_store');
+
+
+           $mcat_id ="";
+           for( $i=0 ; $i < count($_POST['mcat_id']) ; $i++ )
+           {
+
+                   $mcat_id[] = $_POST['mcat_id'][$i];
+
+                // if you require then the query for your database
+           }
+
+            if(!empty($main_title)||!empty($main_email)||!empty($mcat_id)){
+               $data = array(
+                   'content'=>$main_title,
+                   "author"=>$this->session->userdata('user_id'),
+               );
+               $dataWhere = array('type'=>'main_title');
+               $this->cor3_model->updateValue($this->table, $data, $dataWhere);
+
+               $data = array(
+                   'content'=>$main_email,
+                   "author"=>$this->session->userdata('user_id'),
+               );
+               $dataWhere = array('type'=>'main_email');
+               $this->cor3_model->updateValue($this->table, $data, $dataWhere);
+
+
+              $mcat_id =  implode(',',$mcat_id);
+               $data = array(
+                'content'=>$mcat_id,
+                "author"=>$this->session->userdata('user_id'),
+               );
+               $dataWhere = array('type'=>'main_category');
+               $this->cor3_model->updateValue($this->table, $data, $dataWhere);
+
+              $data = array(
+                     'content'=>$main_store,
+                     "author"=>$this->session->userdata('user_id'),
+                 );
+               $dataWhere = array('type'=>'main_store');
+               $this->cor3_model->updateValue($this->table, $data, $dataWhere);
+
+               print "<script>window.location='".base_url().$this->page."/?err=2'</script>";
+           }
+
+
+        }
+        public function action_background(){
+
+            $hm_background = $this->input->post('hm_background');
+            $bf_background = $this->input->post('bf_background');
+            $fo_background = $this->input->post('fo_background');
+
+
+            if(!empty($hm_background)||!empty($bf_background)||!empty($fo_background)){
+
                 $data = array(
-                    'content'=>$main_email,
+                    'content'=>$hm_background,
                     "author"=>$this->session->userdata('user_id'),
                 );
-                $dataWhere = array('type'=>'main_email');
+                $dataWhere = array('type'=>'hm_background');
                 $this->cor3_model->updateValue($this->table, $data, $dataWhere);
 
                 $data = array(
-                    'content'=>$header_menu_background,
+                    'content'=>$bf_background,
                     "author"=>$this->session->userdata('user_id'),
                 );
-                $dataWhere = array('type'=>'header_menu_background');
+                $dataWhere = array('type'=>'bf_background');
                 $this->cor3_model->updateValue($this->table, $data, $dataWhere);
 
                 $data = array(
-                    'content'=>$body_background,
+                    'content'=>$fo_background,
                     "author"=>$this->session->userdata('user_id'),
                 );
-                $dataWhere = array('type'=>'body_background');
+                $dataWhere = array('type'=>'fo_background');
                 $this->cor3_model->updateValue($this->table, $data, $dataWhere);
-
-                $data = array(
-                    'content'=>$footer_background,
-                    "author"=>$this->session->userdata('user_id'),
-                );
-                $dataWhere = array('type'=>'footer_background');
-                $this->cor3_model->updateValue($this->table, $data, $dataWhere);
-
-
-                print "<script>window.location='".base_url().$this->page."/?err=2'</script>";
+               print "<script>window.location='".base_url().$this->page."/?err=2'</script>";
             }
 
 

@@ -9,7 +9,12 @@
         <div class="toolbar">
             <div class="btn-group">
                 <span class="btn" rel="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="<code>ADD NEW </code>" title="{pageContent}">
-                   <a href="{site_url}{urlEditRow}" class="buttonADDnew" >ADD NEW {pageContent}</a>
+                   <a href="{site_url}{urlEditRow}" class="buttonADDnew" >ADD NEW </a>
+                </span>
+            </div>
+            <div class="btn-group">
+                <span class="btn" rel="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="<code>ADD NEW </code>" title="{pageContent}">
+                   <a href="{site_url}{urlImpPro}" class="buttonADDnew" >IMPORT </a>
                 </span>
             </div>
         </div>
@@ -19,12 +24,14 @@
             <thead>
             <tr>
                 <th>ID</th>
+                <th>Category</th>
+                <th>Brand</th>
                 <th>SKU</th>
                 <th>Name</th>
                 <th>NETT</th>
                 <th>GROSS</th>
                 <th>status</th>
-                <th>Created</th>
+
                 <th>Updated</th>
                 <th>Action</th>
             </tr>

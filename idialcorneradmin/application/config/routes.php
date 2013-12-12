@@ -54,6 +54,11 @@ $route['brand'] = 'admin/brand';
 $route['product'] = 'admin/product';
 $route['page'] = 'admin/page';
 $route['config'] = 'admin/config';
+$route['background'] = 'admin/config/background';
+
+$route['product/import']='admin/product/importproduct';
+$route['product/action/import']='admin/product/action_import';
+
 
 
 

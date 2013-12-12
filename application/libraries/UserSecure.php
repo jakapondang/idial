@@ -223,9 +223,7 @@ class usersecure
 			$user_data['user'] = $user_data['user_email']; // for compatibility with Simplelogin
 			$user_data['logged_in'] = true;
 			$this->CI->session->set_userdata($user_data);
-            //logout
-            $dataLogout = array('html_logout'=>'<div class="headerMenu"><a href="{site_url}logout"><div class="icon_logout"></div></a></div>');
-            $this->CI->session->set_userdata($dataLogout);
+           
 			
 			return true;
 		} 

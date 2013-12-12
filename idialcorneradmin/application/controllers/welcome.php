@@ -20,17 +20,27 @@ class Welcome extends CI_Controller {
 	 public function __construct() {
             parent::__construct();
             
-            $this->load->library('cor3');
+            //$this->load->library('csvreader');
            // $this->load->model(array('cart_product_model','cart_user_model','home_model'));
         }
 	public function index()
 	{
-		$var = $this->cor3->html_head();
-		print $var;
-		//print "1231";
-		$this->load->view('welcome_message');
-		
-	}
+
+            $this->load->library('csvreader');
+
+            $filePath = 'assets/test3.csv';
+
+            $csvData = $this->csvreader->parse_file($filePath);
+
+            foreach($csvData AS $row){
+
+                if( $row['pro_id']){
+
+                }
+
+            }
+            // $this->load->view('welcome_message', $data);
+    }
 }
 
 /* End of file welcome.php */

@@ -42,12 +42,32 @@
 $route['default_controller'] = "pages/index";
 $route['404_override'] = '';
 
+$route['/:any/(:any)/(:any)'] = 'pages/product/$1';
 $route['/:any/(:any)'] = 'pages/view/$1';
 $route['(:any)'] = 'pages/view/$1';
 $route['Index'] = 'pages/index';
+
+$route['price-list'] = 'idial/pricelist';
+
+$route['contact'] = 'idial/contact';
+
 $route['account'] = 'idial/account';
 $route['login'] = 'idial/login';
+$route['logout'] = 'idial/account_action/logout/';
 
+
+$route['account'] = 'idial/account';
+$route['account/register'] = 'idial/login/register';
+$route['account/lost-password'] = 'idial/login/lostpassword';
+
+$route['account/resetpassword'] = 'idial/login/resetpassword';
+$route['account/reset-password'] = 'idial/account_action/getLinkResetpassword/';
+
+
+$route['action/login'] = 'idial/account_action/login';
+$route['action/edit-account'] = 'idial/account_action/editAccount';
+$route['action/register'] ='idial/account_action/register';
+$route['action/lost-password'] ='idial/account_action/sentLostpassword';
 /*
 
 //cs
