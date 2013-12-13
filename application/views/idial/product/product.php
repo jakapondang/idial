@@ -52,36 +52,16 @@
             <div class="tabs">
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="active"><a href="#home">Description</a></li>
-                   <!-- <li><a href="#profile">Specification</a></li>
-                    <li><a href="#messages">Reviews</a></li>-->
+                  <li><a href="#profile">Specification</a></li>
+                   <!-- <li><a href="#messages">Reviews</a></li>-->
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="home">
-                        <?php print htmlspecialchars_decode($desc);?>
+                        <?php print htmlspecialchars_decode($sdesc);?>
                     </div>
                     <div class="tab-pane" id="profile">
-                        <table class="table specs">
-                            <tr>
-                                <th>Color</th>
-                                <th>Size</th>
-                                <th>Weight</th>
-                            </tr>
-                            <tr>
-                                <td>Blue</td>
-                                <td>XS</td>
-                                <td>1.00</td>
-                            </tr>
-                            <tr>
-                                <th>Composition</th>
-                                <th>Sleeve</th>
-                                <th>Care</th>
-                            </tr>
-                            <tr>
-                                <td>100% Cotton</td>
-                                <td> Long Sleeve</td>
-                                <td>IRON AT 110ºC MAX</td>
-                            </tr>
-                        </table>
+                        <?php print htmlspecialchars_decode($desc);?>
+
                     </div>
                     <div class="tab-pane" id="messages">
                         <p>There are no reviews yet, would you like to <a href="#review_btn">submit yours?</a></p>

@@ -6,13 +6,13 @@
 <div class="widget">
     <div class="widget-header">
         <span class="title">{pageContent} DataTable</span>
-      <!--  <div class="toolbar">
+      <div class="toolbar">
             <div class="btn-group">
                 <span class="btn" rel="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="<code>ADD NEW </code>" title="{pageContent}">
                    <a href="{site_url}{urlEditRow}" class="buttonADDnew" >ADD NEW {pageContent}</a>
                 </span>
             </div>
-        </div>-->
+        </div> <!-- -->
     </div>
     <div class="widget-content table-container">
         <table id="{tableFormName}" class="table table-striped">

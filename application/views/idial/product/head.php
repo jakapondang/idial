@@ -40,17 +40,17 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         
         <!-- //META FOR IOS & HANDHELD -->
 
-        <meta name="description" content="iDial Corner Toko Handphone online di ITC Kuningan Jakarta.Jual iPad mini,Jual iPhone 5s,Jual iPhone 5c,Promo iPhone,Promo iPad,Promo Android.Dapatkan PROMO setiap pembelian iPhone , iPad , Android dan Blackberry .">
+        <meta name="description" content="iDial Corner Toko Handphone online di ITC Kuningan Jakarta. Dapatkan PROMO setiap pembelian iPhone , iPad , Android dan Blackberry .">
         <meta name="author" content="iDialCorner.com">
         
-        <meta name="keywords" content="harga iPhone 5s,harga iPhone 5c,harga ipad mini,harga ipad air,iPhone 5s murah, iPhone 5c Murah,ipad mini Murah,price list smartphone dan tablets" />
+        <meta name="keywords" content="harga <?php print $nameB ?> , harga <?php print $pro_name?>,<?php print $pro_name?> murah,<?php print $nameB ?> murah,<?php print $pro_name?> second,<?php print $nameB ?> second" />
         
         <meta name="robots" content="INDEX,FOLLOW" />
 		<!--facebook-->
-        <meta property="og:title" content="iDial Corner | Jual iPhone 5s , iPhone 5c, iPad mini | Toko iPhone , iPad , Android & Blackberry"/>
-        <meta property="og:image" content="<?php print $mbaseurl; ?>img/iDial-og.png"/>
+        <meta property="og:title" content="<?php print $main_title;?>"/>
+        <meta property="og:image" content="<?php print $mbaseurl; ?>upload/product/thmb/<?php print $fimage?>"/>
         <meta property="og:site_name" content="iDialCorner.com"/>
-        <meta property="og:description" content="iDial Corner Toko Handphone online di ITC Kuningan Jakarta.Jual iPad mini,Jual iPhone 5s,Jual iPhone 5c,Promo iPhone,Promo iPad,Promo Android.Dapatkan PROMO setiap pembelian iPhone , iPad , Android dan Blackberry ."/>
+        <meta property="og:description" content="harga <?php print $nameB ?> , harga <?php print $pro_name?>,<?php print $pro_name?> murah,<?php print $nameB ?> murah,<?php print $pro_name?> second,<?php print $nameB ?> second"/>
 		<meta property="og:type" content="website"/>
         <meta property="og:page_id" content="404411586327449" />
         

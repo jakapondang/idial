@@ -78,13 +78,13 @@
 
 
                                <div class="control-group">
-                                   <label class="control-label">Short Description</label>
+                                   <label class="control-label">Description</label>
                                    <div class="controls">
                                        <textarea id="sdesc" name="sdesc">{sdesc}</textarea>
                                    </div>
                                </div>
                                <div class="control-group">
-                                   <label class="control-label">Description</label>
+                                   <label class="control-label">Spec</label>
                                    <div class="controls">
                                        <textarea id="desc" name="desc">{desc}</textarea>
                                    </div>

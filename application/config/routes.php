@@ -49,7 +49,10 @@ $route['Index'] = 'pages/index';
 
 $route['price-list'] = 'idial/pricelist';
 
-$route['contact'] = 'idial/contact';
+$route['contact'] = 'idial/information/contact';
+$route['about-us'] = 'idial/information/aboutus';
+$route['privacy-policy'] = 'idial/information/privacypolicy';
+$route['terms-conditions'] = 'idial/information/terms';
 
 $route['account'] = 'idial/account';
 $route['login'] = 'idial/login';

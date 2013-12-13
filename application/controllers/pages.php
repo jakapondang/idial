@@ -179,8 +179,7 @@
         public function product($proName="",$rowPro="")
         {
             $mConfig = $this->cor3->mainConfig();
-            $head       = $mConfig;
-            $body       = $mConfig;
+
             $content    = $mConfig;
 
             $content['pro_name']=  strtoupper($proName);
@@ -200,6 +199,7 @@
                 if($resultBrand){
                     foreach($resultBrand AS $rowB){
                         $content['nameB'] = $rowB->nameB;
+
                     }
                 }
                 //Product Price
@@ -236,11 +236,12 @@
 
             }
 
-            //$content['product']=$this->catalog->catalogProduct($cat1,$cat2,$row2['val']);
+            $head       = $content;
+            $body       = $mConfig;
             $footer     = $mConfig;
             $fcontent   = $mConfig;
 
-            $this->load->view($mConfig['themes'].'/head',$head);
+            $this->load->view($mConfig['themes'].'/product/head',$head);
             $this->load->view($mConfig['themes'].'/body',$body);
             $this->load->view($mConfig['themes'].'/product/product',$content);
             $this->load->view($mConfig['themes'].'/footer',$footer);
