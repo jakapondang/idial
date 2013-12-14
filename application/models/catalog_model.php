@@ -114,6 +114,21 @@ class Catalog_model extends CI_Model {
 
     }
 
+    function getRelatedProduct($bra_id,$pro_id){
+        $query = $this->db->query(
+            "SELECT A.pro_id AS proid , A.name AS title , A.sku AS sku , D.gross AS price , C.meta_value AS imgName FROM jp_product A
+            INNER JOIN jp_brand B ON A.bra_id = B.bra_id
+            LEFT JOIN jp_productmeta C ON A.pro_id = C.pro_id
+            LEFT JOIN jp_productprice D ON A.pro_id = D.pro_id
+            WHERE ( A.bra_id='".$bra_id."' AND A.pro_id != '".$pro_id."' AND A.status='1' AND C.meta_key LIKE 'imgNametmb%') ORDER BY RAND() LIMIT 0,4");
+        $query_result['row'] =  $query->num_rows();
+        if($query->num_rows()>0){
+            $query_result['result'] =  $query->result();
+        }
+        return $query_result;
+
+    }
+
 
 
 

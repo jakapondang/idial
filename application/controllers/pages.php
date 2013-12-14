@@ -126,7 +126,6 @@
 
             $content['product']=$ProductList;
 
-
             $footer     = $mConfig;
             $fcontent   = $mConfig;
             $this->load->view($mConfig['themes'].'/head',$head);
@@ -182,6 +181,7 @@
 
             $content    = $mConfig;
 
+            // product
             $content['pro_name']=  strtoupper($proName);
             $fimage = "";
             //print $prow['val'];
@@ -234,6 +234,15 @@
                 }
 
 
+            }
+
+            // Related Product
+            //Brand
+            $relProduct = $this->catalog->getRelatedProduct($content['bra_id'],$rowPro['pro_id']);
+            if($relProduct!=false){
+                $content['relProduct'] = $relProduct;
+            }else{
+                $content['relProduct'] = "Theres no relation";
             }
 
             $head       = $content;

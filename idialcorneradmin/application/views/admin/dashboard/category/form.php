@@ -71,8 +71,10 @@
 </div>
     <script>
         function cekName(valueName){
-
-            if(valueName!=""){
+            var valueName = valueName.toLowerCase();
+            var valueName = valueName.split(' ').join('-');
+            document.getElementById('uri_name').value =valueName ;
+           /* if(valueName!=""){
                 var inputName = document.getElementById('name');
                 $.post( "<?php print base_url()?>admin/category/postcekName", { name: valueName })
                     .done(function( data ) {
@@ -80,15 +82,20 @@
                             inputName.value = "";
                         }else{
                             //uri_name
+                            var valueName = valueName.toLowerCase();
+                            var valueName = valueName.split(' ').join('-');
+                            document.getElementById('uri_name').value =valueName ;
+                            alert(valueName);
                             if (valueName) {
-                                var valueName = valueName.toLowerCase();
-                                var valueName = valueName.split(' ').join('-');
-                                document.getElementById('uri_name').value =valueName ;
+
+                            }else{
+
                             }
 
                         }
                     });
-            }
+                    }*/
+
 
 
 

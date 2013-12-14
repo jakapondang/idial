@@ -53,6 +53,7 @@ $route['contact'] = 'idial/information/contact';
 $route['about-us'] = 'idial/information/aboutus';
 $route['privacy-policy'] = 'idial/information/privacypolicy';
 $route['terms-conditions'] = 'idial/information/terms';
+$route['reviews'] = 'idial/reviews';
 
 $route['account'] = 'idial/account';
 $route['login'] = 'idial/login';

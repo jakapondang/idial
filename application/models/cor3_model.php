@@ -110,5 +110,20 @@ class Cor3_model extends CI_Model {
 
     }
 
+    function getMAinFooterProductCategory(){
+        $query = $this->db->query('SELECT B.cat_id AS catid, B.parent_id AS parid, B.name AS title,B.uri_name as uri ,A.name AS nameP  FROM jp_product A
+        LEFT JOIN jp_category B ON A.cat_id = B.cat_id WHERE A.status="1"  GROUP BY B.cat_id ORDER BY A.updated' );
+
+        $Value = "";
+        if ($query->num_rows() > 0)
+        {
+            $Value = $query->result();
+
+
+        }
+        return $Value;
+
+    }
+
 
 }

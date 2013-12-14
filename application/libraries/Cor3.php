@@ -117,6 +117,7 @@ class Cor3 {
             "themes" =>$this->themes,
             "mMenu"     => $this->mainMenu(),//menu
             "mbaseurl" =>base_url().'assets/'.$this->themes.'/',
+            "mfooterPC"=>$this->mainFooterProductCategory()
         );
         // ACCOUNT LOGOUT
         if($this->CI->session->userdata('user_email')==NULL){
@@ -182,6 +183,26 @@ class Cor3 {
         }
         return $value;
     }
+
+    public function mainFooterProductCategory(){
+
+        $productCategory = $this->CI->cor3_model->getMAinFooterProductCategory();
+
+        $value ="";
+        if($productCategory){
+            $value .="<ul>";
+            foreach($productCategory as $row){
+
+              $value .= '<li><a href="'.base_url().$row->uri.'">'.$row->title.'</a></li>';
+            }
+            $value .="</ul>";
+        }
+
+
+
+        return $value;
+    }/**/
+
 
     public function cekRowContent($table ,$data,$get){
         return $this->CI->cor3_model->getSQLvalue_where($table ,$data,$get);

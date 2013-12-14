@@ -3,9 +3,10 @@
     class Page extends CI_Controller {
 
         var $table      ="jp_page";
-
+        var $table2     ="jp_pagemeta";
         var $iColumn    = "pag_id";
         var $page       = "page";
+        var $imageLink  = "http://idialcorner.jp/assets/idial/upload/";
         /**
         * Index Page for this controller.
         *
@@ -65,6 +66,7 @@
                  "pageContent"=>strtoupper($this->page),
                  "pageContentLink"=>$this->page,
                  "pageContent2"=>"You can see list data of ".strtoupper($this->page."s"),
+
 
              );
              print $this->cor3->html($themes,$structure,$data);
@@ -143,6 +145,7 @@
                     "pageContentHeader" =>$pageContentHeader,
                     "pageContent2"=>"You can ".$pageContentHeader." Content here",
                     "error_message"=>$error_message,
+                    "imageLink"=>$this->imageLink,
 
                 );
                 // data edited
@@ -151,7 +154,7 @@
                 foreach($editCatValue as $row){
 
                     $data['name'] =  $row->name;
-                    $data['desc'] =  $row->desc;
+
 
                     if($row->status>0){
                         $data['status'] = "checked" ;
@@ -161,10 +164,12 @@
                 }
                 // data meta edited
 
+                $editValuemeta = $this->page_model->getValue($this->table2,$this->iColumn,$id);
+                foreach($editValuemeta as $row){
+                    $data[$row->meta_key] =  $row->meta_value;
 
-
-
-            }else{// if NEW
+                }
+        }else{// if NEW
                 $pageContentHeader = "Add New";
 
                 $data = array(
@@ -180,6 +185,7 @@
                     $this->iColumn=>"",
                     "name"=>"",
                     "desc"=>"",
+                    "sdesc"=>"",
                     "status"=>"checked",
                     "desc"=>"",
                     "error_message"=>$error_message,
@@ -227,7 +233,8 @@
             $id     =  $this->input->post('id');
             $name   = $this->input->post('name');
             $status =  $this->input->post('status');
-            $pdesc   = $this->input->post('pdesc');
+            $desc   = $this->input->post('pdesc');
+            $sdesc   = $this->input->post('psdesc');
 
             //status myquery
             if(empty($status)){
@@ -237,8 +244,11 @@
             $data = array(
                 "name"=>$name,
                 "status"=>$status,
-                "desc"=>$pdesc,
                 "author"=>$this->session->userdata('user_id'),
+            );
+            $dataAttribute = array(
+                "desc"=>$desc,
+                "sdesc"=>$sdesc,
             );
 
 
@@ -246,18 +256,55 @@
                 $dataWhere = array(
                     $this->iColumn=>$id
                 );
-
+                // update query
                 $ResultQuery = $this->cor3_model->updateValue($this->table, $data, $dataWhere);
-                if($ResultQuery==TRUE){
 
-                    print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$id."&err=2'</script>";
+                // update meta
+                $imageName = $this->jpupload->singleUpload($name."-".$id,$this->page);
+                print $imageName['file_name'];
+
+                //$resizeImage = $this->jpupload->resizeUpload($this->page,$imageName['file_name'],400,75);
+
+                $errUpload="";
+                if($imageName){
+
+                    $dataAttribute["imgName"] =$imageName['file_name'];
+                    //$dataAttribute["imgNametmb"] =$resizeImage;
+
                 }else{
+                    $errUpload = '&err2=5';
+                }
+
+                $resultMeta = $this->action_meta($dataAttribute,$id ,$this->table2);
+
+                if(($ResultQuery==TRUE)||($resultMeta)){
+
+                   print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$id."&err=2'</script>";
+                }else{
+                   print "<script>window.location='".base_url()."admin/".$this->page."/newUpdate/?id=".$id."&err=2'</script>";
                     // print "not updated";
                 }
 
             }else{
                 $data["created"] = DATE('Y-m-d H:i:s');
                 $ResultQuery = $this->cor3_model->insertValue($this->table,$data);
+
+                // upload
+                $imageName = $this->jpupload->singleUpload($name."-".$ResultQuery['id'],$this->page);
+                //$resizeImage = $this->jpupload->resizeUpload($this->page,$imageName['file_name'],100,75);
+
+                $errUpload="";
+
+                if($imageName!= 0){
+
+                    $dataAttribute["imgName"] =$imageName['file_name'];
+                    //$dataAttribute["imgNametmb"] =$resizeImage;
+
+                }else{
+                    $errUpload = '&err2=5';
+                }
+
+                $this->action_meta($dataAttribute,$ResultQuery['id'] ,$this->table2);
 
                  if($ResultQuery['qstatus']==TRUE){
 
@@ -271,7 +318,48 @@
             }
         }
 
-      
+        public function action_meta($dataAttribute=array(),$id ,$tableMeta){
+
+
+
+            foreach($dataAttribute as $keyName => $valName){
+
+                $dataWhere = array(
+                    $this->iColumn=>$id,
+                    "meta_key"=>$keyName,
+                );
+                //cek if meta key exist
+                $cekRowAttribute = $this->cor3_model->GetNumber_Row($tableMeta ,$dataWhere);
+
+                if($cekRowAttribute>0){
+                    //cek if the same
+                    $dataWhere_ts = array(
+                        $this->iColumn=>$id,
+                        "meta_key"=>$keyName,
+                        "meta_value"=>$valName
+                    );
+                    $cekRowAttribute_ts = $this->cor3_model->GetNumber_Row($tableMeta ,$dataWhere_ts);
+                    if($cekRowAttribute_ts== 0){
+                        $dataValue = array(
+                            "meta_value"=>$valName,
+                        );
+                        $resultQuery =  $this->cor3_model->updateValue($tableMeta,$dataValue,$dataWhere);
+
+                    }
+                }else{
+                    $dataValue = array(
+                        $this->iColumn=>$id,
+                        "meta_key"=>$keyName,
+                        "meta_value"=>$valName,
+                    );
+                    $resultQuery = $this->cor3_model->insertValue($tableMeta,$dataValue);
+
+                }
+            }//foreach
+
+
+        }
+
 
         public function errorMessage($err_val=""){
             $error_message="";

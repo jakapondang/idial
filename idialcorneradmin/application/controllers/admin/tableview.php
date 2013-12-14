@@ -21,6 +21,7 @@
         public function __construct() {
             parent::__construct();
             $this->load->library(array('cor3'));
+            $this->load->model(array('admin/table_model'));
 
 
             if($this->session->userdata('user_admin')==NULL){
@@ -294,8 +295,9 @@
                 $sOrder
                 $sLimit
                 ";
+            //print $sQuery;
             $rResult = mysql_query( $sQuery ) or die(mysql_error());
-            $listParent = mysql_query( $sQuery ) or die(mysql_error());
+
 
             /* Data set length after filtering */
             $sQuery = "
@@ -325,14 +327,10 @@
                 "aaData" => array()
             );
 
-            //Parent
-            $parentName = array();
-            while ( $aRowPar = mysql_fetch_array( $listParent ) )
-            {
-                $parentName[$aRowPar['cat_id']] =$aRowPar['name'];
-            }
+            //Parent Name
+             $parentName = $this->categoryName();
 
-           // $aRow2 = mysql_fetch_array( $rResult );
+
             while ( $aRow = mysql_fetch_array( $rResult ) )
             {
                 $row = array();
@@ -356,8 +354,10 @@
 
                         }
                         elseif($aColumns[$i] == 'parent_id'){
+							
                             if($aRow[ $aColumns[$i] ]>0){
-                                $row[] =  $parentName[$aRow[ $aColumns[$i] ]];
+								//print $aRow[ $aColumns[$i]] ;
+                                $row[] =  $parentName[$aRow[ $aColumns[$i] ] ];
                             }else{
                                 $row[] = "MAIN";
                             }
@@ -866,6 +866,17 @@
             return $return;
 
         } /* */
+
+        function categoryName (){
+            $Query = "SELECT * FROM jp_category";
+           $listParent = mysql_query( $Query ) or die(mysql_error());
+           $parentName = array();
+           while ( $row = mysql_fetch_array( $listParent ) )
+           {
+               $parentName[ $row['cat_id']] = $row['name'];
+           }/**/
+            return $parentName;
+        }
 
 
 

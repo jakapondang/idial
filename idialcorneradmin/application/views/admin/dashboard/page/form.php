@@ -30,7 +30,12 @@
                                 </label>
                              </div>
                          </div>
-
+                      <div class="control-group">
+                          <label class="control-label">Short Description</label>
+                          <div class="controls">
+                              <textarea id="psdesc" name="psdesc">{sdesc}</textarea>
+                          </div>
+                      </div>
 
                         <div class="control-group">
                             <label class="control-label">Description</label>
@@ -39,15 +44,31 @@
                             </div>
                         </div>
 
+                      <div class="control-group">
+                          <label class="control-label" for="input04">Upload Main Image</label>
+                          <div class="controls">
+                              <input type="file" name="userfile" id="userfile" data-provide="fileinput">
+                              <p class="help-block"><code>Format Logo : jpg , png , gif.</code></p>
+                          </div>
+                      </div>
+
+                      <div class="control-group">
+                          <label class="control-label" for="input04">Preview Main Image</label>
+                          <div class="controls">
+                              <img src="{imageLink}{pageContentLink}/{imgName}">
+
+                          </div>
+                      </div>
 
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary">Save</button>
-                            <a class="btn" type="reset" onclick="return PreviewPage();">Preview Page</a>
+                          <!--  <a class="btn" type="reset" onclick="return PreviewPage();">Preview Page</a>-->
                         </div>
 
                   </form>
 
                     <form id="previewp" method="post" target="_blank" action="{site_url}admin/{pageContentLink}/previewPage">
+                        <textarea style="display: none" id="psdesc_pre" name="psdesc_pre"></textarea>
                         <textarea style="display: none" id="pdesc_pre" name="pdesc_pre"></textarea>
                         <input type="hidden" name="id" value="{id}">
                     </form>

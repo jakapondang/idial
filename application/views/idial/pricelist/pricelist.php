@@ -62,24 +62,17 @@
 
                 <?php
                     if (fmod($i,2)) {
-                        print "<br clear='all'/>";
+                       // print "<br clear='all'/>";
                     }
                 }
 
                 ?>
-                <br/>
 
 
 
-    </div><!--
-     <div class="span6">
-            <div class="location">
-                <h3>SECOND</h3>
 
-                <br/>
-            </div>
-        </div>
-    ENDROW-->
+    </div>
+
 
     <br/>
     <br/>

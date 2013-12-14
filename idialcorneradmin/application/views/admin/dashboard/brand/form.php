@@ -44,22 +44,25 @@
                                 <textarea id="desc" name="desc">{desc}</textarea>
                             </div>
                         </div>
-                        <div class="control-group">
-                            <label class="control-label" for="input04">Preview Logo</label>
-                            <div class="controls">
-                               <img src="{imageLink}{pageContentLink}/{imgName}">
 
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="input04">Upload Logo</label>
-                            <div class="controls">
-                                <input type="file" name="userfile" id="userfile" data-provide="fileinput">
-                                <p class="help-block"><code>Format Logo : jpg , png , gif.</code></p>
-                            </div>
-                        </div>
 
-                        <div class="form-actions">
+                      <div class="control-group">
+                          <label class="control-label" for="input04">Upload Logo</label>
+                          <div class="controls">
+                              <input type="file" name="userfile" id="userfile" data-provide="fileinput">
+                              <p class="help-block"><code>Format Logo : jpg , png , gif.</code></p>
+                          </div>
+                      </div>
+                      <div class="control-group">
+                          <label class="control-label" for="input04">Preview Logo</label>
+                          <div class="controls">
+                              <img src="{imageLink}{pageContentLink}/{imgName}">
+
+                          </div>
+                      </div>
+
+
+                      <div class="form-actions">
                             <button type="submit" class="btn btn-primary">Save</button>
                           <!--  <button class="btn" type="reset">Clear Fields</button>-->
                         </div>

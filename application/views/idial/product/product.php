@@ -87,7 +87,16 @@
         </div>
     </div>
 
+<br clear='all'/>
+    <br/>
+    <div class="row">
+        <div class="span12">
+            <h2 class="page"  style="border-left: 10px solid #762B90;padding-left:10px" >Checkout our other Products</h2>
+        </div>
+    </div>
+    <?php print $relProduct;?>
 
 </div>
 <br clear='all'/>
 <br/>
+

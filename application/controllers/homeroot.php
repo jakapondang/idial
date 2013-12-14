@@ -31,7 +31,7 @@
             $name = $this->cor3_model->getSQLvalue_where("jp_page",$data,"name");
 			$themes ="cs";
             $structure = array("head","body-cs","footer");
-            $subscribe = ' <h3 style="color:#9B67AD">'.$name.'</h3>
+            $subscribe = '<h3 style="color:#9B67AD">'.$name.'</h3>
                     <form class="form-inline" action="{site_url}homeroot/subscribe" method="post">
                         <input type="text" name="email" placeholder="Masukan email / No Hp">
                         <button type="submit" id="submit" class="btn">Submit</button>
