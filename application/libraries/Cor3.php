@@ -185,23 +185,39 @@ class Cor3 {
     }
 
     public function mainFooterProductCategory(){
-
-        $productCategory = $this->CI->cor3_model->getMAinFooterProductCategory();
+        $table = 'jp_category';
+        $where  = "AND parent_id=0";
+        $mainMenu = $this->CI->cor3_model->getMAinMenu2($table,$where);
 
         $value ="";
-        if($productCategory){
-            $value .="<ul>";
-            foreach($productCategory as $row){
 
-              $value .= '<li><a href="'.base_url().$row->uri.'">'.$row->title.'</a></li>';
+
+        for($i=0;$i<count($mainMenu['name']);$i++){
+
+            //print $mainMenu['name'][$i]."<br/>";
+
+            /*/* */
+            $whereS  = "AND parent_id=". $mainMenu['id'][$i];
+            $subMenu = $this->CI->cor3_model->getMainMenu($table,$whereS);
+            if(!empty($subMenu)||($subMenu!=NULL)){
+
+
+                foreach($subMenu as $rowS){
+
+
+                    $value .= '<a href="'.base_url().$mainMenu['uri_name'][$i].'/'.$rowS->uri_name.'">'.$rowS->name.' *</a> ' ;
+                }
+
             }
-            $value .="</ul>";
+            else{
+
+               // $value .='<a href="'.base_url().$mainMenu['uri_name'][$i].'" >'.$mainMenu['name'][$i]."</a>";
+            }
         }
-
-
-
         return $value;
-    }/**/
+       
+
+    }
 
 
     public function cekRowContent($table ,$data,$get){
