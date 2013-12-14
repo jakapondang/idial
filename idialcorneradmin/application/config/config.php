@@ -17,7 +17,7 @@
 //$config['base_url']	= 'http://idialcorner.jp';
 $config['base_url']	= 'http://jp.idialcorner.jp';
 //$config['base_url']	= 'http://jp.local/idialcorner';
-//$config['base_url']	= 'http://dev.idialcorner.com';
+//$config['base_url']	= 'http://dev.idialcorner.com/jp';
 //$config['base_url']	= 'http://www.idialcorner.com';
 /*
 |--------------------------------------------------------------------------

@@ -54,7 +54,7 @@ class Catalog_model extends CI_Model {
             "SELECT A.pro_id AS proid, A.name AS title ,B.meta_value AS imgName ,C.gross AS price FROM $table1 A
                 INNER JOIN $table2 B ON A.pro_id = B.pro_id
                 INNER JOIN $table3 C ON A.pro_id = C.pro_id
-            WHERE B.meta_key='imgNametmb1' AND A.status='1' AND A.cat_id = '".$value."' ORDER BY created DESC LIMIT 0,10 ");
+            WHERE B.meta_key='imgNametmb1' AND A.status='1' AND A.cat_id = '".$value."' ORDER BY created DESC  ");//LIMIT 0,10
         $query_result['row'] =  $query->num_rows();
 
         $query_result['result'] =  $query->result();
@@ -67,7 +67,7 @@ class Catalog_model extends CI_Model {
             "SELECT A.pro_id AS proid, A.name AS title ,B.meta_value AS imgName ,C.gross AS price   FROM $table1 A
                 INNER JOIN $table2 B ON A.pro_id = B.pro_id
                 INNER JOIN $table3 C ON A.pro_id = C.pro_id
-            WHERE B.meta_key='imgNametmb1' AND A.status='1' AND A.bra_id = '".$value."' ORDER BY created DESC LIMIT 0,10 ");
+            WHERE B.meta_key='imgNametmb1' AND A.status='1' AND A.bra_id = '".$value."' ORDER BY created DESC ");//LIMIT 0,10
         $query_result['row'] =  $query->num_rows();
 
         $query_result['result'] =  $query->result();
@@ -120,7 +120,7 @@ class Catalog_model extends CI_Model {
             INNER JOIN jp_brand B ON A.bra_id = B.bra_id
             LEFT JOIN jp_productmeta C ON A.pro_id = C.pro_id
             LEFT JOIN jp_productprice D ON A.pro_id = D.pro_id
-            WHERE ( A.bra_id='".$bra_id."' AND A.pro_id != '".$pro_id."' AND A.status='1' AND C.meta_key LIKE 'imgNametmb%') ORDER BY RAND() LIMIT 0,4");
+            WHERE ( A.bra_id='".$bra_id."' AND A.pro_id != '".$pro_id."' AND A.status='1' AND C.meta_key LIKE 'imgNametmb%') GROUP BY A.pro_id ORDER BY RAND() LIMIT 0,4");
         $query_result['row'] =  $query->num_rows();
         if($query->num_rows()>0){
             $query_result['result'] =  $query->result();

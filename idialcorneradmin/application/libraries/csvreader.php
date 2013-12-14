@@ -18,7 +18,7 @@ class CSVReader {
         $keys_values = explode(',',$this->fields[0]);
 
         $content    =   array();
-        $keys   =   $this->escape_string($keys_values);
+        $keys   =   $keys_values;
 
         $i  =   1;
         while( ($row = fgetcsv($file, $this->max_row_size, $this->separator, $this->enclosure)) != false ) {
@@ -27,7 +27,7 @@ class CSVReader {
                 if(count($keys) == count($values)){
                     $arr    =   array();
                     $new_values =   array();
-                    $new_values =   $this->escape_string($values);
+                    $new_values =   $values;
                     for($j=0;$j<count($keys);$j++){
                         if($keys[$j] != ""){
                             $arr[$keys[$j]] =   $new_values[$j];

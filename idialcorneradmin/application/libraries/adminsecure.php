@@ -230,7 +230,7 @@ class Adminsecure
 			$this->CI->session->set_userdata($user_data);
             //logout
             $dataLogout = array('html_logout'=>' <div id="logout-ribbon">
-                        <a href="{site_url}jp/action/logout"><i class="icon-off"></i></a>
+                        <a href="{site_url}action/logout"><i class="icon-off"></i></a>
                     </div>');
             $this->CI->session->set_userdata($dataLogout);
 			

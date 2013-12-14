@@ -33,13 +33,13 @@
                                     if($catAva[$i]==$row->catid){
                                 ?>
                                 <tr>
-                                    <td style="width:150px!important;"><a class="priceList" href="<?php print base_url().strtolower(str_replace(" ","-",urldecode($row->name)))?>/?i=<?php print $row->proid;?>"><?php print $row->name?></a></td>
+                                    <td style="width:auto !important;"><a class="priceList" href="<?php print base_url().strtolower(str_replace(" ","-",urldecode($row->name)))?>/?i=<?php print $row->proid;?>"><?php print $row->name?></a></td>
                                     <td >
                                         <?php
                                             if($row->stock>0){
                                                ?>
                                                 <span style="color:#762B90;font-size: 14px;">
-                                                <?php    print $row->price;?>
+                                                Rp. <?php    print number_format($row->price,0, '', '.');?>
                                                 </span>
                                             <?php
                                             }else{
@@ -62,7 +62,7 @@
 
                 <?php
                     if (fmod($i,2)) {
-                       // print "<br clear='all'/>";
+                        print "<br clear='all'/>";
                     }
                 }
 

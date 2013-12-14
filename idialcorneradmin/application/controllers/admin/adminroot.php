@@ -10,12 +10,14 @@
             parent::__construct();
             $this->load->library(array('cor3','adminsecure'));
 			$this->load->model(array('admin/admin_model'));
-            if($this->session->userdata('user_admin')!= NULL){
-                print '<script>window.location="'.base_url().'dashboard";</script>';
-            }
+		
+           /**/
         }
         
         public function index() {
+			 if($this->session->userdata('user_admin')!= NULL){
+                print '<script>window.location="'.base_url().'dashboard";</script>';
+            }
             $err_val = $this->input->get('err');
 
             $error_message = $this->errorMessage($err_val);
@@ -34,19 +36,20 @@
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $ResultLogin = $this->adminsecure->login($username, $password);
-              if($ResultLogin==TRUE):
+           if($ResultLogin==TRUE):
 
-                  redirect(base_url().'dashboard', 'refresh');
+                   print '<script>window.location="'.base_url().'dashboard";</script>';
               else:
 
-                  redirect(base_url().'?err=1', 'refresh');
-              endif;
+                  print '<script>window.location="'.base_url().'?err=1";</script>'; 
+              endif; /*  */
 
         }
 
         public function action_logout(){
             $this->adminsecure->logout();
-            redirect(base_url(), 'refresh');
+			 print '<script>window.location="'.base_url().'";</script>'; 
+			
 
         }
 

@@ -73,7 +73,7 @@ $db['server']['database'] = 'idialcor_core';
 $db['server']['dbdriver'] = 'mysql';
 $db['server']['dbprefix'] = '';
 $db['server']['pconnect'] = TRUE;
-$db['default']['db_debug'] = FALSE;
+$db['server']['db_debug'] = FALSE;
 $db['server']['cache_on'] = FALSE;
 $db['server']['cachedir'] = '';
 $db['server']['char_set'] = 'utf8';
@@ -81,6 +81,22 @@ $db['server']['dbcollat'] = 'utf8_general_ci';
 $db['server']['swap_pre'] = '';
 $db['server']['autoinit'] = TRUE;
 $db['server']['stricton'] = FALSE;
+
+$db['live']['hostname'] = 'localhost';
+$db['live']['username'] = 'idialcor_admin';
+$db['live']['password'] = 'myidial';
+$db['live']['database'] = 'idialcor_live';
+$db['live']['dbdriver'] = 'mysql';
+$db['live']['dbprefix'] = '';
+$db['live']['pconnect'] = TRUE;
+$db['live']['db_debug'] = TRUE;
+$db['live']['cache_on'] = FALSE;
+$db['live']['cachedir'] = '';
+$db['live']['char_set'] = 'utf8';
+$db['live']['dbcollat'] = 'utf8_general_ci';
+$db['live']['swap_pre'] = '';
+$db['live']['autoinit'] = TRUE;
+$db['live']['stricton'] = FALSE;
 
 
 /* End of file database.php */
