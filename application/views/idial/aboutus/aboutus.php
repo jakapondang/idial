@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="span12">
-            <h2>About Us</h2>
+            <h1 class="page-title">About Us</h1>
             <p class="text_about">At mea expetendis percipitur, error doctus argumentum ex qui, officiis adipiscing signiferumque te eam. At quodsi civibus vis, his ad dicat minim appetere, omnes principes ex mel. Ex liber audire maiestatis mel, no nam mandamus omittantur. Ad vim illud utroque. Ex vim inani volumus, everti admodum appareat an usu, propriae vivendum et sea.</p>
         </div>
     </div>

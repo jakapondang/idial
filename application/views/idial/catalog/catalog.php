@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="span12">
-            <h1 class="page"><?php print $category2;?></h1>
+            <h1 class="page-title"><?php print $category2;?></h1>
         </div>
     </div>
 

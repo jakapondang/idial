@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="span12">
-            <h2>Contact Us</h2>
+            <h1 class="page-title">Contact Us</h1>
         </div>
     </div>
     <div class="row">

@@ -60,6 +60,7 @@
                     <li><a href="{site_url}dashboard"><i class="icol-dashboard"></i> Dashboard</a></li>
                     <li><a href="{site_url}config"><i class="icol-cog"></i> Main Store</a></li>
                     <li><a href="{site_url}background"><i class="icol-cog"></i> Web Background colour</a></li>
+                    <li><a href="{site_url}page"><i class="icol-plugin"></i> Page Review</a></li>
 
                 </ul>
             </li>
@@ -81,7 +82,7 @@
 					<span class="nav-title">Extra</span>
                 </span>
                 <ul class="inner-nav">
-                    <li><a href="{site_url}page"><i class="icol-plugin"></i> Page</a></li>
+
                     <li><a href="{site_url}subscriber"><i class="icol-user"></i> Subscriber</a></li>
 
                 </ul>

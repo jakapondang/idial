@@ -55,6 +55,8 @@ $route['privacy-policy'] = 'idial/information/privacypolicy';
 $route['terms-conditions'] = 'idial/information/terms';
 $route['reviews'] = 'idial/reviews';
 
+$route['search'] = 'idial/search';
+
 $route['account'] = 'idial/account';
 $route['login'] = 'idial/login';
 $route['logout'] = 'idial/account_action/logout/';

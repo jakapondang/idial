@@ -9,7 +9,7 @@ class Catalog_model extends CI_Model {
 
     function getBrandValue($table1,$table2){
         $query = $this->db->query(
-            "SELECT B.meta_value AS tmbName,A.name AS nameB FROM $table1 A INNER JOIN $table2 B ON A.bra_id = B.bra_id  WHERE B.meta_key='imgNametmb' AND A.status='1' ORDER BY created DESC");
+            "SELECT B.meta_value AS tmbName,A.name AS nameB FROM $table1 A INNER JOIN $table2 B ON A.bra_id = B.bra_id  WHERE B.meta_key='imgNametmb' AND A.status='1' ORDER BY A.created ");
         $query_result =  $query->result();
         return $query_result;
 
@@ -42,7 +42,7 @@ class Catalog_model extends CI_Model {
             "SELECT A.pro_id AS proid, A.name AS title ,B.meta_value AS imgName ,C.gross AS price   FROM $table1 A
                 INNER JOIN $table2 B ON A.pro_id = B.pro_id
                 INNER JOIN $table3 C ON A.pro_id = C.pro_id
-            WHERE B.meta_key='imgName1' AND A.status='1' AND A.cat_id = '".$value."' ORDER BY created DESC LIMIT 0,4 ");
+            WHERE B.meta_key='imgName1' AND A.status='1' AND A.cat_id = '".$value."' ORDER BY updated DESC LIMIT 0,4 ");
         $query_result =  $query->result();
         return $query_result;
 
@@ -54,7 +54,7 @@ class Catalog_model extends CI_Model {
             "SELECT A.pro_id AS proid, A.name AS title ,B.meta_value AS imgName ,C.gross AS price FROM $table1 A
                 INNER JOIN $table2 B ON A.pro_id = B.pro_id
                 INNER JOIN $table3 C ON A.pro_id = C.pro_id
-            WHERE B.meta_key='imgNametmb1' AND A.status='1' AND A.cat_id = '".$value."' ORDER BY created DESC  ");//LIMIT 0,10
+            WHERE B.meta_key='imgNametmb1' AND A.status='1' AND A.cat_id = '".$value."' ORDER BY updated DESC  ");//LIMIT 0,10
         $query_result['row'] =  $query->num_rows();
 
         $query_result['result'] =  $query->result();
@@ -67,7 +67,7 @@ class Catalog_model extends CI_Model {
             "SELECT A.pro_id AS proid, A.name AS title ,B.meta_value AS imgName ,C.gross AS price   FROM $table1 A
                 INNER JOIN $table2 B ON A.pro_id = B.pro_id
                 INNER JOIN $table3 C ON A.pro_id = C.pro_id
-            WHERE B.meta_key='imgNametmb1' AND A.status='1' AND A.bra_id = '".$value."' ORDER BY created DESC ");//LIMIT 0,10
+            WHERE B.meta_key='imgNametmb1' AND A.status='1' AND A.bra_id = '".$value."' ORDER BY RAND() DESC LIMIT 0,10");//LIMIT 0,10
         $query_result['row'] =  $query->num_rows();
 
         $query_result['result'] =  $query->result();

@@ -41,7 +41,7 @@ class Catalog {
 
                $Result[$i]      = $this->CI->catalog_model->getProductALLValue($table1,$table2,$table3,$catid[$i]);
 
-               $value .='<div class="row"><div class="span12"><h2 class="page"  style="border-left: 10px solid #762B90;padding-left:10px" >'.$category[$i]['name'].'</h2></div></div>';
+               $value .='<div class="row"><div class="span12"><a href="'.base_url().str_replace(' ','-',strtolower($pcategory[$i]['name'])).'/'.str_replace(' ','-',strtolower($category[$i]['name'])).'"><h2 class="page"  style="border-left: 10px solid #762B90;padding-left:10px">'.$category[$i]['name'].'</h2></a></div></div>';
                 $value .='<div class="row">';
                 foreach($Result[$i] AS $row){
 

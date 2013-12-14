@@ -49,45 +49,49 @@
                 <!--<button style="float: right" class="btn btn-primary" type="button">Add to Cart</button>-->
                 <a href="<?php print base_url();?>contact"><button style="float: right" class="btn btn-primary" type="button">CALL US</button></a>
             </form>
-            <div class="tabs">
-                <ul class="nav nav-tabs" id="myTab">
-                    <li class="active"><a href="#home">Description</a></li>
-                  <li><a href="#profile">Specification</a></li>
-                   <!-- <li><a href="#messages">Reviews</a></li>-->
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="home">
-                        <?php print htmlspecialchars_decode($sdesc);?>
-                    </div>
-                    <div class="tab-pane" id="profile">
-                        <?php print htmlspecialchars_decode($desc);?>
 
-                    </div>
-                    <div class="tab-pane" id="messages">
-                        <p>There are no reviews yet, would you like to <a href="#review_btn">submit yours?</a></p>
-                        <h3>Be the first to review “Blue Dress” </h3>
-                        <form>
-                            <fieldset>
-                                <label>Name<span class="required">*</span></label>
-                                <input type="text" placeholder="Name">
-                                <label>Email<span class="required">*</span></label>
-                                <input type="text" placeholder="Email">
-                                <label class="rating">Rating</label>
-                                <img alt="rating" src="image/stars-5.png">
-                            </fieldset>
-                        </form>
-                        <label>Your Review<span class="required">*</span></label>
-                        <textarea rows="3"></textarea>
-                        <p id="review_btn">
-                            <button class="btn" type="button">Submit Review</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
 <br clear='all'/>
+    <div class="span12">
+         <div class="tabs">
+             <ul class="nav nav-tabs" id="myTab">
+                 <li class="active"><a href="#home">Description</a></li>
+                 <li><a href="#profile">Specification</a></li>
+                 <!-- <li><a href="#messages">Reviews</a></li>-->
+             </ul>
+             <div class="tab-content">
+                 <div class="tab-pane active" id="home">
+                     <?php print htmlspecialchars_decode($sdesc);?>
+                 </div>
+                 <div class="tab-pane" id="profile">
+                     <?php print htmlspecialchars_decode($desc);?>
+
+                 </div>
+                 <div class="tab-pane" id="messages">
+                     <p>There are no reviews yet, would you like to <a href="#review_btn">submit yours?</a></p>
+                     <h3>Be the first to review “Blue Dress” </h3>
+                     <form>
+                         <fieldset>
+                             <label>Name<span class="required">*</span></label>
+                             <input type="text" placeholder="Name">
+                             <label>Email<span class="required">*</span></label>
+                             <input type="text" placeholder="Email">
+                             <label class="rating">Rating</label>
+                             <img alt="rating" src="image/stars-5.png">
+                         </fieldset>
+                     </form>
+                     <label>Your Review<span class="required">*</span></label>
+                     <textarea rows="3"></textarea>
+                     <p id="review_btn">
+                         <button class="btn" type="button">Submit Review</button>
+                     </p>
+                 </div>
+             </div>
+         </div>
+    </div>
+    <br clear='all'/>
     <br/>
     <div class="row">
         <div class="span12">

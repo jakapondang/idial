@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class="span12">
-            <h2 class="page-title">REVIEWS</h2>
+            <h1 class="page-title">REVIEWS</h1>
         </div>
     </div>
 

@@ -96,7 +96,9 @@
                 <?php print $macc_logout;?>
                 <div class="headerSearch">
                     <div class="icon_search"></div>
-                    <input type="text" id="search" placeholder="Search" style=""/>
+                    <form method="get" action="<?php print base_url();?>search/" name="searchForm">
+                        <input type="text" id="search" name="s" placeholder="Search"  style=""/>
+                    </form>
                 </div>
 
 

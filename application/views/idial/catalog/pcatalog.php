@@ -15,9 +15,8 @@
 
     <div class="row">
         <div class="span12">
-            <div class="cat_header">
-                <h2><?php print $category;?></h2>
-            </div>
+
+                <h1 class="page-title"><?php print $category;?></h1>
 
         </div>
     </div>

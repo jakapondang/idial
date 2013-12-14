@@ -25,8 +25,8 @@
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="active"><a href="#home">DASHBOARD</a></li>
                         <li><a href="#profile">ACCOUNT</a></li>
-                        <li><a href="#address">ADDRESS</a></li>
-                        <li><a href="#orders">ORDERS</a></li>
+                        <!--<li><a href="#address">ADDRESS</a></li>
+                        <li><a href="#orders">ORDERS</a></li>-->
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">

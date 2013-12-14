@@ -36,6 +36,7 @@
             $body['brandList'] = $this->catalog->brandlist();
 
             $content    = $mConfig;
+            $content['mainReviews'] = $this->ListReviews("0,5");
             $content['mainCategory'] =  $this->catalog->mainCategoryProduct($mConfig['main_category']);
 
 
@@ -156,17 +157,17 @@
         public function catalog($cat1="",$cat2="",$ProductList="")
         {
             $mConfig = $this->cor3->mainConfig();
-            $head       = $mConfig;
-            $body       = $mConfig;
+
             $content    = $mConfig;
             $content['category1']=  strtoupper($cat1);
             $content['category2']=  strtoupper($cat2);
             $content['product']=$ProductList;
 
-
+            $head       = $content;
+            $body       = $mConfig;
             $footer     = $mConfig;
             $fcontent   = $mConfig;
-            $this->load->view($mConfig['themes'].'/head',$head);
+            $this->load->view($mConfig['themes'].'/catalog/head',$head);
             $this->load->view($mConfig['themes'].'/body',$body);
             $this->load->view($mConfig['themes'].'/catalog/catalog',$content);
             $this->load->view($mConfig['themes'].'/footer',$footer);
@@ -274,6 +275,82 @@
             $this->load->view($mConfig['themes'].'/pricelist/pricelist',$content);
             $this->load->view($mConfig['themes'].'/footer',$footer);
             $this->load->view($mConfig['themes'].'/pricelist/fpricelist',$fcontent);/**/
+        }
+
+        public function ListReviews($limit){
+            $div = "";
+            $pagid = $this->pages_model->getPage($limit);
+            if(!empty($pagid)){
+
+                $rowPagid = count($pagid);
+                $last = $rowPagid-1;
+
+                for($i = 0;$i<$rowPagid; $i ++ ){
+                    //meta
+                    $metaPage[$i]= $this->pages_model->getPageMeta($pagid[$i]);
+                    if(!empty($metaPage[$i])){
+                        foreach( $metaPage[$i] AS $row){
+                            $metaValue[$i][$row->meta_key] = $row->meta_value;
+
+                        }
+                    }
+                    if($i<=2){
+                        if($i==0){
+                            $div .='<div class="row"><div class="span12" style="border-bottom: 1px solid #f2f2f2;">';
+                        }
+                        if($i==2){
+                            $div .='<div class="span3" style="padding: 10px;width: 270px;text-align: center">';
+                        }else{
+
+                            $div .='<div class="span3" style="border-right:1px solid #f2f2f2;padding: 10px;width: 270px;text-align: center">';
+                        }
+                        //content
+                        $div .= '<img src="http://idialcorner.jp/assets/idial/upload/page/'.$metaValue[$i]['imgName'].'" style="width:30%">';
+                        $div .= '<p style="padding-top:5px">'.$metaValue[$i]['sdesc'].' </p>';
+
+
+
+                        if($i==2){
+
+                            $div .="</div></div></div>";
+                        }
+                        elseif($i==$last){
+                            $div .="</div></div></div>";
+                        }else{
+
+                            $div .="</div>";
+                        }
+
+                    }else{
+                        if($i == 3){
+                            $div .='<div class="row"><div class="span12" style="border-bottom: 1px solid #f2f2f2;text-align: center">';
+
+                        }
+                        if($i==4){
+                            $div .='<div class="span5" style="padding: 30px">';
+                        }else{
+
+                            $div .='<div class="span5" style="border-right: 1px solid #f2f2f2;padding: 30px;text-align: center">';
+                        }
+
+                        //content
+                        $div .= '<img src="http://idialcorner.jp/assets/idial/upload/page/'.$metaValue[$i]['imgName'].'" style="width:50%">';
+                        $div .= '<p style="padding-top:5px">'.$metaValue[$i]['sdesc'].' </p>';
+
+                        if($i==$last){
+                            $div .="</div></div></div>";
+                        }else{
+
+                            $div .="</div>";
+                        }
+
+                    }
+                }// endfor
+
+            }
+            return $div;
+
+
         }
 
         public function noListing($catName,$catid){

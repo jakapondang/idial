@@ -53,9 +53,9 @@
 
              $data = array(
                  "site_url"=>base_url(),
-                 "dashboard" => '',
+                 "dashboard" => 'class="active"',
                  "catalog" =>'' ,
-                 "extra" =>'class="active"' ,
+                 "extra" =>'' ,
                  "urlActionTable"=>$themes.'/tableview/?tBn='.$this->table.'&colTab='.$column.'&icl='.$iColumns,
                  "urlEditRow"=>$themes.'/'.$this->page.'/newUpdate/',
                  "urlDelRow"=>$themes.'/'.$this->page.'/delete/',
@@ -136,9 +136,9 @@
                 $pageContentHeader = "Edit";
                 $data = array(
                     "site_url"=>base_url(),
-                    "dashboard" => '',
+                    "dashboard" => 'class="active"',
                     "catalog" =>'' ,
-                    "extra" =>'class="active"',
+                    "extra" =>'',
                     "pageContent"=>strtoupper($this->page),
                     "id"=>$id,
                     "pageContentLink"=>$this->page,
@@ -174,9 +174,9 @@
 
                 $data = array(
                     "site_url"=>base_url(),
-                    "dashboard" => '',
+                    "dashboard" => 'class="active"',
                     "catalog" =>'' ,
-                    "extra" =>'class="active"',
+                    "extra" =>'',
                     "pageContent"=>strtoupper($this->page),
                     "id"=>$id,
                     "pageContentLink"=>$this->page,

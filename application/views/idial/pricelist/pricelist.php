@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="span12">
-            <h1 class="page">PRICE LIST</h1>
+            <h1 class="page-title">PRICE LIST</h1>
         </div>
     </div>
 <?php //print_r($category);?>
