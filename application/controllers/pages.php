@@ -76,7 +76,7 @@
                     }
                 }else{
 
-                    print "ERROR 2";
+
                     $this->errorPage();
                 }
 
@@ -107,7 +107,7 @@
                     $this->product($rowPro['name'],$rowPro);
 
                 }else{
-                       print "ERROR";
+
                        $this->errorPage();
                 }
 

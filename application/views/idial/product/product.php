@@ -47,7 +47,7 @@
                 <b>Qty:</b> <input style="width: 50px !important;" type="text" placeholder="1" value="" class="span1">
 
                 <!--<button style="float: right" class="btn btn-primary" type="button">Add to Cart</button>-->
-                <a href="<?php print base_url();?>contact"><button style="float: right" class="btn btn-primary" type="button">CALL US</button></a>
+                <a href="<?php print base_url();?>contact"><button style="float: right" class="btn btn-primary" type="button">BUY @ iDial</button></a>
             </form>
 
         </div>

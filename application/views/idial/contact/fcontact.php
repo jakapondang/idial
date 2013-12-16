@@ -26,4 +26,13 @@
     });
 </script>
 
+<script type="text/javascript" src="<?php print $mbaseurl?>js/validation_engine/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="<?php print $mbaseurl?>js/validation_engine/languages/jquery.validationEngine-en.js"></script>
+<script type="text/javascript">
+
+    $("#contactForm").validationEngine();
+
+</script>
+
 </body>
+</html>

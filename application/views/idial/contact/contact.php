@@ -13,9 +13,29 @@
 
     <div class="row">
         <div class="span12">
-            <h1 class="page-title">Contact Us</h1>
+            <h1 class="page-title">Ask Us</h1>
+        </div>
+    </div><!---->
+    <div class="row">
+        <div class="span6">
+
+            <div class="contact_form" <?php print $form_contact_align;?>>
+               
+             	<?php print $form_contact;?>
+            </div>
+        </div>
+        <div class="span6">
+            <div class="location" style="text-align: center">
+                <h3>iDial info</h3>
+                <span class="address">Address:</span>
+
+                <?php print $main_store;?>
+				  <br/>
+            </div>
         </div>
     </div>
+    <br clear="all"/>
+    <br/>
     <div class="row">
         <div class="span12">
             <div id="map">
@@ -24,36 +44,6 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="span6">
-            <div class="contact_form">
-                <h3>Contact Us</h3>
-                <form>
-                    <fieldset>
-                        <span class="required">*</span>
-                        <input type="text" placeholder="Name">
-                        <span class="required">*</span>
-                        <input type="text" placeholder="Email">
-                        <span class="required">*</span>
-                        <input type="text" placeholder="Subject">
-                    </fieldset>
-                </form>
-                <label>Message<span class="required">*</span></label>
-                <textarea rows="3"></textarea>
-                <p>
-                    <button class="btn" type="button">Send Request</button>
-                </p>
-            </div>
-        </div>
-        <div class="span6">
-            <div class="location">
-                <h3>iDial info</h3>
-                <span class="address">Address:</span>
-
-                <?php print $main_store;?>
-
-            </div>
-        </div>
-    </div>
+    
 
 </div>

@@ -20,7 +20,7 @@
         
         public function __construct() {
             parent::__construct();
-            $this->load->library(array('cor3','usersecure','jpupload','cor3_model'));
+            $this->load->library(array('cor3'));//'usersecure','jpupload','cor3_model'
 			 $this->load->model(array('home_model'));
 
         }
@@ -216,7 +216,15 @@
 
 	    }
         public function viewDebug(){
-            $this->load->view('debug');
+			print 1;
+			$data = array(
+					"name" => "wew",
+					"message" => "wewe",
+				);
+            $themes     ="idial";
+            $structure  = array("email/head","email/contact","email/footer");
+            $plain_message="";
+            $message    =  $this->cor3->html($themes,$structure,$data);
         }
 
         

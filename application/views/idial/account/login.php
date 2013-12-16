@@ -32,7 +32,7 @@
                             <span class="required">*</span><!--<label class="control-label" for="inputEmail"></label>-->
                             <div class="span4" style="margin-left:-5px">
                                 <div class="controls">
-                                    <input type="text" placeholder="Username or email" class="validate[required,custom[email]] text-input" name="email" id="email">
+                                    <input type="text" placeholder="Email" class="validate[required,custom[email]] text-input" name="email" id="email">
                                 </div>
                             </div>
 						</div>

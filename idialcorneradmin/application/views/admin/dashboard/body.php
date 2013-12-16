@@ -59,13 +59,11 @@
                 <ul class="inner-nav">
                     <li><a href="{site_url}dashboard"><i class="icol-dashboard"></i> Dashboard</a></li>
                     <li><a href="{site_url}config"><i class="icol-cog"></i> Main Store</a></li>
-                    <li><a href="{site_url}background"><i class="icol-cog"></i> Web Background colour</a></li>
-                    <li><a href="{site_url}page"><i class="icol-plugin"></i> Page Review</a></li>
-
+                    <li><a href="{site_url}background"><i class="icol-color-swatch-2"></i> Web Background colour</a></li>
                 </ul>
             </li>
             <li {catalog}>
-                <span title="Table">
+                <span title="Catalog">
                     <i class="icon-mobile-phone"></i>
 				    <span class="nav-title">Catalog</span>
                 </span>
@@ -77,15 +75,26 @@
                 </ul>
             </li><!---->
             <li {extra}>
-                <span title="Extra">
-                    <i class="icon-gift"></i>
-					<span class="nav-title">Extra</span>
+                <span title="User">
+                    <i class="icon-user"></i>
+					<span class="nav-title">User</span>
                 </span>
                 <ul class="inner-nav">
 
                     <li><a href="{site_url}subscriber"><i class="icol-user"></i> Subscriber</a></li>
 
                 </ul>
+            </li>
+            <li {page}>
+                 <span title="Page">
+                    <i class="icon-frame"></i>
+				    <span class="nav-title">Page</span>
+                  </span>
+            <ul class="inner-nav">
+
+                <li><a href="{site_url}page"><i class="icol-layout-select"></i>Reviews</a></li>
+
+            </ul>
             </li>
 
         </ul>

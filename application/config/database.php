@@ -68,11 +68,12 @@ $db['default']['stricton'] = FALSE;
 $db['server']['hostname'] = 'localhost';
 $db['server']['username'] = 'idialcor_admin';
 $db['server']['password'] = 'myidial';
-$db['server']['database'] = 'idialcor_core';
+$db['server']['database'] = 'idialcor_live';
 $db['server']['dbdriver'] = 'mysql';
 $db['server']['dbprefix'] = '';
 $db['server']['pconnect'] = TRUE;
-$db['server']['db_debug'] = TRUE;
+//$db['server']['db_debug'] = TRUE;
+$db['server']['db_debug'] = FALSE;
 $db['server']['cache_on'] = FALSE;
 $db['server']['cachedir'] = '';
 $db['server']['char_set'] = 'utf8';
@@ -80,6 +81,23 @@ $db['server']['dbcollat'] = 'utf8_general_ci';
 $db['server']['swap_pre'] = '';
 $db['server']['autoinit'] = TRUE;
 $db['server']['stricton'] = FALSE;
+
+$db['dev']['hostname'] = 'localhost';
+$db['dev']['username'] = 'idialcor_admin';
+$db['dev']['password'] = 'myidial';
+$db['dev']['database'] = 'idialcor_core';
+$db['dev']['dbdriver'] = 'mysql';
+$db['dev']['dbprefix'] = '';
+$db['dev']['pconnect'] = TRUE;
+//$db['server']['db_debug'] = TRUE;
+$db['dev']['db_debug'] = FALSE;
+$db['dev']['cache_on'] = FALSE;
+$db['dev']['cachedir'] = '';
+$db['dev']['char_set'] = 'utf8';
+$db['dev']['dbcollat'] = 'utf8_general_ci';
+$db['dev']['swap_pre'] = '';
+$db['dev']['autoinit'] = TRUE;
+$db['dev']['stricton'] = FALSE;
 
 
 /* End of file database.php */

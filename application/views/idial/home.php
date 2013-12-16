@@ -6,16 +6,9 @@
 				<div class="slideshow">
 					<div class="ei-slider"><div class="ei-slider-loading">Loading</div>
 					<ul class="ei-slider-large">
+                        
                         <li>
-                            <img alt="chemicals" src="<?php print $mbaseurl; ?>upload/banner/banner1.jpg">
-                            <div class="ei-title">
-                               <h2>SUBSCRIBE at iDial </h2>
-                               <!-- <h3>Email </h3>-->
-                                <p>Dapatkan ribuan Applikasi & Game Premium ,<br/>Hanya dengan mensubcribe EMAIL / No Telepon Anda. </p ><!---->
-                            </div>
-                        </li>
-                        <li>
-                            <img alt="chemicals" src="<?php print $mbaseurl; ?>upload/banner/banner2.jpg">
+                            <img src="<?php print $mbaseurl; ?>upload/banner/banner2.jpg" alt="<?php print base_url() ?>">
                             <div class="ei-title">
                                 <h2>Promo 4x</h2>
                                 <h3>iPhone 5s , 5c & iPad Mini</h3>
@@ -23,46 +16,51 @@
                             </div>
                         </li>
                         <li>
-							<img alt="chemicals" src="<?php print $mbaseurl; ?>upload/banner/iphone5-banner-landing-page-top.png">
+                            <a href="http://www.ubox.co.id/products/screen-protector" target="_blank"><img alt="uBox.co.id Anti Smash <?php print base_url() ?>" src="<?php print $mbaseurl; ?>upload/banner/ubox-antismash.jpg"></a>
+                            <div class="ei-title">
+                            </div>
+                        </li>
+                        <li>
+                           <a href="<?php print base_url()?>contact"> <img src="<?php print $mbaseurl; ?>upload/banner/banner1.jpg" alt="Subscribe @ <?php print base_url() ?>"></a>
+                            <div class="ei-title">
+                               <h2>SUBSCRIBE at iDial </h2>
+                             
+                                <p>Dapatkan ribuan Applikasi & Game Premium ,<br/>Hanya dengan mensubcribe EMAIL / No Telepon Anda. </p ><!---->
+                            </div>
+                        </li>
+                        <li>
+							<img alt="Dapatkan Bonus uBox Screen Guard <?php print base_url() ?>" src="<?php print $mbaseurl; ?>upload/banner/ubox-screenguard.jpg">
 							<div class="ei-title">
-								<!--<h2>Nicole Fashion HTML </h2>
-								<h3>Responsive Design</h3>
-								<p>Responsive eCommerce HTML Template, Modern Design &amp; Built with Bootstrap 2.2.2 </p>-->		
+									
 							</div>
 						</li> 
 						<li>
-							<img alt="shoe1" src="<?php print $mbaseurl; ?>upload/banner/iphone5s3.jpg">
+						 <a href="<?php print base_url()?>iphone-5s">
+                         <img alt="iPhone 5s <?php print base_url() ?>smartphone/iphone-5s" src="<?php print $mbaseurl; ?>upload/banner/iphone5s3.jpg"></a>
 							<div class="ei-title">
-								<h3>PROMO 4x</h3>
+								<h3>Bonus 4x </h3>
 								<h2>iPhone 5s</h2>
-                                <!--<p>Nicole Fashion is a minimal, clean and responsive eCommerce HTML Template built with Bootstrap 2.2.2</p>
-                            --></div>
+                            </div>
 						</li>
                         <li>
-                            <img alt="Hat" src="<?php print $mbaseurl; ?>upload/banner/iphone5c.jpg">
+                            <img alt="Bonus 4x untuk iPhone 5s , iPhone 5c , iPad Air dan iPad Mini <?php print base_url() ?>"  src="<?php print $mbaseurl; ?>upload/banner/iphone5c.jpg">
                             <div class="ei-title">
-                                <h3>PROMO 4x</h3>
-                                <h2>iPhone 5c</h2>
-                               <!-- <p>Nicole Fashion is a minimal, clean and responsive eCommerce HTML Template built with Bootstrap 2.2.2</p>
-                           --> </div>
+                                <h3>iPhone 5c </h3>
+                                <h2></h2>
+                              </div>
                         </li>
 
 						<li>
-							<img alt="Sale" src="<?php print $mbaseurl; ?>upload/banner/ipad.jpg">
+                         <a href="<?php print base_url()?>tablet/ipad-air">
+							<img alt="iPad Air dan iPad mini <?php print base_url() ?>" src="<?php print $mbaseurl; ?>upload/banner/ipad.jpg">
+                            </a>
 							<div class="ei-title">
-								<h3>Buy @ iDial</h3>
-								<h2>iPad Mini</h2>
-								<!--<p>Responsive eCommerce HTML Template, Modern Design &amp; Built with Bootstrap 2.2.2 </p>-->
+								<h3>Bonus 4x </h3>
+								<h2>untuk iPhone 5s , iPhone 5c , iPad Air dan iPad Mini</h2>
+								
 							</div>
 						</li>
-                        <li>
-                            <a href="#"><img alt="Ring" src="<?php print $mbaseurl; ?>upload/banner/iphone5c-3.jpg"></a>
-                            <div class="ei-title">
-                                <h3>Promo 4x</h3>
-                                <h2>iPhone 5c</h2>
-                                <!--<p>Nicole Fashion it comes with 5 homepage sliders, Elastic Slider, Bootstrap Carousel, Slicebox, Flexslider and Nivo Slider</p>
-                            --></div>
-                        </li>
+                        
 
 
 					</ul>
@@ -70,15 +68,20 @@
 						<li class="ei-slider-element">Current</li>
                         <li>
                             <a href="#"></a>
-                            <img alt="Banner iDial" src="<?php print $mbaseurl; ?>upload/banner/banner1.jpg">
-                        </li>
-                        <li>
-                            <a href="#"></a>
                             <img alt="Banner iDial" src="<?php print $mbaseurl; ?>upload/banner/banner2.jpg">
                         </li>
+                        <li>
+								<a href="#"></a>
+								<img alt="uBox.co.id Anti Smash" src="<?php print $mbaseurl; ?>upload/banner/ubox-antismash.jpg">
+						</li>
+                        <li>
+                            <a href="#"></a>
+                            <img alt="Banner iDial" src="<?php print $mbaseurl; ?>upload/banner/banner1.jpg">
+                        </li>
+                        
 						<li>
 								<a href="#"></a>
-								<img alt="iPhone 5" src="<?php print $mbaseurl; ?>upload/banner/iphone5-banner-landing-page-top.png">
+								<img alt="Dapatkan Bonus uBox Screen Guard di www.idialcorner.com" src="<?php print $mbaseurl; ?>upload/banner/ubox-screenguard.jpg">
 						</li>
 						<li>
 								<a href="#"></a>
@@ -90,12 +93,9 @@
 						</li>
 						<li>
 								<a href="#"></a>
-								<img alt="iPad Mini" src="<?php print $mbaseurl; ?>upload/banner/ipad.jpg">
+								<img alt="iPad Air dan iPad mini" src="<?php print $mbaseurl; ?>upload/banner/ipad.jpg">
 						</li>
-						<li>
-								<a href="#"></a>
-								<img alt="iPhone 5c" src="<?php print $mbaseurl; ?>upload/banner/iphone5c-3.jpg">
-						</li>
+						
 
 					</ul>
 				  </div>

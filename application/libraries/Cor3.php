@@ -215,7 +215,7 @@ class Cor3 {
             }
         }
         return $value;
-       
+
 
     }
 

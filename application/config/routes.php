@@ -50,6 +50,7 @@ $route['Index'] = 'pages/index';
 $route['price-list'] = 'idial/pricelist';
 
 $route['contact'] = 'idial/information/contact';
+$route['action/contact'] = 'idial/information/action_contact';
 $route['about-us'] = 'idial/information/aboutus';
 $route['privacy-policy'] = 'idial/information/privacypolicy';
 $route['terms-conditions'] = 'idial/information/terms';
@@ -74,6 +75,10 @@ $route['action/login'] = 'idial/account_action/login';
 $route['action/edit-account'] = 'idial/account_action/editAccount';
 $route['action/register'] ='idial/account_action/register';
 $route['action/lost-password'] ='idial/account_action/sentLostpassword';
+
+
+
+//$route['viewDebug'] = 'homeroot/viewDebug';
 /*
 
 //cs
