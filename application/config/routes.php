@@ -54,6 +54,7 @@ $route['action/contact'] = 'idial/information/action_contact';
 $route['about-us'] = 'idial/information/aboutus';
 $route['privacy-policy'] = 'idial/information/privacypolicy';
 $route['terms-conditions'] = 'idial/information/terms';
+$route['news'] = 'idial/news';
 $route['reviews'] = 'idial/reviews';
 
 $route['search'] = 'idial/search';
