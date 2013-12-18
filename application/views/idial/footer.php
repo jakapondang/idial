@@ -76,7 +76,7 @@
                <div class="span4 faddress">
                    <div>
                    <h3>Address</h3>
-                       <?php print $main_store;?>
+                       <?php print $main_add;?>
                      </div>
                </div>
                

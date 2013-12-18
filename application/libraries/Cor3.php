@@ -119,6 +119,17 @@ class Cor3 {
             "mbaseurl" =>base_url().'assets/'.$this->themes.'/',
             "mfooterPC"=>$this->mainFooterProductCategory()
         );
+        //from db
+        $editValue = $this->CI->cor3_model->getContentValue('jp_config');
+        if($editValue){
+            foreach($editValue as $row){
+                $data[$row->type] = $row->content;
+                if (strpos($row->type,'background') !== false) {
+                    $data[$row->type]= 'style="background:'.$row->content.';"';
+                }
+
+            }
+        }
         // ACCOUNT LOGOUT
         if($this->CI->session->userdata('user_email')==NULL){
             $data['macc_logout']="";
@@ -133,19 +144,11 @@ class Cor3 {
         if(($home!=NULL) ){
             $data['mpreload']="";
          }else{
-           $data['mpreload']=$this->html($this->themes,array("preload"));
+            $preload = array("main_add"=>$data["main_add"]);
+           $data['mpreload']=$this->html($this->themes,array("preload"),$preload);
         }
 
-        $editValue = $this->CI->cor3_model->getContentValue('jp_config');
-        if($editValue){
-            foreach($editValue as $row){
-                $data[$row->type] = $row->content;
-                if (strpos($row->type,'background') !== false) {
-                    $data[$row->type]= 'style="background:'.$row->content.';"';
-                }
 
-            }
-        }
 
 
         return $data;

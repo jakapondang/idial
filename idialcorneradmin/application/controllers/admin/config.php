@@ -54,7 +54,7 @@
                 "site_url"=>base_url(),
                 "dashboard" => 'class="active"',
                 "catalog" =>'' ,
-                "extra" =>'',
+                "user" =>'',
                 "error_message"=>$error_message,
                 "pageContent"=>strtoupper($this->page),
                 "pageContentLink"=>$this->page,
@@ -70,6 +70,7 @@
                     $mcat_id =$row->content;
                 }
             }
+           // print_r($data);
             // Category
             $catValue = $this->jpconfig_model->getCategory();
             //$data['catValue1'] = $catValue;
@@ -150,7 +151,9 @@
         public function action_config(){
            $main_title = $this->input->post('main_title');
            $main_email = $this->input->post('main_email');
-           $main_store = $this->input->post('main_store');
+            $main_add = $this->input->post('main_add');
+            $main_desc = $this->input->post('main_desc');
+
 
 
            $mcat_id ="";
@@ -187,11 +190,20 @@
                $this->cor3_model->updateValue($this->table, $data, $dataWhere);
 
               $data = array(
-                     'content'=>$main_store,
+                     'content'=>$main_add,
                      "author"=>$this->session->userdata('user_id'),
                  );
-               $dataWhere = array('type'=>'main_store');
+               $dataWhere = array('type'=>'main_add');
                $this->cor3_model->updateValue($this->table, $data, $dataWhere);
+
+              $data = array(
+                    'content'=>$main_desc,
+                    "author"=>$this->session->userdata('user_id'),
+                );
+              $dataWhere = array('type'=>'main_desc');
+              $this->cor3_model->updateValue($this->table, $data, $dataWhere);
+
+
 
                print "<script>window.location='".base_url().$this->page."/?err=2'</script>";
            }

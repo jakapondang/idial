@@ -78,6 +78,9 @@ $route['action/register'] ='idial/account_action/register';
 $route['action/lost-password'] ='idial/account_action/sentLostpassword';
 
 
+$route['checkout'] = 'idial/checkout';
+
+
 
 //$route['viewDebug'] = 'homeroot/viewDebug';
 /*

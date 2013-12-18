@@ -66,9 +66,15 @@
 
                         </div>
                         <div class="control-group">
+                            <label class="control-label">Store Description</label>
+                            <div class="controls">
+                                <textarea id="main_desc" name="main_desc">{main_desc}</textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
                             <label class="control-label">Store Address</label>
                             <div class="controls">
-                                <textarea id="main_store" name="main_store">{main_store}</textarea>
+                                <textarea id="main_add" name="main_add">{main_add}</textarea>
                             </div>
                         </div>
 

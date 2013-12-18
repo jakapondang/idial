@@ -115,7 +115,7 @@
 
             </div>
         </div>
-        <?php print $mainReviews;?>
+        <?php //print $mainReviews;?>
 
         <?php  print $mainCategory;?>
 

@@ -13,12 +13,12 @@
 
     <div class="row">
         <div class="span12">
-            <h1 class="page-title">About Us</h1>
-            <p class="text_about">At mea expetendis percipitur, error doctus argumentum ex qui, officiis adipiscing signiferumque te eam. At quodsi civibus vis, his ad dicat minim appetere, omnes principes ex mel. Ex liber audire maiestatis mel, no nam mandamus omittantur. Ad vim illud utroque. Ex vim inani volumus, everti admodum appareat an usu, propriae vivendum et sea.</p>
+            <h1 class="page-title">About iDial Corner</h1>
+            <?php print $main_desc?>
         </div>
     </div>
 
-    <div class="row">
+    <!--  <div class="row">
         <div class="span4">
             <img src="<?php print $mbaseurl?>image/banner1.jpg" alt="banner" class="img-polaroid">
         </div>
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="row">
+  <div class="row">
         <div class="span4">
             <div class="description">
                 <h4>Aenean imperdiet</h4>
@@ -53,5 +53,6 @@
             </div>
         </div>
 
-    </div>
+    </div>-->
+    <br/>
 </div>
