@@ -52,7 +52,7 @@ class Cor3_model extends CI_Model {
         {
             $row = $query->row();
 
-            $returnValue['val'] =  $row->$get;
+            $returnValue[$get] =  $row->$get;
         }
         $returnValue['row'] = $query->num_rows;
 

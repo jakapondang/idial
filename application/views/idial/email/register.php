@@ -28,19 +28,15 @@
         <p>Password: {pass_user}</p>
         </div>
 
-           <br clear="all"/>
+            <p>Regards</p>
+            <p>iDial Crew</p>
+            <br clear="all"/>
 
-     <!--  <p> When you log in to your account, you will be able to do the following:</p>
 
-        – Proceed through checkout faster when making a purchase
-        – Check the status of orders
-        – View past orders
-        – Make changes to your account information
-        – Change your password
-        – Store alternative addresses (for shipping to multiple family members and friends!)-->
-      <p> If you have any questions about your account or any other matter,
-          please feel free to contact us at hello@idialcorner.com or by phone at +62 21 91799788</p>
-      </div>
+            <p> If you have any questions about your account or any other matter,
+                please feel free to contact us at :
+                {main_add}
+            </p>
      </div>
 </div>
 

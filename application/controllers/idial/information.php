@@ -96,7 +96,7 @@
 						"contact_person" => $email,
 						"message" => $message,
 						);
-			$result = $this->info_model->insertValueSubscriber("subscriber_cs",$dataSave);
+			$result = $this->info_model->insertValueSubscriber("jp_contact",$dataSave);
 			$themes     ="idial";
             $structure  = array("email/head","email/contact","email/footer");
             $plain_message="";

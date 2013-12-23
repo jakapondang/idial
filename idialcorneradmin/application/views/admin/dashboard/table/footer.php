@@ -20,6 +20,14 @@
         var r=confirm("Are you sure , you want to DELETE ID "+iDData+" ?");
 
     }
+    function CancelConfirm(iDData){
+        var r=confirm("Are you sure , you want to Cancel Order ID "+iDData+" ?");
+
+    }
+    function ApproveConfirm(iDData){
+        var r=confirm("Are you sure , you want to Approve ID "+iDData+" ?");
+
+    }
 </script>
     <!-- Core Scripts -->
 <script src="{base_url}js/libs/jquery-1.8.3.min.js"></script>

@@ -47,9 +47,9 @@ class Catalog {
 
                     $value.='<div class="span3">
                        <div class="product">
-                           <a href="'.base_url().str_replace(' ','-',strtolower($row->title)).'/?i='.$row->proid.'"><img class="imgPro"alt="'.$row->title.'" src="'.base_url().'assets/'.$this->themes.'/upload/product/thmb/'.$row->imgName.'"></a>
+                           <a href="'.base_url().urlencode(str_replace(' ','-',strtolower($row->title))).'/?i='.$row->proid.'"><img class="imgPro"alt="'.$row->title.'" src="'.base_url().'assets/'.$this->themes.'/upload/product/thmb/'.$row->imgName.'"></a>
                             <div class="name">
-                            <a href="'.base_url().str_replace(' ','-',strtolower($row->title)).'/?i='.$row->proid.'">'.$row->title.'</a>
+                            <a href="'.base_url().urlencode(str_replace(' ','-',strtolower($row->title))).'/?i='.$row->proid.'">'.$row->title.'</a>
                             </div>
                             <div class="price">
                             <p>Rp. '.number_format($row->price,0,"",".").'</p>
@@ -85,9 +85,9 @@ class Catalog {
                 ;
                 $value .='<div class="span3">
                                <div class="product">
-                                   <a href="'.base_url().str_replace(' ','-',strtolower($row->title)).'/?i='.$row->proid.'"><img class="imgPro"alt="'.$row->title.'" src="'.base_url().'assets/'.$this->themes.'/upload/product/thmb/'.$row->imgName.'"></a>
+                                   <a href="'.base_url().urlencode(str_replace(' ','-',strtolower($row->title))).'/?i='.$row->proid.'"><img class="imgPro"alt="'.$row->title.'" src="'.base_url().'assets/'.$this->themes.'/upload/product/thmb/'.$row->imgName.'"></a>
                                     <div class="name">
-                                    <a href="'.base_url().str_replace(' ','-',strtolower($row->title)).'/?i='.$row->proid.'">'.$row->title.'</a>
+                                    <a href="'.base_url().urlencode(str_replace(' ','-',strtolower($row->title))).'/?i='.$row->proid.'">'.$row->title.'</a>
                                     </div>
                                     <div class="price">
                                     <p>Rp. '.number_format($row->price,0,"",".").'</p>
@@ -123,9 +123,9 @@ class Catalog {
                ;
                 $value .='<div class="span3">
                            <div class="product">
-                               <a href="'.base_url().str_replace(' ','-',strtolower($row->title)).'/?i='.$row->proid.'"><img class="imgPro"class="imgPro" alt="'.$row->title.'" src="'.base_url().'assets/'.$this->themes.'/upload/product/thmb/'.$row->imgName.'"></a>
+                               <a href="'.base_url().urlencode(str_replace(' ','-',strtolower($row->title))).'/?i='.$row->proid.'"><img class="imgPro"class="imgPro" alt="'.$row->title.'" src="'.base_url().'assets/'.$this->themes.'/upload/product/thmb/'.$row->imgName.'"></a>
                                 <div class="name">
-                                <a href="'.base_url().str_replace(' ','-',strtolower($row->title)).'/?i='.$row->proid.'">'.$row->title.'</a>
+                                <a href="'.base_url().urlencode(str_replace(' ','-',strtolower($row->title))).'/?i='.$row->proid.'">'.$row->title.'</a>
                                 </div>
                                 <div class="price">
                                 <p>Rp. '.number_format($row->price,0,"",".").'</p>
@@ -160,9 +160,9 @@ class Catalog {
                 ;
                 $value .='<div class="span3">
                            <div class="product">
-                               <a href="'.base_url().str_replace(' ','-',strtolower($row->title)).'/?i='.$row->proid.'"><img class="imgPro"alt="'.$row->title.'" src="'.base_url().'assets/'.$this->themes.'/upload/product/thmb/'.$row->imgName.'"></a>
+                               <a href="'.base_url().urlencode(str_replace(' ','-',strtolower($row->title))).'/?i='.$row->proid.'"><img class="imgPro"alt="'.$row->title.'" src="'.base_url().'assets/'.$this->themes.'/upload/product/thmb/'.$row->imgName.'"></a>
                                 <div class="name">
-                                <a href="'.base_url().str_replace(' ','-',strtolower($row->title)).'/?i='.$row->proid.'">'.$row->title.'</a>
+                                <a href="'.base_url().urlencode(str_replace(' ','-',strtolower($row->title))).'/?i='.$row->proid.'">'.$row->title.'</a>
                                 </div>
                                 <div class="price">
                                 <p>Rp. '.number_format($row->price,0,"",".").'</p>
@@ -220,9 +220,9 @@ class Catalog {
                 ;
                 $value .='<div class="span3">
                            <div class="product">
-                               <a href="'.base_url().str_replace(' ','-',strtolower($row->title)).'/?i='.$row->proid.'"><img class="imgPro"alt="'.$row->title.'" src="'.base_url().'assets/'.$this->themes.'/upload/product/thmb/'.$row->imgName.'"></a>
+                               <a href="'.base_url().urlencode(str_replace(' ','-',strtolower($row->title))).'/?i='.$row->proid.'"><img class="imgPro"alt="'.$row->title.'" src="'.base_url().'assets/'.$this->themes.'/upload/product/thmb/'.$row->imgName.'"></a>
                                 <div class="name">
-                                <a href="'.base_url().str_replace(' ','-',strtolower($row->title)).'/?i='.$row->proid.'">'.$row->title.'</a>
+                                <a href="'.base_url().urlencode(str_replace(' ','-',strtolower($row->title))).'/?i='.$row->proid.'">'.$row->title.'</a>
                                 </div>
                                 <div class="price">
                                 <p>Rp. '.number_format($row->price,0,"",".").'</p>

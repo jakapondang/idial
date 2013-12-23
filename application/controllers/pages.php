@@ -82,10 +82,11 @@
 
             }else{
                 $cat1 = str_replace('-',' ',$cat1);
+
                 //Brand
                 $rowBrand = $this->cor3->cekRowContent2("jp_brand" ,array('name'=>$cat1,'status'=>'1'),"bra_id","name");
                 //Product
-                $rowPro = $this->cor3->cekRowContent2("jp_product" ,array('pro_id'=>$proid,'name'=>$cat1,'status'=>'1'),"pro_id","name");
+                $rowPro = $this->cor3->cekRowContent("jp_product" ,array('pro_id'=>$proid,'status'=>'1'),"pro_id");
 
                 //Parent Cat
                 if($row1['row']>0){
@@ -104,7 +105,7 @@
 
                 }elseif($rowPro['row']>0){
 
-                    $this->product($rowPro['name'],$rowPro);
+                    $this->product($cat1,$rowPro);
 
                 }else{
 
@@ -186,6 +187,7 @@
             $content['pro_name']=  strtoupper($proName);
             $fimage = "";
             //print $prow['val'];
+            //print $rowPro['pro_id'];
 
             $result =  $this->catalog->getSingleProduct($rowPro['pro_id']);
             if($result['row']>0){
@@ -245,6 +247,7 @@
             }else{
                 $content['relProduct'] = "Theres no relation";
             }
+         
 
             $head       = $content;
             $body       = $mConfig;
@@ -386,8 +389,7 @@
 
         }
 
-
-
+     
         
     }
     

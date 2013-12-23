@@ -49,6 +49,7 @@ $route['action/login'] = 'admin/adminroot/action_login';
 $route['action/logout'] = 'admin/adminroot/action_logout';
 $route['dashboard'] = 'admin/dashboard';
 $route['subscriber'] = 'admin/subscriber';
+$route['subscriber/order'] = 'admin/subscriber/order';
 $route['category'] = 'admin/category';
 $route['brand'] = 'admin/brand';
 $route['product'] = 'admin/product';

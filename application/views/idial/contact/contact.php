@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="span12">
-            <h1 class="page-title">Ask Us</h1>
+            <h1 class="page-title">Contact Us</h1>
         </div>
     </div><!---->
     <div class="row">
@@ -29,7 +29,7 @@
                 <h3>iDial info</h3>
                 <span class="address">Address:</span>
 
-                <?php print $main_store;?>
+                <?php print $main_add;?>
 				  <br/>
             </div>
         </div>

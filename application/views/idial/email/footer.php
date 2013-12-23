@@ -17,14 +17,7 @@
             <div class="span11 faddress" style="text-align: center">
 
                     <a href="{base_url}">   <h3>iDial Corner</h3></a>
-                   <p>ITC Kuningan Jakarta , Jembatan 1 Lantai 3 No.07 , Indonesia
-
-
-                        Phone:  021 - 91799788 | 0859 - 59159555 | Email : hello@idialcorner.com | BBM: 2A9B48671
-                   </p>
-
-
-                    </ul>
+                   {main_add}
 
             </div>
         </div>

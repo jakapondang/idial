@@ -48,7 +48,7 @@
             $mConfig = $this->cor3->mainConfig();
 
             //action
-          $email = $this->input->post('email');
+            $email = $this->input->post('email');
             $phone = $this->input->post('phone');
             $pass  = $this->input->post('cpassword');
 

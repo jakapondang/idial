@@ -354,7 +354,7 @@
                 $stock    =  $this->input->post('stock');
 
 
-                if(!empty($nett)&& !empty($gross)){
+                if(!empty($nett)|| !empty($gross)){
 
                     $data2 = array(
                     "nett"=>$nett,
@@ -385,6 +385,8 @@
                     if(!empty($data2)){
 
                         $returnRow = $this->cor3_model->GetNumber_Row($this->table2,$dataWhere);
+                        //print $returnRow;
+
                         if($returnRow>0){
 
                             $ResultQuery2 = $this->cor3_model->updateValue($this->table2, $data2, $dataWhere);
@@ -399,14 +401,17 @@
                     // input upload data att
                     $rowIMG = count($imageName);
                     $imgI =1;
-                    for($i=0;$i<=$rowIMG;$i++){
-                        if($imageName[$i]){
-                           // $resizeImage = $this->jpupload->resizeUpload($this->page,$imageName['file_name']);
-                            $dataAttribute["imgName".$imgI] =$imageName[$i]['file_name'];
 
-                            $dataAttribute["imgNametmb".$imgI] = $this->jpupload->resizeUpload($this->page,$imageName[$i]['file_name'],400,400);
+                    if($imageName[0]>0){
+                        for($i=0;$i<=$rowIMG;$i++){
+                            if($imageName[$i]){
+                               // $resizeImage = $this->jpupload->resizeUpload($this->page,$imageName['file_name']);
+                                $dataAttribute["imgName".$imgI] =$imageName[$i]['file_name'];
+
+                                $dataAttribute["imgNametmb".$imgI] = $this->jpupload->resizeUpload($this->page,$imageName[$i]['file_name'],400,400);
+                            }
+                            $imgI ++;
                         }
-                        $imgI ++;
                     }
 
 

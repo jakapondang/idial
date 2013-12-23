@@ -81,7 +81,7 @@
                 </span>
                 <ul class="inner-nav">
 
-                    <li><a href="{site_url}subscriber"><i class="icol-user"></i> Subscriber</a></li>
+                    <li><a href="{site_url}subscriber/order"><i class="icol-user"></i>Subscriber</a></li>
 
                 </ul>
             </li>

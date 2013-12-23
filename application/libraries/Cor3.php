@@ -230,6 +230,11 @@ class Cor3 {
         return $this->CI->cor3_model->getSQLvalue_where2($table ,$data,$get,$get2);
     }
 
+    public function GetNumber_Row($table,$data){
+
+        return $this->CI->cor3_model->GetNumber_Row($table,$data);
+    }
+
 
 
 }

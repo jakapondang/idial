@@ -44,10 +44,10 @@
 
             <div class="line"></div>
             <form class="form-inline">
-                <b>Qty:</b> <input style="width: 50px !important;" type="text" placeholder="1" value="" class="span1">
+                <b>Qty:</b> <input style="width: 50px !important;" type="text" placeholder="1" value="" name="qty" id="qty" class="span1">
 
                 <!--<button style="float: right" class="btn btn-primary" type="button">Add to Cart</button>-->
-                <a href="<?php print base_url();?>contact"><button style="float: right" class="btn btn-primary" type="button">BUY @ iDial</button></a>
+                <button style="float: right" class="btn btn-primary" onclick="jp_popUP()" type="button">BUY @ iDial</button>
             </form>
 
         </div>
@@ -103,4 +103,3 @@
 </div>
 <br clear='all'/>
 <br/>
-

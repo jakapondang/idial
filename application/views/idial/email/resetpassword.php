@@ -28,19 +28,15 @@
 
         </div>
 
-           <br clear="all"/>
+            <p>Regards</p>
+            <p>iDial Crew</p>
+            <br clear="all"/>
 
-     <!--  <p> When you log in to your account, you will be able to do the following:</p>
 
-        – Proceed through checkout faster when making a purchase
-        – Check the status of orders
-        – View past orders
-        – Make changes to your account information
-        – Change your password
-        – Store alternative addresses (for shipping to multiple family members and friends!)-->
-      <p> If clicking the link does not work, please copy and paste the URL into your browser instead.
-           <br/>
-          If you did not make this request, you can ignore this message and your password will remain the same.</p>
+            <p> If you have any questions about your account or any other matter,
+                please feel free to contact us at :
+                {main_add}
+            </p>
       </div>
      </div>
 </div>

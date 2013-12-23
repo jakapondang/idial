@@ -65,6 +65,43 @@
 
 
          }
+		 
+		 public function order(){
+
+
+            $themes ="admin";
+            $structure = array(
+                "dashboard/table/head",
+                "dashboard/body",
+                "dashboard/subscriber/listorder",
+                "dashboard/table/footer");
+            $error_message = "";
+
+             $tableName ="jp_subscriber";
+             $page = "Subscriber";
+             $column = "id,name,contact_person,address,pro_id,qty,order";
+             $iColumns = "id";
+             $data = array(
+                 "site_url"=>base_url(),
+                 "dashboard" => '',
+                 "catalog" =>'' ,
+                 "extra" =>'class="active"' ,
+                 "urlActionTable"=>$themes.'/tableview/?tBn='.$tableName.'&colTab='.$column.'&icl='.$iColumns,
+                 "urlEditRow"=>'',
+                 "urlDelRow"=>'',
+                 "tableFormName" =>$tableName,
+                 "tableType" =>"action",
+                 "error_message"=>$error_message,
+                 "pageContent"=>strtoupper($page),
+                 "pageContentLink"=>strtolower($page),
+                 "pageContent2"=>"You can see list data of ".$page,
+             );
+
+            print $this->cor3->html($themes,$structure,$data);
+
+
+
+         }
 
 
 
