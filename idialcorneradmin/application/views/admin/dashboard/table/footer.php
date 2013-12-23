@@ -18,14 +18,39 @@
     }
     function DeleteConfirm(iDData){
         var r=confirm("Are you sure , you want to DELETE ID "+iDData+" ?");
+        if (r)
+        {
+            window.location=urlDelRow+"?id="+iDData;
+        }
+        else
+        {
+            return false;
+        }
 
     }
     function CancelConfirm(iDData){
         var r=confirm("Are you sure , you want to Cancel Order ID "+iDData+" ?");
+        //var r=confirm(urlDelRow);
+        if (r===true)
+        {
+            window.location=urlDelRow+"?id="+iDData;
+        }
+        else
+        {
+            return false;
+        }
 
     }
     function ApproveConfirm(iDData){
         var r=confirm("Are you sure , you want to Approve ID "+iDData+" ?");
+        if (r===true)
+        {
+            window.location=urlEditRow+"?id="+iDData;
+        }
+        else
+        {
+            return false;
+        }
 
     }
 </script>

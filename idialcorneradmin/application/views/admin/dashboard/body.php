@@ -81,11 +81,12 @@
                 </span>
                 <ul class="inner-nav">
 
-                    <li><a href="{site_url}subscriber/order"><i class="icol-user"></i>Subscriber</a></li>
+                    <li><a href="{site_url}subscriber"><i class="icol-user"></i>Subscriber Order</a></li>
+                    <li><a href="{site_url}contact"><i class="icol-user"></i>Contact List</a></li>
 
                 </ul>
             </li>
-            <li {page}>
+           <!-- <li {page}>
                  <span title="Page">
                     <i class="icon-frame"></i>
 				    <span class="nav-title">Page</span>
@@ -95,7 +96,7 @@
                 <li><a href="{site_url}page"><i class="icol-layout-select"></i>Reviews</a></li>
 
             </ul>
-            </li>
+            </li>-->
 
         </ul>
     </nav>

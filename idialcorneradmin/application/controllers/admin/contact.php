@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     
-    class Subscriber extends CI_Controller {
-        var $page = "subscriber";
-        var $table = "jp_subscriber";
+    class Contact extends CI_Controller {
+        var $page = "contact";
+        var $table = "jp_contact";
         var $iColumn = "id";
         /**
         * Index Page for this controller.
@@ -23,7 +23,7 @@
         public function __construct() {
             parent::__construct();
             $this->load->library(array('cor3','cor3_model'));
-			$this->load->model(array('admin/subscriber_model'));
+			$this->load->model(array('admin/contact_model'));
 
             if($this->session->userdata('user_admin')==NULL){
                 print '<script>window.location="'.base_url().'?err=2";</script>';
@@ -33,41 +33,33 @@
         public function index(){
 
 
-            $err_val = $this->input->get('err');
-            $error_message = $this->errorMessage($err_val);
-            $page= $this->page;
             $themes ="admin";
             $structure = array(
                 "dashboard/table/head",
                 "dashboard/body",
-                "dashboard/".$page."/list",
+                "dashboard/".$this->page."/list",
                 "dashboard/table/footer");
+            $error_message = "";
 
 
-            $tableName =$this->table;
-            $page = strtoupper($this->page);
-            $column = $this->iColumn.",name,contact_person,address,pro_id,qty,order";
-            $colEnd = count(explode(',',$column));
-            $iColumns = $this->iColumn;
-
+            $column = $this->iColumn.",contact_person,message,status,created";
 
             $data = array(
                 "site_url"=>base_url(),
                 "dashboard" => '',
                 "catalog" =>'' ,
                 "extra" =>'class="active"' ,
-                "urlActionTable"=>$themes.'/tableview/category_table/?tBn='.$tableName.'&colTab='.$column.'&icl='.$iColumns,
-                "urlEditRow"=>$themes.'/'.strtolower($page).'/action_change_status/success',
-                "urlDelRow"=>$themes.'/'.strtolower($page).'/action_change_status/failed',
-                "tableFormName" =>$tableName,
-                "tableType" =>"action",
-                "colEnd" =>$colEnd,
+                "urlActionTable"=>$themes.'/tableview/?tBn='.$this->table.'&colTab='.$column.'&icl='.$this->iColumn,
+                "urlEditRow"=>'',
+                "urlDelRow"=>'',
+                "tableFormName" =>$this->table,
+                "tableType" =>"view",
                 "error_message"=>$error_message,
-                "pageContent"=>$page,
-                "pageContentLink"=>strtolower($page),
-                "pageContent2"=>"You can see list data of ".$page,
-
+                "pageContent"=>strtoupper($this->page),
+                "pageContentLink"=>strtolower($this->page),
+                "pageContent2"=>"You can see list data of ".$this->page,
             );
+
             print $this->cor3->html($themes,$structure,$data);
 
         }

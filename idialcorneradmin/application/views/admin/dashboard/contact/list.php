@@ -12,12 +12,10 @@
 <tr>
     <th>ID</th>
     <th>Name</th>
-    <th>CP</th>
-    <th>Address</th>
-    <th>Product ID</th>
-    <th>Qty</th>
-    <th>Order</th>
-    <th>Action</th>
+    <th>Message</th>
+    <th>Status</th>
+    <th>Created</th>
+
 </tr>
 </thead>
 <tbody>
